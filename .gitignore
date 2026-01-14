@@ -1,0 +1,25 @@
+### Common ###
+.idea
+.vscode
+.DS_Store
+
+### Java ###
+*.class
+target/
+
+### Python ###
+__pycache__/
+*.pyc
+.venv/
+
+### Node.js ###
+node_modules/
+dist/
+
+### Logs ###
+logs/
+log/
+*.log
+
+### Env ###
+.env
