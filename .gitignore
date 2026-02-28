@@ -1,17 +1,33 @@
 ### Common ###
+.git
 .idea
 .vscode
 .DS_Store
-tmp
+*.iml
+temp/*
+!temp/*.md
 
 ### Java ###
 *.class
 target/
+application-dev.properties
+application-test.properties
+application-prod.properties
+application-dev.yaml
+application-test.yaml
+application-prod.yaml
+application-dev.yml
+application-test.yml
+application-prod.yml
 
 ### Python ###
 __pycache__/
 *.pyc
 .venv/
+*.cookies
+*.token
+input/
+output/
 
 ### Node.js ###
 node_modules/
