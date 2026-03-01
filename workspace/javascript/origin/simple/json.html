@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!---------------------------------------------------------
+@software: WebStorm
+@author: Lionel Johnson
+@contact: https://fairy.host
+@organization: https://github.com/FairylandFuture
+@datetime: 2026-03-01 09:02:14 UTC+08:00
+---------------------------------------------------------->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Json</title>
+</head>
+<body>
+
+</body>
+<script>
+  let user = {
+    name: "Julia",
+    age: 19,
+  }
+  
+  // 将对象转换为 JSON 字符串, 序列化
+  console.log(JSON.stringify(user))
+  
+  let userString = "{\"name\":\"Julia\",\"age\":22}"
+  // 将 JSON 字符串转换为对象, 反序列化
+  let parseJSON = JSON.parse(userString)
+  console.log(parseJSON, typeof parseJSON, parseJSON.name, parseJSON.age)
+</script>
+</html>

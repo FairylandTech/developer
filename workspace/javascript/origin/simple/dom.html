@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!---------------------------------------------------------
+@software: WebStorm
+@author: Lionel Johnson
+@contact: https://fairy.host
+@organization: https://github.com/FairylandFuture
+@datetime: 2026-03-01 09:10:32 UTC+08:00
+---------------------------------------------------------->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM - Document Object Model</title>
+</head>
+<body>
+<!--
+  Document  - 文档对象
+  Element   - 元素对象
+  Attribute - 属性对象
+  Text      - 文本对象
+  Comment   - 注释对象
+-->
+
+<h1 id="title">DOM - Document Object Model</h1>
+<h2>222</h2>
+<h3>333</h3>
+
+</body>
+<script>
+  let fh1 = () => {
+    console.log("修改h1标签的内容");
+    
+    let h1Obj = document.querySelector("#title");
+    h1Obj.innerHTML = "DOM - 文档对象模型"; 
+  }
+  
+  fh1();
+</script>
+</html>

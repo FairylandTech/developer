@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!---------------------------------------------------------
+@software: WebStorm
+@author: Lionel Johnson
+@contact: https://fairy.host
+@organization: https://github.com/FairylandFuture
+@datetime: 2026-03-01 09:56:07 UTC+08:00
+---------------------------------------------------------->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件监听</title>
+</head>
+<body>
+<button id="enable">开启</button>
+<button disabled id="disable">关闭</button>
+<div hidden="hidden" id="identifier"></div>
+</body>
+<script>
+  let buttonOpen = document.querySelector("#enable");
+  let buttonClose = document.querySelector("#disable");
+  let identifier = document.querySelector("#identifier");
+  
+  buttonOpen.addEventListener("click", () => {
+    buttonOpen.disabled = true;
+    buttonClose.disabled = false;
+    console.log("已开启");
+    identifier.hidden = false;
+    identifier.innerHTML = "已开启";
+  })
+  
+  buttonClose.addEventListener("click", () => {
+    buttonOpen.disabled = false;
+    buttonClose.disabled = true;
+    console.log("已关闭");
+    identifier.hidden = true;
+  })
+</script>
+</html>
