@@ -7,8 +7,8 @@
  ****************************************************/
 package host.fairy.model.http;
 
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -17,18 +17,18 @@ import java.io.Serializable;
  * @version 1.0
  */
 @Data
-@NoArgsConstructor
-public class ResponseBody<T> implements Serializable {
+@Builder
+public class Response<T> implements Serializable {
     
     private int code;
     private String message;
     private T data;
     
-    public static <T> ResponseBody<T> success(T data) {
-        ResponseBody<T> response = new ResponseBody<>();
-        response.code = 200;
-        response.message = "OK";
-        response.data = data;
-        return response;
+    public static <T> Response<T> success(T data) {
+        return Response.<T>builder()
+                .code(200)
+                .message("OK")
+                .data(data)
+                .build();
     }
 }
