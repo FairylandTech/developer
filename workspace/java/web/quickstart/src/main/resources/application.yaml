@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: quickstart
+server:
+  servlet:
+    context-path: "/api"
+  port: 8080
