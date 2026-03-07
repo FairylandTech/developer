@@ -3,13 +3,12 @@
  * @author: Lionel Johnson
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
- * @datetime: 2026-03-02 04:56:56 UTC+08:00
+ * @datetime: 2026-03-02 20:14:41 UTC+08:00
  ****************************************************/
-package host.fairy.service;
+package host.fairy.mapper;
 
-import host.fairy.model.RequestInfo;
 import host.fairy.model.SimpleUserModel;
-import jakarta.servlet.http.HttpServletRequest;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -17,10 +16,7 @@ import java.util.List;
  * @author Lionel Johnson
  * @version 1.0
  */
-public interface SimpleService {
-    RequestInfo getRequestInfo(HttpServletRequest request);
-    
-    List<SimpleUserModel> getSimpleUsers();
-    
-    List<SimpleUserModel> getSimpleUsersFromDatabase();
+@Mapper
+public interface SimpleUserMapper {
+    List<SimpleUserModel> selectSimpleUsers();
 }

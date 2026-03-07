@@ -8,7 +8,7 @@
 package host.fairy.controller;
 
 import host.fairy.model.RequestInfo;
-import host.fairy.model.SimpleUser;
+import host.fairy.model.SimpleUserModel;
 import host.fairy.model.http.Response;
 import host.fairy.service.SimpleService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,7 +50,12 @@ public class SimpleController {
     }
     
     @GetMapping("/user")
-    public Response<List<SimpleUser>> user() {
+    public Response<List<SimpleUserModel>> user() {
         return Response.success(this.simpleService.getSimpleUsers());
+    }
+    
+    @GetMapping("/duser")
+    public Response<List<SimpleUserModel>> duser() {
+        return Response.success(this.simpleService.getSimpleUsersFromDatabase());
     }
 }

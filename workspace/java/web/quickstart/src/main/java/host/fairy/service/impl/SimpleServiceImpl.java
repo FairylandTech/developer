@@ -7,11 +7,13 @@
  ****************************************************/
 package host.fairy.service.impl;
 
+import host.fairy.mapper.SimpleUserMapper;
 import host.fairy.model.RequestInfo;
-import host.fairy.model.SimpleUser;
+import host.fairy.model.SimpleUserModel;
 import host.fairy.service.SimpleService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -32,6 +34,13 @@ import java.util.List;
 @Service
 public class SimpleServiceImpl implements SimpleService {
     
+    private final SimpleUserMapper simpleUserMapper;
+    
+    @Autowired
+    public SimpleServiceImpl(SimpleUserMapper simpleUserMapper) {
+        this.simpleUserMapper = simpleUserMapper;
+    }
+    
     @Override
     public RequestInfo getRequestInfo(HttpServletRequest request) {
         HashMap<String, String> headers = new HashMap<>();
@@ -50,13 +59,13 @@ public class SimpleServiceImpl implements SimpleService {
     }
     
     @Override
-    public List<SimpleUser> getSimpleUsers() {
+    public List<SimpleUserModel> getSimpleUsers() {
         return this.readLines(new File(this.getResource("user.txt")))
                 .stream()
                 .map(line -> {
                     String[] parts = line.split(",");
                     
-                    return SimpleUser.builder()
+                    return SimpleUserModel.builder()
                             .id(Long.parseLong(parts[0].trim()))
                             .username(parts[1].trim())
                             .password(parts[2].trim())
@@ -65,6 +74,11 @@ public class SimpleServiceImpl implements SimpleService {
                             .createdAt(LocalDateTime.parse(parts[5].trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                             .build();
                 }).toList();
+    }
+    
+    @Override
+    public List<SimpleUserModel> getSimpleUsersFromDatabase() {
+        return this.simpleUserMapper.selectSimpleUsers();
     }
     
     private URI getResource(String resourceName) {

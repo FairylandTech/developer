@@ -7,11 +7,8 @@
  ****************************************************/
 package host.fairy.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Data;
-
-import java.time.LocalDateTime;
+import host.fairy.fairylandfuture.model.ModelBase;
+import lombok.*;
 
 /**
  * @author Lionel Johnson
@@ -19,11 +16,12 @@ import java.time.LocalDateTime;
  */
 @Data
 @Builder
-public class SimpleUser {
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class SimpleUserModel extends ModelBase {
     private String username;
     private String password;
     private String name;
     private Integer age;
-    private LocalDateTime createdAt;
 }
