@@ -7,6 +7,9 @@
 temp/*
 !temp/*.md
 
+### IDEA ###
+.fastRequest
+
 ### Java ###
 *.class
 target/
