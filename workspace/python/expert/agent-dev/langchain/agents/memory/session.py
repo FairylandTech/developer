@@ -13,8 +13,8 @@ import typing as t
 from langchain_core.messages import HumanMessage
 
 from domain.model.agent.message import InputMessages
+from llm.factoryimport LLMFactory
 from memory import default_checkpointer
-from llm.zai import zai_llm
 
 from langchain.agents import create_agent
 from langchain_core.runnables import RunnableConfig
@@ -22,15 +22,17 @@ from langchain.agents.middleware import SummarizationMiddleware
 
 
 def session_memory_agent():
+    llm = LLMFactory.create("zai")
+
     trigger: tuple[t.Literal["messages"], int] = ("messages", 3)
     keep: tuple[t.Literal["messages"], int] = ("messages", 2)
 
     agent = create_agent(
-        zai_llm,
+        llm,
         checkpointer=default_checkpointer,
         middleware=[
             SummarizationMiddleware(
-                zai_llm,
+                llm,
                 trigger=trigger,
                 keep=keep,
             )

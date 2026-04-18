@@ -17,7 +17,7 @@ from langchain_core.messages import HumanMessage
 from langchain_core.runnables import RunnableConfig
 
 from domain.model.agent.message import InputMessages
-from llm.tongyi import llm_tongyi
+from llm.factoryimport LLMFactory
 from memory import default_checkpointer
 from tools.web.search import tavily
 
@@ -32,8 +32,11 @@ system_pompt = """
 
 
 def cheif(human: str, food: Path):
+
+    llm = LLMFactory.create("qwen")
+
     agent = create_agent(
-        model=llm_tongyi,
+        model=llm,
         tools=[
             tavily
         ],

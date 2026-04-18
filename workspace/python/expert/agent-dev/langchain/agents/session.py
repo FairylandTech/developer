@@ -13,9 +13,9 @@ import typing as t
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage
 from langgraph.checkpoint.memory import InMemorySaver
-from llm.zai import zai_llm
 
 from domain.model.agent.message import InputMessages
+from llm.factoryimport LLMFactory
 
 
 def session_agent():
@@ -26,8 +26,10 @@ def session_agent():
     :rtype:
     """
 
+    llm = LLMFactory.create("zai")
+
     agent = create_agent(
-        zai_llm,
+        llm,
         checkpointer=InMemorySaver(),
     )
 

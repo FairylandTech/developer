@@ -13,6 +13,7 @@ import typing as t
 from langchain.agents import create_agent
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage, AIMessage
 
+from llm.factory import LLMFactory
 from tools.weather import get_weather_live
 
 from domain.model.agent.message import Message, InputMessages
@@ -25,8 +26,11 @@ def get_weather_live_invoke():
     :return:
     :rtype:
     """
+
+    llm = LLMFactory.create("deepseek")
+
     agent = create_agent(
-        "deepseek-chat",
+        llm,
         tools=[
             get_weather_live,
         ],

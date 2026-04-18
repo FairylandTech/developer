@@ -15,6 +15,7 @@ from langchain_core.messages import HumanMessage, BaseMessage, ToolMessage
 
 from domain.model.agent.message import InputMessages
 from domain.model.tools.web.search import TavilySearchResult
+from llm.factory import LLMFactory
 from tools.web.search import tavily, tavily_search
 
 
@@ -26,8 +27,10 @@ def search(input: str):
     :rtype:
     """
 
+    llm = LLMFactory.create("deepseek")
+
     agent = create_agent(
-        "deepseek-chat",
+        llm,
         system_prompt="你是一个智能搜索工具。",
         tools=[
             tavily,
