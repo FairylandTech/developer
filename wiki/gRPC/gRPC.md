@@ -10,6 +10,8 @@
 
 ---
 
+# 定义
+
 
 ```protobuf
 syntax = "proto3";
@@ -76,3 +78,15 @@ service HelloService {
   rpc hello(LoginRequest) returns (Result) {};
 }
 ```
+
+# gRPC 的四种通讯方式
+
+## 简单RPC/一元RPC（Unary RPC）
+
+特点：
+
+## 服务端流式RPC（Server Streaming RPC）
+
+## 客户端流式RPC（Client Streaming RPC）
+
+## 双向流RPC （Bi-directional stream RPC）
