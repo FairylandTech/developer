@@ -1,0 +1,33 @@
+/*****************************************************
+ * @software: IntelliJ IDEA
+ * @author: Lionel Johnson
+ * @contact: https://fairy.host
+ * @organization: https://github.com/FairylandFuture
+ * @datetime: 2026-04-19 21:39:38 UTC+08:00
+ ****************************************************/
+syntax = "proto3";
+
+option java_multiple_files = false;
+option java_package = "host.fariy.grpc";
+option java_outer_classname = "HelloProto";
+
+/*
+  IDL 文件的目的是发布 RPC 服务。 service --> message
+ */
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string result = 1;
+}
+
+message HelloRequest2 {
+  repeated string name = 1;
+}
+
+service HelloService {
+  rpc hello (HelloRequest) returns (HelloResponse) {};
+  rpc hello2 (HelloRequest2) returns (HelloResponse) {};
+}
