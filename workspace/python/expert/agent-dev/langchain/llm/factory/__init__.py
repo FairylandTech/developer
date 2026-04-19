@@ -11,7 +11,7 @@ from __future__ import annotations
 import time
 import typing as t
 
-from langchain_core.language_models import BaseLLM
+from langchain_core.language_models import BaseChatModel
 
 from llm.factory.base import LLMCreator
 from llm.factory.registry import LLMFactoryRegistry
@@ -35,13 +35,7 @@ _T_Porovider: t.TypeAlias = t.Literal["deepseek", "qwen", "zai", "ark", "hunyuan
 class LLMFactory:
 
     @classmethod
-    def create(cls, provider: str | _T_Porovider, **kwargs):
-        print(f"正在获取 {provider.lower()} LLM Creator")
+    def create(cls, provider: str | _T_Porovider, **kwargs) -> BaseChatModel:
         creator: t.Type[LLMCreator] = LLMFactoryRegistry.get_creator(provider)
         creator_instance = creator()
-
-        print(f"正在创建 {provider.lower()} LLM 实例")
-        start_time = time.time()
-        llm: BaseLLM = creator_instance.create(**kwargs)
-        print(f"LLM 实例创建完成，耗时：{time.time() - start_time:.2f}秒")
-        return llm
+        return creator_instance.create(**kwargs)

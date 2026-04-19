@@ -11,11 +11,11 @@ from __future__ import annotations
 import typing as t
 from abc import ABC, abstractmethod
 
-from langchain_core.language_models import BaseLLM
+from langchain_core.language_models import BaseChatModel
 
 
 class LLMCreator(ABC):
 
     @abstractmethod
-    def create(self, **kwargs) -> BaseLLM:
+    def create(self, **kwargs) -> BaseChatModel:
         pass

@@ -27,7 +27,7 @@ class QWeatherUtils:
         private_key = cls.get_private_pem(pem)
 
         payload = {
-            "iat": int(time.time()),
+            "iat": int(time.time()) - 30,
             "exp": int(time.time()) + 3600,
             "sub": "3JKQM4282U"
         }

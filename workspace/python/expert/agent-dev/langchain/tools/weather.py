@@ -40,7 +40,9 @@ def get_weather_live(location: str) -> str:
     location_response = requests.get(
         "https://me5n8ne5bq.re.qweatherapi.com/geo/v2/city/lookup",
         params={"location": location, "number": 1},
-        headers=headers
+        headers=headers,
+        timeout=10,
+        verify=False,
     )
     location_response.raise_for_status()
     location_id = location_response.json().get("location", [{}])[0].get("id", None)
@@ -51,7 +53,9 @@ def get_weather_live(location: str) -> str:
     weather_response = requests.get(
         "https://me5n8ne5bq.re.qweatherapi.com/v7/weather/now",
         params={"location": location_id},
-        headers=headers
+        headers=headers,
+        timeout=10,
+        verify=False,
     )
     weather_response.raise_for_status()
     weather = weather_response.json().get("now", {}).get("text", "unknown")
