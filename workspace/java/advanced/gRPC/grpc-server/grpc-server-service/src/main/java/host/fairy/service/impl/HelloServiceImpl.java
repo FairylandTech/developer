@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-04-19 23:25:36 UTC+08:00
@@ -12,7 +12,7 @@ import host.fairy.grpc.HelloServiceGrpc;
 import io.grpc.stub.StreamObserver;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-22 13:33:27 UTC+08:00
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ExceptionCapture {
     /*

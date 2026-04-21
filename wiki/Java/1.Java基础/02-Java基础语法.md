@@ -13,14 +13,14 @@
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-19 21:45:06 UTC+08:00
  ******************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Main {
     public static void main(String[] args) {
@@ -95,14 +95,14 @@ Java 5.0引入了枚举，枚举限制变量只能是预先设定好的值。使
   ```java
   /*****************************************************
    * @software: IntelliJ IDEA
-   * @author: Lionel Johnson
+   * @author: Beau Dean
    * @contact: https://fairy.host
    * @organization: https://github.com/FairylandFuture
    * @datetime: 2024-07-19 21:45:06 UTC+08:00
    ******************************************************/
   
   /**
-   * @author Lionel Johnson
+   * @author Beau Dean
    */
   public class EnumDemo {
       // 使用枚举的实例
@@ -214,7 +214,7 @@ Java 5.0引入了枚举，枚举限制变量只能是预先设定好的值。使
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-19 21:45:06 UTC+08:00
@@ -223,7 +223,7 @@ Java 5.0引入了枚举，枚举限制变量只能是预先设定好的值。使
 /**
  * 这里是文档注释
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Main {
     public static void main(String[] args) {

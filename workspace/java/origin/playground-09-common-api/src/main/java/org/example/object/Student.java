@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-20 14:29:31 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.object;
 import java.util.Objects;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Student {
     private String name;

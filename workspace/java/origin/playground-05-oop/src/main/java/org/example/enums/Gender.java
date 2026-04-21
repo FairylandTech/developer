@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-16 13:33:47 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.enums;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public enum Gender {
     MALE("男"),

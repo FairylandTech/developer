@@ -5,7 +5,7 @@
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-27 12:54:11 UTC+08:00
@@ -14,7 +14,7 @@
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo01 {
     public static void main(String[] args) {
@@ -43,14 +43,14 @@ public class Demo01 {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-27 13:47:41 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo02 {
     public static void main(String[] args) {
@@ -79,14 +79,14 @@ public class Demo02 {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-27 13:54:22 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo03 {
     public static void main(String[] args) {

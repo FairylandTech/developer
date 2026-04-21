@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-13 14:05:17 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.method;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class MethodWithParams {
     public static void add(int a, int b) {

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-15 00:19:09 UTC+08:00
@@ -15,7 +15,7 @@ import java.util.Iterator;
  * Queue implement based on array
  *
  * @param <E> Queue elemant type.
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see Queue
  * @see Iterable

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-20 20:08:36 UTC+08:00
@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Main {
     public static void main(String[] args) {

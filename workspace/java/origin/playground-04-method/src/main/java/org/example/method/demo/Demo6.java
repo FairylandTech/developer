@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-13 14:42:34 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.method.demo;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo6 {
     public static boolean compare(byte a, byte b) {

@@ -3,7 +3,7 @@
 示例：如何为不同的服务创建不同的 WebSocket 客户端实现
 
 @software: PyCharm
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: 2026-01-04
@@ -93,4 +93,3 @@ class MonitoringWebSocketClient(WebSocketClientBase):
 # ws_client_manager.auto_register_from_config(NotificationWebSocketClient, NOTIFICATION_CONFIGS)
 # ws_client_manager.auto_register_from_config(DataStreamWebSocketClient, DATA_STREAM_CONFIGS)
 # ws_client_manager.auto_register_from_config(MonitoringWebSocketClient, MONITORING_CONFIGS)
-

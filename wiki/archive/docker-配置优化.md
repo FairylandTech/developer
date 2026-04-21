@@ -2,7 +2,7 @@
 
 > @File: docker-配置优化.md  
 > @Editor: PyCharm  
-> @author: [Lionel Johnson](https://fairy.host)    
+> @author: [Beau Dean](https://fairy.host)    
 > @HomePage: [AustinFairyland](https://github.com/AustinFairyland)  
 > @OperatingSystem: Windows 11 Professional Workstation 23H2 Canary Channel  
 > @CreatedTime: 2024-01-20

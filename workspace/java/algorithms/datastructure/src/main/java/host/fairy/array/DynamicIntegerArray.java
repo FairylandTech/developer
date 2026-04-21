@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-31 11:13:11 UTC+08:00
@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 /**
  * 动态数组
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class DynamicIntegerArray implements Iterable<Integer> {
     private Integer index = 0;

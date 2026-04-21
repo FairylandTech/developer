@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-20 13:46:41 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.runtime;
 import java.io.IOException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Main {
     public static void main(String[] args) throws IOException {

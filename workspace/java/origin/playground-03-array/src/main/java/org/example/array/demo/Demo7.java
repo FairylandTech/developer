@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-13 13:30:13 UTC+08:00
@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo7 {
     // 定义一个数组，存入1~5。要求打乱数组中所有数据的顺序。

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-15 20:49:41 UTC+08:00
@@ -15,7 +15,7 @@ import java.util.concurrent.LinkedTransferQueue;
  * Leetcode 102
  * <p>给你二叉树的根节点 {@code root} ，返回其节点值的 层序遍历 。 （即逐层地，从左到右访问所有节点）。</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see <a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">Leet Code Link</a>
  */

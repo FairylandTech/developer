@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-13 14:17:14 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.method.demo;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo3 {
     //定义一个方法，求圆的面积，将结果在方法中进行打印。

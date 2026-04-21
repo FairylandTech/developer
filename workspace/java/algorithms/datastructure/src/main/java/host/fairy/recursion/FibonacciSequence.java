@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-07 21:10:36 UTC+08:00
@@ -15,7 +15,7 @@ import java.util.HashMap;
  * <p>1. 全局缓存</p>
  * <p>2. 局部缓存</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class FibonacciSequence {
     // 全局缓存

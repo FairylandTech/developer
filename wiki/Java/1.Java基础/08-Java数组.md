@@ -61,7 +61,7 @@ dataType[] arrayRefVar = {value0, value1, ..., valuek};
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 21:21:12 UTC+08:00
@@ -70,7 +70,7 @@ dataType[] arrayRefVar = {value0, value1, ..., valuek};
 import java.util.Arrays;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class JavaArrays {
     public static void main(String[] args) {
@@ -108,7 +108,7 @@ Arrays 中的方法
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 21:21:12 UTC+08:00
@@ -117,7 +117,7 @@ Arrays 中的方法
 import java.util.Arrays;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class JavaArrays {
     public static void main(String[] args) {
@@ -182,7 +182,7 @@ public class JavaArrays {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-25 22:00:13 UTC+08:00
@@ -191,7 +191,7 @@ public class JavaArrays {
 import java.util.Arrays;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ArrayDemo3 {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 22:01:24 UTC+08:00
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * 部门实体类转部门Response DTO
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class DepartmentConverter {
     public static DepartmentResponseDTO toDTO(DepartmentEntity entity) {

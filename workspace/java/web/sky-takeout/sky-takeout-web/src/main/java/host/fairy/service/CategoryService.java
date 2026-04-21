@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 15:56:37 UTC+08:00
@@ -13,7 +13,7 @@ import host.fairy.entity.CategoryEntity;
 import host.fairy.result.ListRocord;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public interface CategoryService {
     ListRocord<CategoryEntity> queryList(CategoryQueryDTO categoryQueryDTO);

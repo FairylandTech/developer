@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-17 21:39:57 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.staticvariables.test;
 import org.example.staticvariables.Student;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class StudentTest {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-22 19:49:32 UTC+08:00
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class CopyDir {
     public static void main(String[] args) throws IOException {

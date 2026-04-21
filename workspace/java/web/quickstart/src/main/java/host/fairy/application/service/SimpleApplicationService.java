@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-07 UTC+08:00
@@ -17,7 +17,7 @@ import java.util.List;
  * SimpleUser 应用服务接口
  * 负责业务流程的编排、事务管理、调用domain层和infrastructure层
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public interface SimpleApplicationService {

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 13:04:19 UTC+08:00
@@ -15,7 +15,7 @@ import java.io.Serializable;
  * 员工DTO
  * 新增/修改员工信息
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class EmployeeDTO implements Serializable {

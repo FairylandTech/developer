@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-30 20:57:34 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.array;
 /**
  * 二分查找Demo
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class BinarySearchDemo {
     

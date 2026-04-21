@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-13 11:42:07 UTC+08:00
@@ -11,7 +11,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo14 {
     /*

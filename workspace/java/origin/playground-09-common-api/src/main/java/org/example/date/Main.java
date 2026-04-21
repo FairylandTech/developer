@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-20 19:32:42 UTC+08:00
@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Main {
     public static void main(String[] args) throws ParseException {

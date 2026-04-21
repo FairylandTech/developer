@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-16 18:30:39 UTC+08:00
@@ -18,7 +18,7 @@ import java.util.Stack;
  * <p>3. {@code int peek()} 返回队列开头的元素</p>
  * <p>4. {@code boolean empty()} 如果队列为空，返回 {@code true} ；否则，返回 {@code false}</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see <a href="https://leetcode.cn/problems/implement-queue-using-stacks/description/">Leetcode link</a>
  */
@@ -62,4 +62,3 @@ public class LeetCode232 {
         }
     }
 }
-

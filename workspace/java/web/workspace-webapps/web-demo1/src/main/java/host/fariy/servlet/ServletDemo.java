@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-27 12:22:19 UTC+08:00
@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @WebServlet("/demo1")
 public class ServletDemo implements Servlet {

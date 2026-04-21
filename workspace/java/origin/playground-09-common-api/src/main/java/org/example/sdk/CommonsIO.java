@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-22 22:16:17 UTC+08:00
@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class CommonsIO {
     public static void main(String[] args) throws IOException {

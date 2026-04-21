@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 11:43:53 UTC+08:00
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Service
 public class EmployeeServiceImpl implements EmployeeService {

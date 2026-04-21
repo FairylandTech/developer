@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 10:49:40 UTC+08:00
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 /**
  * Web MVC配置类
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {

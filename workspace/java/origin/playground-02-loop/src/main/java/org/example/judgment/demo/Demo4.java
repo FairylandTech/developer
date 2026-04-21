@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-12 20:03:49 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.judgment.demo;
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Demo4 {
 

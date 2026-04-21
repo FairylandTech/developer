@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-02 06:26:38 UTC+08:00
@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
  * SimpleUser 聚合根 - 充血模型
  * 包含用户的属性和业务逻辑方法
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @Data

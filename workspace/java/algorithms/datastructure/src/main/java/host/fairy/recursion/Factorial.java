@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-06 14:16:02 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.recursion;
 /**
  * 计算阶乘
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Factorial {
     public static void main(String[] args) {

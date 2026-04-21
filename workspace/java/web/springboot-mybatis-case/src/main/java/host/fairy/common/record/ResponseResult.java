@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-24 13:08:52 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.common.record;
 /**
  * 接口返回统一规范
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public record ResponseResult(Integer code, String msg, Object data) {
     private static final String SUCCESS = "success";

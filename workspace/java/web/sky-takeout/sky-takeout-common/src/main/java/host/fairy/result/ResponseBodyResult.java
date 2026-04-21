@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-27 21:59:39 UTC+08:00
@@ -16,7 +16,7 @@ import java.io.Serializable;
  * 统一响应结果封装
  * 包含状态码、消息和数据
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 @AllArgsConstructor

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-17 13:26:00 UTC+08:00
@@ -12,7 +12,7 @@ import java.util.Iterator;
 /**
  * Deque implement based on array.
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see Deque
  * @see Iterable

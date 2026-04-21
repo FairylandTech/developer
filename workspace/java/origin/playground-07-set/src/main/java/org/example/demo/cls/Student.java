@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-16 16:26:49 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.demo.cls;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Student {
     private String name;

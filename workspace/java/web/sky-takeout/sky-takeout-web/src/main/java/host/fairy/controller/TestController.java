@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-27 21:58:35 UTC+08:00
@@ -16,7 +16,7 @@ import java.util.HashMap;
 /**
  * 测试接口
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @RestController
 public class TestController {

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-06 15:00:15 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.recursion;
 /**
  * 递归实现二分查找
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class RecursiveBinaryLookup {
     public static void main(String[] args) {

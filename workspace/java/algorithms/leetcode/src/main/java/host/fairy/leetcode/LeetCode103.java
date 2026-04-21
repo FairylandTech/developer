@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-17 14:28:59 UTC+08:00
@@ -16,7 +16,7 @@ import java.util.concurrent.LinkedTransferQueue;
  * LeetCode 103. Binary Tree Zigzag Level Order Traversal
  * <p>给你二叉树的根节点 {@code root} ，返回其节点值的 锯齿形层序遍历 。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see <a href="https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/description/">Leetcode link</a>
  */

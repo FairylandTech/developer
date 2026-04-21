@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 15:12:47 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.constant;
 /**
  * 异常信息常量
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ExceptionMessageConstant {
     public static final String USER_NOT_FOUND = "用户不存在";

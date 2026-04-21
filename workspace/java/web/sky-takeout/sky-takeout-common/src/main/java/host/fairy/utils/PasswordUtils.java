@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 14:58:09 UTC+08:00
@@ -17,7 +17,7 @@ import java.util.Base64;
 /**
  * 用户密码单向加密工具类，基于 PBKDF2WithHmacSHA256 算法
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class PasswordUtils {
     // 固定盐值（实际应用中应为每个用户生成唯一盐值并存储在数据库中）

@@ -195,14 +195,14 @@ byte,short,char—> int —> long—> float —> double
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-19 21:45:06 UTC+08:00
  ******************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Variables {
     /**

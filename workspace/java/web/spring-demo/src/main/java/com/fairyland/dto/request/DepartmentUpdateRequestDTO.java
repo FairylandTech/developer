@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 19:08:56 UTC+08:00
@@ -16,7 +16,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Getter
 @ToString

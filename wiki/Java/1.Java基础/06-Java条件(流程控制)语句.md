@@ -60,14 +60,14 @@ if(布尔表达式 1){
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-20 13:33:02 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Ifelse {
     public static void main(String[] args) {
@@ -112,7 +112,7 @@ if(布尔表达式 1){
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-20 20:31:42 UTC+08:00
@@ -122,7 +122,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class IfelseDemo {
     public static void main(String[] args) {
@@ -162,7 +162,7 @@ public class IfelseDemo {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 01:38:07 UTC+08:00
@@ -171,7 +171,7 @@ public class IfelseDemo {
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class IfelseDemo2 {
     public static void main(String[] args) {
@@ -251,14 +251,14 @@ switch case 语句有如下规则：
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 01:59:07 UTC+08:00
  ******************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class SwitchDemo {
     public static void main(String[] args) {
@@ -288,7 +288,7 @@ public class SwitchDemo {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 12:00:19 UTC+08:00
@@ -298,7 +298,7 @@ import java.lang.reflect.Member;
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class SwitchDemo2 {
     public static void main(String[] args) {

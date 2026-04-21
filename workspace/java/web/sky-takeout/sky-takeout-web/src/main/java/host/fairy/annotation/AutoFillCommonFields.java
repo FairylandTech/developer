@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 13:13:00 UTC+08:00
@@ -18,7 +18,7 @@ import java.lang.annotation.Target;
  * 自动填充公共字段注解
  * 用于标记需要自动填充公共字段的方法
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

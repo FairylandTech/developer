@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 15:41:06 UTC+08:00
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 /**
  * JWT配置类
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 @Component

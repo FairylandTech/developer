@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-27 15:43:28 UTC+08:00
@@ -17,7 +17,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @WebServlet("/demo3")
 public class IOStreamHttpServlerDemo extends HttpServlet {

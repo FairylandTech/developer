@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-05 22:16:14 UTC+08:00
@@ -12,7 +12,7 @@ import host.fairy.linkedlist.SinglyLinkedList;
 import java.util.List;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class RecursionLoop {
     public static void getElement(SinglyLinkedList.Node node, List<Integer> result) {

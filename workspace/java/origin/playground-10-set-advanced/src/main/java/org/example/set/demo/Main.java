@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-21 17:45:39 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.set.demo;
 import java.util.TreeSet;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Main {
     /*

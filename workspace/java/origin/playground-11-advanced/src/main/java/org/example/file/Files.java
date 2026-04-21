@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-22 14:26:53 UTC+08:00
@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Files {
     public static void main(String[] args) throws IOException {

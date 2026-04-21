@@ -64,7 +64,7 @@
 #!/bin/bash
 # @File: radar_management.sh
 # @Editor: PyCharm
-@author: Lionel Johnson
+@author: Beau Dean
 # @HomePage: https://github.com/AliceEngineerPro
 # @CreatedTime: 2023/2/10 19:49
 

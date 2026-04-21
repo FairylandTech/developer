@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-04 17:27:12 UTC+08:00
@@ -16,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class SinglyLinkedListSentinelTest {
     private static final List<Integer> linkedListTarget = Arrays.asList(1, 2, 3);

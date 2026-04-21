@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-24 13:08:52 UTC+08:00
@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Getter
 @ToString

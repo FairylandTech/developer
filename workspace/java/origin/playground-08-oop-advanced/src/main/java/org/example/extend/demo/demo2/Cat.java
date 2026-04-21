@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-18 18:11:19 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.extend.demo.demo2;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Cat extends Pet {
     public Cat() {
@@ -23,4 +23,3 @@ public class Cat extends Pet {
         System.out.printf("%s岁的%s颜色的猫眯着眼睛侧着头吃%s\n", getAge(), getColor(), something);
     }
 }
-

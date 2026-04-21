@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 12:37:50 UTC+08:00
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 /**
  * 员工实体类
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 @ToString(callSuper = true)

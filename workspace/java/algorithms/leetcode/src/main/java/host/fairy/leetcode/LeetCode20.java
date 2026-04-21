@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-16 15:42:34 UTC+08:00
@@ -18,7 +18,7 @@ import java.util.LinkedList;
  * <p>2. 左括号必须以正确的顺序闭合。</p>
  * <p>3. 每个右括号都有一个对应的相同类型的左括号。</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see <a href="https://leetcode.cn/problems/valid-parentheses/">Leetcode link</a>
  */

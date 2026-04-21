@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-07 UTC+08:00
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * SimpleUser 领域服务
  * 处理跨越多个聚合根的业务逻辑或需要仓储支持的业务规则
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @Service

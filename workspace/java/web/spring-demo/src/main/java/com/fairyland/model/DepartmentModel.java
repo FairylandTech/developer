@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 15:21:14 UTC+08:00
@@ -10,7 +10,7 @@ package com.fairyland.model;
 import java.time.LocalDateTime;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class DepartmentModel {
     /**

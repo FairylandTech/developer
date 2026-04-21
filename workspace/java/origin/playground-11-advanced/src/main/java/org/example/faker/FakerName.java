@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-23 13:12:03 UTC+08:00
@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class FakerName {
     private static final String lastNameUrl = "https://baike.baidu.com/item/%E7%99%BE%E5%AE%B6%E5%A7%93/194637";

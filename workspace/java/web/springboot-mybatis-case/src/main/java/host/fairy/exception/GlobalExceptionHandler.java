@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 17:37:03 UTC+08:00
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * 全局异常处理
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Slf4j
 @Order(Ordered.LOWEST_PRECEDENCE)

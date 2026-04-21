@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-18 18:06:57 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.extend.demo.demo2;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Dog extends Pet {
     public Dog() {

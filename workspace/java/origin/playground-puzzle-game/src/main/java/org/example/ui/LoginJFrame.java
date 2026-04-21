@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-18 21:02:54 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.ui;
 import javax.swing.*;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class LoginJFrame extends JFrame {
     public LoginJFrame() {

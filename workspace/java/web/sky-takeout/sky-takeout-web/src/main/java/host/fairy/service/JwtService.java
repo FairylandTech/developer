@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 16:53:08 UTC+08:00
@@ -11,7 +11,7 @@ import host.fairy.entity.EmployeeEntity;
 import io.jsonwebtoken.Claims;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public interface JwtService {
     String generateToken(EmployeeEntity employeeEntity);

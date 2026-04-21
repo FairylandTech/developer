@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-07 UTC+08:00
@@ -280,7 +280,7 @@ import org.springframework.context.annotation.Configuration;
  * 
  * ===== 改造完成！项目已编译成功！=====
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 2.0
  * @since 2026-03-07
  * @deprecated MVC架构已被DDD四层架构替代

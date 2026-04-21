@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-26 09:12:32 UTC+08:00
@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class EmployeeAddRequertDTO {

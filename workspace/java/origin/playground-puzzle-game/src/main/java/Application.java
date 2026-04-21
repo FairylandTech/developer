@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-18 20:55:58 UTC+08:00
@@ -9,7 +9,7 @@
 import org.example.ui.GameJFrame;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Application {
     public static void main(String[] args) {

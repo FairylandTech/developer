@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-16 21:37:10 UTC+08:00
@@ -11,7 +11,7 @@ package host.fairy.queue.deque;
  * {@code Deque} 双端队列
  *
  * @param <E> Deque element type.
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public interface Deque<E> {

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <!---------------------------------------------------------
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -32,7 +32,7 @@
 ```css
 /***************************************************
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -44,7 +44,7 @@
 ```less
 /***************************************************
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -56,7 +56,7 @@
 ```postcss
 /***************************************************
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -67,7 +67,7 @@
 
 ```sass
 // @software: ${PRODUCT_NAME}
-// @author: Lionel Johnson
+// @author: Beau Dean
 // @contact: https://fairy.host
 // @organization: https://github.com/FairylandFuture
 // @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -79,7 +79,7 @@
 ```scss
 /***************************************************
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -91,7 +91,7 @@
 ```stylus
 /***************************************************
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -102,7 +102,7 @@
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -127,7 +127,7 @@ spec:
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -162,7 +162,7 @@ spec:
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -180,7 +180,7 @@ data:
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -205,7 +205,7 @@ spec:
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -236,7 +236,7 @@ spec:
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -268,7 +268,7 @@ spec:
 ```javascript
 /****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -280,7 +280,7 @@ spec:
 ```typescript
 /****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -292,7 +292,7 @@ spec:
 ```typescript jsx
 /****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -304,7 +304,7 @@ spec:
 ```typescript jsx
 /****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -317,7 +317,7 @@ spec:
 # coding: UTF-8
 """
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -331,7 +331,7 @@ spec:
 # coding: UTF-8
 """
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -345,7 +345,7 @@ spec:
 # coding: UTF-8
 """
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -368,7 +368,7 @@ if __name__ == '__main__':
 # coding: UTF-8
 """
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -395,7 +395,7 @@ setup(
 # coding: UTF-8
 """
 @software: ${PRODUCT_NAME}
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -418,7 +418,7 @@ if __name__ == '__main__':
 ```bash
 #!#[[$SHEBANG$]]#
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -440,7 +440,7 @@ main
 ```bash
 #!/bin/sh
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -462,7 +462,7 @@ main
 ```bash
 #!/bin/bash
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -483,7 +483,7 @@ main "$@"
 ```bash
 #!/usr/bin/env bats
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -507,7 +507,7 @@ teardown() {
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -518,7 +518,7 @@ teardown() {
 ```mysql
 /*****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -530,7 +530,7 @@ teardown() {
 
 ```nginx
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -543,12 +543,12 @@ teardown() {
 # ${PROJECT_NAME}
 
 > @software: ${PRODUCT_NAME}  
-> @author: [Lionel Johnson](https://fairy.host)  
+> @author: [Beau Dean](https://fairy.host)  
 > @contact: [Blog](https://blog.fairy.host/) | [GitHub](https://github.com/FairylandTech) | [Telegram](https://t.me/FairylandFuture)  
 > @organization: [GitHub·FairylandFuture](https://github.com/FairylandFuture)  
 > @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
 
-[![Author](https://img.shields.io/badge/Author-Lionel_Johnson-orange)](https://t.me/FairylandFuture) [![github](https://img.shields.io/badge/Github-PrettiestFairy-green)](https://github.com/FairylandTech) [![GitBook](https://img.shields.io/badge/GitBook-Interesting-green)](https://interestingbooks.gitbook.io/) [![Editor](https://img.shields.io/badge/Editor-Typora-yellow)]() [![Language](https://img.shields.io/badge/Language-Markdown-orange)]() [![Version](https://img.shields.io/badge/Version-Release-blue)]() [![Docs](https://img.shields.io/badge/Docs-Passing-brightgreen)]() [![Type](https://img.shields.io/badge/Type-Documents-blue)]() [![wakatime](https://wakatime.com/badge/user/fa851759-c657-4b1e-8bcb-3ec3a693a2cd.svg)](https://wakatime.com/@fa851759-c657-4b1e-8bcb-3ec3a693a2cd) [![Sign](https://img.shields.io/badge/%E7%AD%89%E6%88%91%E4%BB%A3%E7%A0%81%E7%BC%96%E6%88%90-%E5%A8%B6%E4%BD%A0%E4%B8%BA%E5%A6%BB%E5%8F%AF%E5%A5%BD-red)](https://github.com/FairylandTech)
+[![Author](https://img.shields.io/badge/Author-Beau_Dean-orange)](https://t.me/FairylandFuture) [![github](https://img.shields.io/badge/Github-PrettiestFairy-green)](https://github.com/FairylandTech) [![GitBook](https://img.shields.io/badge/GitBook-Interesting-green)](https://interestingbooks.gitbook.io/) [![Editor](https://img.shields.io/badge/Editor-Typora-yellow)]() [![Language](https://img.shields.io/badge/Language-Markdown-orange)]() [![Version](https://img.shields.io/badge/Version-Release-blue)]() [![Docs](https://img.shields.io/badge/Docs-Passing-brightgreen)]() [![Type](https://img.shields.io/badge/Type-Documents-blue)]() [![wakatime](https://wakatime.com/badge/user/fa851759-c657-4b1e-8bcb-3ec3a693a2cd.svg)](https://wakatime.com/@fa851759-c657-4b1e-8bcb-3ec3a693a2cd) [![Sign](https://img.shields.io/badge/%E7%AD%89%E6%88%91%E4%BB%A3%E7%A0%81%E7%BC%96%E6%88%90-%E5%A8%B6%E4%BD%A0%E4%B8%BA%E5%A6%BB%E5%8F%AF%E5%A5%BD-red)](https://github.com/FairylandTech)
 
 ---
 
@@ -567,12 +567,12 @@ Development Environment
 # ${PROJECT_NAME}
 
 > @software: ${PRODUCT_NAME}  
-> @author: [Lionel Johnson](https://fairy.host)  
+> @author: [Beau Dean](https://fairy.host)  
 > @contact: [Blog](https://blog.fairy.host/) | [GitHub](https://github.com/FairylandTech) | [Telegram](https://t.me/FairylandFuture)  
 > @organization: [GitHub·FairylandFuture](https://github.com/FairylandFuture)  
 > @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
 
-[![Author](https://img.shields.io/badge/Author-Lionel_Johnson-orange)](https://t.me/FairylandFuture) [![github](https://img.shields.io/badge/Github-FairylandTech-green)](https://github.com/FairylandTech) [![GitBook](https://img.shields.io/badge/GitBook-Interesting-green)](https://interestingbooks.gitbook.io/) [![Editor](https://img.shields.io/badge/Editor-Typora-yellow)]() [![Language](https://img.shields.io/badge/Language-Markdown-orange)]() [![Version](https://img.shields.io/badge/Version-Release-blue)]() [![Docs](https://img.shields.io/badge/Docs-Passing-brightgreen)]() [![Type](https://img.shields.io/badge/Type-Documents-blue)]() [![wakatime](https://wakatime.com/badge/user/fa851759-c657-4b1e-8bcb-3ec3a693a2cd.svg)](https://wakatime.com/@fa851759-c657-4b1e-8bcb-3ec3a693a2cd) [![Sign](https://img.shields.io/badge/%E7%AD%89%E6%88%91%E4%BB%A3%E7%A0%81%E7%BC%96%E6%88%90-%E5%A8%B6%E4%BD%A0%E4%B8%BA%E5%A6%BB%E5%8F%AF%E5%A5%BD-red)](https://github.com/FairylandTech)
+[![Author](https://img.shields.io/badge/Author-Beau_Dean-orange)](https://t.me/FairylandFuture) [![github](https://img.shields.io/badge/Github-FairylandTech-green)](https://github.com/FairylandTech) [![GitBook](https://img.shields.io/badge/GitBook-Interesting-green)](https://interestingbooks.gitbook.io/) [![Editor](https://img.shields.io/badge/Editor-Typora-yellow)]() [![Language](https://img.shields.io/badge/Language-Markdown-orange)]() [![Version](https://img.shields.io/badge/Version-Release-blue)]() [![Docs](https://img.shields.io/badge/Docs-Passing-brightgreen)]() [![Type](https://img.shields.io/badge/Type-Documents-blue)]() [![wakatime](https://wakatime.com/badge/user/fa851759-c657-4b1e-8bcb-3ec3a693a2cd.svg)](https://wakatime.com/@fa851759-c657-4b1e-8bcb-3ec3a693a2cd) [![Sign](https://img.shields.io/badge/%E7%AD%89%E6%88%91%E4%BB%A3%E7%A0%81%E7%BC%96%E6%88%90-%E5%A8%B6%E4%BD%A0%E4%B8%BA%E5%A6%BB%E5%8F%AF%E5%A5%BD-red)](https://github.com/FairylandTech)
 
 ---
 
@@ -582,7 +582,7 @@ Development Environment
 
 ```yaml
 # @software: ${PRODUCT_NAME}
-# @author: Lionel Johnson
+# @author: Beau Dean
 # @contact: https://fairy.host
 # @organization: https://github.com/FairylandFuture
 # @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -597,14 +597,14 @@ Development Environment
 #parse("File Header.java")
 /****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
  ***************************************************/
 
 /**
- *@author Lionel Johnson
+ *@author Beau Dean
  */
 public class ${NAME} {
 }
@@ -616,7 +616,7 @@ public class ${NAME} {
 ```java
 /*****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -625,7 +625,7 @@ public class ${NAME} {
 #parse("File Header.java")
 
 /**
- *@author Lionel Johnson
+ *@author Beau Dean
  */
 public interface ${NAME} {
 }
@@ -637,7 +637,7 @@ public interface ${NAME} {
 ```java
 /*****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -646,7 +646,7 @@ public interface ${NAME} {
 #parse("File Header.java")
 
 /**
- *@author Lionel Johnson
+ *@author Beau Dean
  */
 public enum ${NAME} {
 }
@@ -658,7 +658,7 @@ public enum ${NAME} {
 ```java
 /*****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -667,7 +667,7 @@ public enum ${NAME} {
 #parse("File Header.java")
 
 /**
- *@author Lionel Johnson
+ *@author Beau Dean
  */
 public record ${NAME}() {
 }
@@ -679,7 +679,7 @@ public record ${NAME}() {
 ```java
 /*****************************************************
  * @software: ${PRODUCT_NAME}
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} UTC+08:00
@@ -688,7 +688,7 @@ public record ${NAME}() {
 #parse("File Header.java")
 
 /**
- *@author Lionel Johnson
+ *@author Beau Dean
  */
 public @interface ${NAME} {
 }

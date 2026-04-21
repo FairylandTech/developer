@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-17 19:09:08 UTC+08:00
@@ -13,7 +13,7 @@ import host.fairy.queue.Queue;
  * Priority Queue implement basedon Heap (Complete binary tree math).
  *
  * @param <E> Queue element type.
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see Queue
  * @see Priority

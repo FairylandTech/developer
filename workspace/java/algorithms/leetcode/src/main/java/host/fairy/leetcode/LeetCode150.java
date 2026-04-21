@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-16 17:13:27 UTC+08:00
@@ -22,7 +22,7 @@ import java.util.LinkedList;
  * <p>5. 输入是一个根据逆波兰表示法表示的算术表达式。</p>
  * <p>6. 答案及所有中间计算结果可以用{@code 32位}整数表示。</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see <a href="https://leetcode.cn/problems/evaluate-reverse-polish-notation/">Leetcode Link</a>
  */

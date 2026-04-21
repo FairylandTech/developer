@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-17 22:01:55 UTC+08:00
@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class StudentUtils {
     public static int averageAge(@NotNull ArrayList<Student> students) {

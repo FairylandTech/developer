@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-14 20:55:18 UTC+08:00
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 /**
  * LinkedListQueue Test
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see LinkedListQueue
  */

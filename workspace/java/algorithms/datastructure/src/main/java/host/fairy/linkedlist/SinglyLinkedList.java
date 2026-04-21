@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-01 13:21:38 UTC+08:00
@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 /**
  * 单向链表
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class SinglyLinkedList implements Iterable<Integer> {
     private Node head = null;

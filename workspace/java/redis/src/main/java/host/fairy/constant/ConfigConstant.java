@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-30 14:27:38 UTC+08:00
@@ -8,7 +8,7 @@
 package host.fairy.constant;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ConfigConstant {
     public static final String REDIS_HOST = "aliyun.ecs.chengdu1.fairy.host";

@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 15:56:54 UTC+08:00
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 /**
  * 分类管理 Service 实现类
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Slf4j
 @Service

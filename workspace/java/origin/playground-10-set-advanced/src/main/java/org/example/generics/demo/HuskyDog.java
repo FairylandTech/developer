@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-21 15:20:59 UTC+08:00
@@ -8,7 +8,7 @@
 package org.example.generics.demo;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class HuskyDog extends Dog {
     public HuskyDog(String name, int age) {

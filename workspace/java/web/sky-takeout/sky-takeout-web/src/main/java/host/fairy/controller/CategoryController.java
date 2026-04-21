@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 15:57:25 UTC+08:00
@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * 分类管理 Controller
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Slf4j
 @Validated

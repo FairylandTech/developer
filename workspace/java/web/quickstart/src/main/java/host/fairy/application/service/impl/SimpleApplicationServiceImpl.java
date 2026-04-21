@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-07 UTC+08:00
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
  * 负责编排domain层的对象、管理事务、调用repository和domainService
  * 业务逻辑不在这里，而是在domain/model中
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @Service

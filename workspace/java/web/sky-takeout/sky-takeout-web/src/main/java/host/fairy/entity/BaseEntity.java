@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 15:18:47 UTC+08:00
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 /**
  * 公共实体类(公共字段)
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public abstract class BaseEntity implements Serializable {

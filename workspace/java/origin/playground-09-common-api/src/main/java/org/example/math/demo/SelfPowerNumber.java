@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-20 12:06:20 UTC+08:00
@@ -9,7 +9,7 @@ package org.example.math.demo;
 
 /**
  * 自幂数: 一个n位自然数等于自身各个数位上数字的n次幂之和
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class SelfPowerNumber {
     public static void main(String[] args) {

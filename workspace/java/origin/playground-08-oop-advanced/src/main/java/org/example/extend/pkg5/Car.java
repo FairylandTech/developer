@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-18 20:05:02 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.extend.pkg5;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Car {
     private String name;

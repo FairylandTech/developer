@@ -1,7 +1,7 @@
 # coding: UTF-8
 """
 @software: PyCharm
-@author: Lionel Johnson
+@author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
 @datetime: 2025-09-13 15:06:15 UTC+08:00

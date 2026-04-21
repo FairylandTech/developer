@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 15:34:23 UTC+08:00
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 部门管理Controller
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Validated
 @RestController

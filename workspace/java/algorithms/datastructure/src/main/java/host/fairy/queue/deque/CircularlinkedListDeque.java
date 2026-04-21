@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-16 21:47:29 UTC+08:00
@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Deque implement based on Circular linked list.
  *
  * @param <E> Deque element type.
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see Deque
  * @see Iterable

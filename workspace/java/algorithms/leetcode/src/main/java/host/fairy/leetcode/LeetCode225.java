@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-16 19:15:46 UTC+08:00
@@ -18,7 +18,7 @@ import java.util.concurrent.LinkedTransferQueue;
  * <p>3. {@code int top()} 返回栈顶元素。</p>
  * <p>4. {@code boolean empty()} 如果栈是空的，返回 {@code true} ；否则，返回 {@code false} 。</p>
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see <a href="https://leetcode.cn/problems/implement-stack-using-queues/">Leetcode link</a>
  */

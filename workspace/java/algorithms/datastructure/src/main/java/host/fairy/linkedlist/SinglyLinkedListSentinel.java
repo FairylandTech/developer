@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-04 13:34:45 UTC+08:00
@@ -13,7 +13,7 @@ import java.util.Iterator;
 /**
  * 单链表（带哨兵节点）
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class SinglyLinkedListSentinel extends SinglyLinkedList {
     private final Node hand = new Node(-1, null);  // 头指针：哨兵节点

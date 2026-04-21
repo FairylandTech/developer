@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-24 15:04:38 UTC+08:00
@@ -12,7 +12,7 @@ import com.fairyland.entity.EmpEntity;
 import java.util.List;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public interface EmpService {
     public List<EmpEntity> list();

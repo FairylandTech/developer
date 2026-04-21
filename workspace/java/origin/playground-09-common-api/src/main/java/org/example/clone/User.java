@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-20 15:07:00 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.clone;
 import java.util.Arrays;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class User implements Cloneable {
     private String username;

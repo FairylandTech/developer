@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 15:42:41 UTC+08:00
@@ -13,7 +13,7 @@ import host.fairy.entity.CategoryEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Mapper
 public interface CategoryMapper {

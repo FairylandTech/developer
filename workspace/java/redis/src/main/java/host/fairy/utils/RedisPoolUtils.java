@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-30 14:23:05 UTC+08:00
@@ -15,7 +15,7 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.time.Duration;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class RedisPoolUtils {
     private static final JedisPool JEDIS_POOL;

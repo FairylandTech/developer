@@ -27,14 +27,14 @@ while( 布尔表达式 ) {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 14:37:12 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class WhileLoop {
     public static void main(String[] args) {
@@ -81,14 +81,14 @@ do {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 14:48:29 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class DoWhileLoop {
     public static void main(String[] args) {
@@ -128,14 +128,14 @@ for(初始化; 布尔表达式; 更新) {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 16:13:53 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ForLoop {
     public static void main(String[] args) {
@@ -171,14 +171,14 @@ for(声明语句 : 表达式)
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 16:13:53 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ForLoop {
     public static void main(String[] args) {
@@ -234,14 +234,14 @@ continue;
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 14:54:48 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class WhileLoopDemo {
     public static void main(String[] args) {
@@ -270,7 +270,7 @@ public class WhileLoopDemo {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 15:24:26 UTC+08:00
@@ -279,7 +279,7 @@ public class WhileLoopDemo {
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class WhileLoopDemo2 {
     public static void main(String[] args) {
@@ -329,14 +329,14 @@ public class WhileLoopDemo2 {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 15:56:40 UTC+08:00
  *****************************************************/
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class DoWhileLoopDemo {
     public static void main(String[] args) {
@@ -357,7 +357,7 @@ public class DoWhileLoopDemo {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 16:52:34 UTC+08:00
@@ -366,7 +366,7 @@ public class DoWhileLoopDemo {
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ForLoopDemo {
     public static void main(String[] args) {
@@ -390,7 +390,7 @@ public class ForLoopDemo {
 ```java
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2024-07-21 17:03:03 UTC+08:00
@@ -399,7 +399,7 @@ public class ForLoopDemo {
 import java.util.Scanner;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ForLoopDemo2 {
     public static void main(String[] args) {

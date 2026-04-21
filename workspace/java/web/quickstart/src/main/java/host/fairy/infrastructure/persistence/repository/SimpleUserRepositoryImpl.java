@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-07 UTC+08:00
@@ -19,7 +19,7 @@ import java.util.List;
  * SimpleUser 仓储实现
  * 在infrastructure层实现，调用MyBatis Mapper进行数据库操作
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @Repository

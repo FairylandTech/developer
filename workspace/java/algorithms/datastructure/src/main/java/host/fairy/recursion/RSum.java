@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-10 15:00:23 UTC+08:00
@@ -8,7 +8,7 @@
 package host.fairy.recursion;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @deprecated RSum: 递归求和
  */

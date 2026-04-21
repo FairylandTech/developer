@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-22 16:30:24 UTC+08:00
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class IOStream {
     public static final String PATH = "E:\\DevData\\files";

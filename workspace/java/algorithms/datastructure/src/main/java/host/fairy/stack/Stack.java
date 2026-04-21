@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-15 22:30:27 UTC+08:00
@@ -11,7 +11,7 @@ package host.fairy.stack;
  * {@code stack} interfce
  *
  * @param <E> Stack element type
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public interface Stack<E> {

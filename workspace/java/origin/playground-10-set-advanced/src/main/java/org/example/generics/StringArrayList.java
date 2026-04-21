@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-21 14:57:04 UTC+08:00
@@ -14,7 +14,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class StringArrayList implements List<String> {
     @Override

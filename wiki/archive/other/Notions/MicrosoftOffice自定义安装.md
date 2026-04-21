@@ -2,7 +2,7 @@
 
 > @Editor: Typora
 >
-> @author: [Lionel Johnson](https://fairy.host)  
+> @author: [Beau Dean](https://fairy.host)  
 >
 > @HomePage: [AustinFairyland](https://github.com/AustinFairyland)
 >

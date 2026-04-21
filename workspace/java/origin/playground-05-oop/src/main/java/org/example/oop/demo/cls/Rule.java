@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-16 12:14:21 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.oop.demo.cls;
 import java.util.Random;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Rule {
     private String name;

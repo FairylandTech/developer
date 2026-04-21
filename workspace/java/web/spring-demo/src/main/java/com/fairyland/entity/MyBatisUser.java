@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-24 16:43:01 UTC+08:00
@@ -10,7 +10,7 @@ package com.fairyland.entity;
 import lombok.Data;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class MyBatisUser {

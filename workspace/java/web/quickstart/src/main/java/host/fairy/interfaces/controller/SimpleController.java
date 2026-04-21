@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-03-01 21:46:25 UTC+08:00
@@ -22,7 +22,7 @@ import java.util.List;
  * 表示层：处理HTTP请求和响应
  * 调用应用层服务进行业务处理
  * 
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 @RestController

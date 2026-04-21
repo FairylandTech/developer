@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-16 15:47:34 UTC+08:00
@@ -10,7 +10,7 @@ package org.example;
 import java.util.ArrayList;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class usageSet {
     public static void main(String[] args) {

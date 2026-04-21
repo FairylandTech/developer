@@ -2,7 +2,7 @@
 """ 
 @File: main.py
 @Editor: PyCharm
-@author: Lionel Johnson
+@author: Beau Dean
 @HomePage: https://github.com/AustinFairyland
 @OperatingSystem: Windows 11 Professional Workstation 23H2 Canary Channel
 @datetime: 2023-12-31 00:00:00 UTC+08:00

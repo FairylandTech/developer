@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-05 19:26:25 UTC+08:00
@@ -12,7 +12,7 @@ import java.util.Iterator;
 /**
  * 环形链表
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class CircularLinkedListSentinel implements Iterable<Integer> {
     // 哨兵节点

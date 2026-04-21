@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-17 15:13:41 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.queue.priority;
 /**
  * Priority Interface
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public interface Priority {

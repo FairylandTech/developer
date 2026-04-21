@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-21 15:07:44 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.generics.demo;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public abstract class Animal {
     private String name;

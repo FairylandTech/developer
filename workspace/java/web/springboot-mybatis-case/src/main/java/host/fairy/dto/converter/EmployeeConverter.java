@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-26 09:40:07 UTC+08:00
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class EmployeeConverter {
     public static EmployeeResponseDTO toDTO(EmployeeEntity entity) {

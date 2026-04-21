@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-16 12:15:50 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.oop.demo.cls;
 import org.example.enums.Color;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Phone {
     private String brand;
@@ -59,4 +59,3 @@ public class Phone {
                 '}';
     }
 }
-

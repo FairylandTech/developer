@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-14 14:26:34 UTC+08:00
@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Queue implement based on linked list.
  *
  * @param <E> Queue elemant type.
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see Queue
  * @see Iterable

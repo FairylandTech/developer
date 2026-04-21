@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 10:17:28 UTC+08:00
@@ -24,7 +24,7 @@ import java.util.HashMap;
 /**
  * JWT Token拦截器
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Slf4j
 @Component

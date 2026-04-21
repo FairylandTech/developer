@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 12:01:59 UTC+08:00
@@ -17,7 +17,7 @@ import java.io.Serializable;
  * 员工设置密码DTO
  * 包含旧密码, 新密码和确认密码
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class EmployeeSetPasswordDTO implements Serializable {

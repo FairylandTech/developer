@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-27 12:52:30 UTC+08:00
@@ -17,7 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @MultipartConfig
 @WebServlet("/demo2")

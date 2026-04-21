@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-29 15:51:20 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.dto.category;
 import lombok.Data;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class CategoryQueryDTO {

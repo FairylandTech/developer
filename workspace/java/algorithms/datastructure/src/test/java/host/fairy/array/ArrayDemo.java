@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-31 18:31:05 UTC+08:00
@@ -8,7 +8,7 @@
 package host.fairy.array;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class ArrayDemo {
     public static void main(String[] args) {

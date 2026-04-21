@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-11 14:25:36 UTC+08:00
@@ -10,7 +10,7 @@ package host.fairy.queue;
 /**
  * Queue interface.
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  */
 public interface Queue<E> {

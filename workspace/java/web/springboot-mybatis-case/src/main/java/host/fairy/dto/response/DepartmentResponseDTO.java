@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-25 21:50:29 UTC+08:00
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 /**
  * 转换部门实体Response DTO
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class DepartmentResponseDTO {

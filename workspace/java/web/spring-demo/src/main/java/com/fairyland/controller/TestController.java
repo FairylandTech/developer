@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-24 09:21:16 UTC+08:00
@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @RestController
 @RequestMapping("/test")

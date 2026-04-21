@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-15 19:47:14 UTC+08:00
@@ -10,7 +10,7 @@ package org.example.oop.wrapper;
 import java.util.Objects;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class GirlFriendWrapper {
     

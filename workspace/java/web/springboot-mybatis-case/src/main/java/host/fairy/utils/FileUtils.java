@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-26 16:07:48 UTC+08:00
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Slf4j
 public class FileUtils {

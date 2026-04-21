@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-09-15 00:01:56 UTC+08:00
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 /**
  * ArrayQueue Test
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  * @version 1.0
  * @see ArrayQueue
  */

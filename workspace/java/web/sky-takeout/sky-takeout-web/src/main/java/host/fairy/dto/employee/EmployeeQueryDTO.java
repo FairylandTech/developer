@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 13:23:48 UTC+08:00
@@ -19,7 +19,7 @@ import java.io.Serializable;
  * 包含姓名模糊查询
  * 是否删除查询
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Data
 public class EmployeeQueryDTO implements Serializable {

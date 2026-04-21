@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-22 21:11:26 UTC+08:00
@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 public class Buffered {
     public static void main(String[] args) throws IOException {

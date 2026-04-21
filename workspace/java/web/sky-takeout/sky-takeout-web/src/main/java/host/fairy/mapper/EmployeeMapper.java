@@ -1,6 +1,6 @@
 /*****************************************************
  * @software: IntelliJ IDEA
- * @author: Lionel Johnson
+ * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2025-08-28 12:43:52 UTC+08:00
@@ -17,7 +17,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 员工Mapper
  *
- * @author Lionel Johnson
+ * @author Beau Dean
  */
 @Mapper
 public interface EmployeeMapper {

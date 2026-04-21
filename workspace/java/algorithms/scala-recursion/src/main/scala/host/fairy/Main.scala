@@ -1,6 +1,6 @@
 /*
 * @software: IntelliJ IDEA
-* @author: Lionel Johnson
+* @author: Beau Dean
 * @contact: https://fairy.host
 * @organization: https://github.com/FairylandFuture
 * @datetime: 2025-09-10 14:55:14 UTC+08:00
