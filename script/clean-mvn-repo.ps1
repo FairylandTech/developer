@@ -13,7 +13,7 @@ if ($repo)
 }
 elseif (-not $envMavenRepo)
 {
-    $envMavenRepo = $env:USERPROFILE\.m2
+    $envMavenRepo = $env:USERPROFILE + "\.m2"
     Write-Host "未找到 MAVEN_REPOSITORY 环境变量,使用默认路径: $envMavenRepo"
 }
 else
