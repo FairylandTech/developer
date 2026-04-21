@@ -1,4 +1,4 @@
-# developer
+# gRPC
 
 > @software: IntelliJ IDEA  
 > @author: [Lionel Johnson](https://fairy.host)  
@@ -11,7 +11,6 @@
 ---
 
 # 定义
-
 
 ```protobuf
 syntax = "proto3";
@@ -83,10 +82,239 @@ service HelloService {
 
 ## 简单RPC/一元RPC（Unary RPC）
 
-特点：
+![image-20260420032747089](./resources/images/gRPC/image-20260420032747089.png)
 
 ## 服务端流式RPC（Server Streaming RPC）
 
+![image-20260420033402422](./resources/images/gRPC/image-20260420033402422.png)
+
+**流式RCP需要长连接**
+
+使用场景：
+
+-   股票系统
+    客户端发送一个股票的编号，服务端返回某时刻的股价
+
+语法：
+
+```protobuf
+server StockService {
+	// rpc关键字 方法名称 （请求参数） returns关键字 （stream关键字 响应参数）{}
+    rpc getLiveStockPrice (Request) returns (stream Response) {}  // 流式 RPC
+}
+```
+
 ## 客户端流式RPC（Client Streaming RPC）
 
+![image-20260420135833064](./resources/images/gRPC/image-20260420135833064.png)
+
+使用场景：
+
+-   IOT（物联网【传感器】）
+
+语法：
+
+```protobuf
+server IntellectDevice {
+	// rpc关键字 方法名称 （stream关键字 Request） returns （Response）{}
+	rpc send (stream Request) returns (Response) {}
+}
+```
+
+
+
 ## 双向流RPC （Bi-directional stream RPC）
+
+客户端可以发送多个请求消息；服务端也可以响应多个响应消息
+
+![image-20260420234036928](./resources/images/gRPC/image-20260420234036928.png)
+
+使用场景：
+
+-   聊天室
+-   IOT物联网
+
+语法：
+
+```protobuf
+server Rotation {
+	// rpc关键字 方法名称 （stream关键字 请求消息体） returns （stream 响应消息体） {};
+	rpc rotationNews (stream SendRequest) returns (stream SendResponse) {};
+}
+```
+
+# gRPC 的代理方式
+
+## BlockingStub
+
+特点：同步（阻塞）
+
+## Stub
+
+特点：异步（监听）
+
+## FutureStub
+
+特点：只能用于一元RPC，同步异步都支持
+
+示例代码：
+
+1.   protobuf
+
+     ```protobuf
+     /*****************************************************
+      * @software: IntelliJ IDEA
+      * @author: Lionel Johnson
+      * @contact: https://fairy.host
+      * @organization: https://github.com/FairylandFuture
+      * @datetime: 2026-04-21 00:42:36 UTC+08:00
+      ****************************************************/
+     syntax = "proto3";
+     
+     option java_multiple_files = false;
+     option java_package = "host.fairy.grpc";
+     option java_outer_classname = "TestProto";
+     
+     message TestRequest {
+       string requestMessage = 1;
+     }
+     
+     message TestResponse {
+       string responseMessage = 1;
+     }
+     
+     service TestService {
+       rpc testMethod (TestRequest) returns (TestResponse) {};
+     }
+     
+     ```
+
+2.   服务端
+
+     ```java
+     /*****************************************************
+      * @software: IntelliJ IDEA
+      * @author: Lionel Johnson
+      * @contact: https://fairy.host
+      * @organization: https://github.com/FairylandFuture
+      * @datetime: 2026-04-21 00:45:39 UTC+08:00
+      ****************************************************/
+     package host.fairy.service.impl;
+     
+     import host.fairy.grpc.TestProto;
+     import host.fairy.grpc.TestServiceGrpc;
+     import io.grpc.stub.StreamObserver;
+     import lombok.extern.slf4j.Slf4j;
+     
+     /**
+      * @author Lionel Johnson
+      * @version 1.0
+      */
+     @Slf4j
+     public class TestServiceImpl extends TestServiceGrpc.TestServiceImplBase {
+         @Override
+         public void testMethod(TestProto.TestRequest request, StreamObserver<TestProto.TestResponse> responseObserver) {
+             String requestMessage = request.getRequestMessage();
+             
+             TestProto.TestResponse response = TestProto.TestResponse.newBuilder()
+                     .setResponseMessage("Received: " + requestMessage)
+                     .build();
+             
+             try {
+                 Thread.sleep(5000);
+             } catch (Exception exception) {
+                 log.error("Error: {}", exception.getMessage(), exception);
+             }
+             
+             responseObserver.onNext(response);
+             responseObserver.onCompleted();
+         }
+     }
+     
+     ```
+
+3.   服务端
+
+     ```java
+     /*****************************************************
+      * @software: IntelliJ IDEA
+      * @author: Lionel Johnson
+      * @contact: https://fairy.host
+      * @organization: https://github.com/FairylandFuture
+      * @datetime: 2026-04-21 00:47:49 UTC+08:00
+      ****************************************************/
+     package host.fairy;
+     
+     import com.google.common.util.concurrent.FutureCallback;
+     import com.google.common.util.concurrent.Futures;
+     import com.google.common.util.concurrent.ListenableFuture;
+     import host.fairy.grpc.TestProto;
+     import host.fairy.grpc.TestServiceGrpc;
+     import io.grpc.ManagedChannel;
+     import io.grpc.ManagedChannelBuilder;
+     import lombok.extern.slf4j.Slf4j;
+     
+     import java.util.concurrent.Executors;
+     import java.util.concurrent.TimeUnit;
+     
+     /**
+      * @author Lionel Johnson
+      * @version 1.0
+      */
+     @Slf4j
+     public class TestProtoClient {
+         private static final ManagedChannel CHANNEL = ManagedChannelBuilder.forAddress("localhost", 9000).usePlaintext().build();
+         
+         public static void main(String[] args) {
+             sync();
+             async();
+             CHANNEL.shutdown();
+         }
+         
+         public static void sync() {
+             try {
+                 TestServiceGrpc.TestServiceFutureStub testServiceFutureStub = TestServiceGrpc.newFutureStub(CHANNEL);
+                 
+                 ListenableFuture<TestProto.TestResponse> responseFuture = testServiceFutureStub.testMethod(TestProto.TestRequest.newBuilder()
+                         .setRequestMessage("Future Stub")
+                         .build());
+                 
+                 String responseMessage = responseFuture.get().getResponseMessage();
+                 System.out.printf("Response message: %s\n", responseMessage);
+             } catch (Exception exception) {
+                 log.error("Error: {}", exception.getMessage(), exception);
+             }
+         }
+         
+         public static void async() {
+             try {
+                 TestServiceGrpc.TestServiceFutureStub testServiceFutureStub = TestServiceGrpc.newFutureStub(CHANNEL);
+                 
+                 ListenableFuture<TestProto.TestResponse> responseFuture = testServiceFutureStub.testMethod(TestProto.TestRequest.newBuilder()
+                         .setRequestMessage("Future Stub")
+                         .build());
+                 
+                 Futures.addCallback(responseFuture, new FutureCallback<TestProto.TestResponse>() {
+                     @Override
+                     public void onSuccess(TestProto.TestResponse result) {
+                         System.out.printf("Response message: %s\n", result.getResponseMessage());
+                     }
+                     
+                     @Override
+                     public void onFailure(Throwable t) {
+                         
+                     }
+                 }, Executors.newCachedThreadPool());
+                 
+                 System.out.println("后续的操作...");
+                 CHANNEL.awaitTermination(10, TimeUnit.SECONDS);
+             } catch (Exception exception) {
+                 log.error("Error: {}", exception.getMessage(), exception);
+             }
+         }
+     }
+     
+     ```
+
+     
+

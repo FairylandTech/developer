@@ -8,7 +8,7 @@
 syntax = "proto3";
 
 option java_multiple_files = false;
-option java_package = "host.fariy.grpc";
+option java_package = "host.fairy.grpc";
 option java_outer_classname = "HelloProto";
 
 /*
@@ -27,7 +27,26 @@ message HelloRequest2 {
   repeated string name = 1;
 }
 
+message LiveTimestampStreamRequest {
+  string date = 1;
+}
+
+message LiveTimestampStreamResponse {
+  string timestamp = 1;
+}
+
+message SendRequest {
+  string message = 1;
+}
+
+message SendResponse {
+  string message = 1;
+}
+
 service HelloService {
   rpc hello (HelloRequest) returns (HelloResponse) {};
   rpc hello2 (HelloRequest2) returns (HelloResponse) {};
+  rpc getLiveTimestampStream (LiveTimestampStreamRequest) returns (stream LiveTimestampStreamResponse) {};
+  rpc send (stream SendRequest) returns (SendResponse) {};
+  rpc rotationNews (stream SendRequest) returns (stream SendResponse) {};
 }

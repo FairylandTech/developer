@@ -1,0 +1,24 @@
+/*****************************************************
+ * @software: IntelliJ IDEA
+ * @author: Lionel Johnson
+ * @contact: https://fairy.host
+ * @organization: https://github.com/FairylandFuture
+ * @datetime: 2026-04-21 02:38:06 UTC+08:00
+ ****************************************************/
+syntax = "proto3";
+
+option java_multiple_files = false;
+option java_package = "host.fairy.grpc.welcome";
+option java_outer_classname = "WelcomeProto";
+
+message WelcomeRequest {
+  string name = 1;
+}
+
+message WelcomeResponse {
+  string message = 1;
+}
+
+service WelcomeService {
+  rpc welcome(WelcomeRequest) returns (WelcomeResponse);
+}

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: grpc-bootstrap
+  profiles:
+    active: dev
+server:
+  servlet:
+    context-path: "/api"
+  port: 8080
+grpc:
+  server:
+    port: 8089
+  client:
+    grpc-local-server:
+      address: "static://127.0.0.1:8089"
+      negotiation-type: plaintext
+#mybatis:
+#  mapper-locations: classpath:host/fairy/mapper/*.xml
