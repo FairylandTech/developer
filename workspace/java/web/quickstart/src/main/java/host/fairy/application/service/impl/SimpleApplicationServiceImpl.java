@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
  * SimpleUser 应用服务实现
  * 负责编排domain层的对象、管理事务、调用repository和domainService
  * 业务逻辑不在这里，而是在domain/model中
- * 
+ *
  * @author Beau Dean
  * @version 1.0
  */
@@ -46,8 +46,7 @@ public class SimpleApplicationServiceImpl implements SimpleApplicationService {
     private final SimpleUserDomainService domainService;
     
     @Autowired
-    public SimpleApplicationServiceImpl(SimpleUserRepository repository, 
-                                       SimpleUserDomainService domainService) {
+    public SimpleApplicationServiceImpl(SimpleUserRepository repository, SimpleUserDomainService domainService) {
         this.repository = repository;
         this.domainService = domainService;
     }
@@ -55,11 +54,14 @@ public class SimpleApplicationServiceImpl implements SimpleApplicationService {
     @Override
     @Transactional(readOnly = true)
     public RequestInfo getRequestInfo(HttpServletRequest request) {
+        if (request == null) {
+            return RequestInfo.builder().build();
+        }
+        
         HashMap<String, String> headers = new HashMap<>();
         
         request.getHeaderNames().asIterator()
-                .forEachRemaining(headerName -> 
-                    headers.put(headerName, request.getHeader(headerName)));
+                .forEachRemaining(headerName -> headers.put(headerName, request.getHeader(headerName)));
         
         return RequestInfo.builder()
                 .method(request.getMethod())
@@ -86,8 +88,8 @@ public class SimpleApplicationServiceImpl implements SimpleApplicationService {
                             .password(parts[2].trim())
                             .name(parts[3].trim())
                             .age(Integer.parseInt(parts[4].trim()))
-                            .createdAt(LocalDateTime.parse(parts[5].trim(), 
-                                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                            .createdAt(LocalDateTime.parse(parts[5].trim(),
+                                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                             .build();
                 }).collect(Collectors.toList());
     }

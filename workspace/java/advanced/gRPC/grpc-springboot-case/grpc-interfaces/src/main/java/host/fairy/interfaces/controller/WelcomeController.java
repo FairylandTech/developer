@@ -11,10 +11,9 @@ import host.fairy.application.service.WelcomeService;
 import host.fairy.fairylandfuture.common.web.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author Beau Dean
@@ -32,5 +31,11 @@ public class WelcomeController {
     public Response<String> welcome(@PathVariable String name) {
         log.info("Params: {}", name);
         return Response.success(this.welcomeService.welcome(name));
+    }
+    
+    @PostMapping("")
+    public Response<String> postWelcome(@RequestBody Map<String, String> params) {
+        params.forEach((key, value) -> log.info("{} -> {}", key, value));
+        return Response.success();
     }
 }

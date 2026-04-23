@@ -97,7 +97,20 @@ public class SimpleController {
             SimpleUserModel createdUser = this.applicationService.createUser(user);
             return Response.success(createdUser);
         } catch (IllegalArgumentException e) {
-            return Response.success(null);  // 异常情况返回null
+            return Response.success();  // 异常情况返回null
+        }
+    }
+    
+    /*
+    * 创建用户2
+    * */
+    @PostMapping("/user2")
+    public Response<?> createUser2(@RequestBody SimpleUserModel user) {
+        try {
+            this.applicationService.createUser(user);
+            return Response.success();
+        } catch (Exception exception) {
+            return Response.success();
         }
     }
 }
