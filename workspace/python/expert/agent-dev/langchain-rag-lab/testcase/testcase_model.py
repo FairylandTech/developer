@@ -13,8 +13,8 @@ import typing as t
 
 from langchain_core.language_models import LanguageModelInput
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage, AIMessageChunk, AIMessage
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, PromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnableGenerator
 
 from common.enum.gender import GenderEnum
@@ -160,6 +160,49 @@ def test_case_parser_aimessage():
         print(chunk.content, end="", flush=True)
 
 
+def test_case_json_parser_aimessage():
+    """ 使用 Chain 多次调用模型，使用 JsonOutputParseer 解析结果 """
+    # model = copy.deepcopy(tongyi_chat_model)
+    model = tongyi_chat_model
+    parser = JsonOutputParser()
+
+    input_prompt: ChatPromptTemplate = ChatPromptTemplate.from_messages([
+        SystemMessage("你是一个起名专家"),
+        HumanMessage(
+            "我的朋友姓{lastname}，刚刚生了一个{gender}，请帮他给他女儿起一个中文名字。只输出最后的结果，分装为 JSON 格式，{“name”：“你起的名字”}，严格遵守。")
+    ])
+    step2_prompt = PromptTemplate.from_template("名字：{name}，帮我解释一下这个名字的含义")
+
+    chain = input_prompt | model | parser | step2_prompt | model
+
+    for chunk in chain.stream(input={"lastname": "李", "gender": "女儿"}):
+        print(chunk.content, end="", flush=True)
+
+
+def test_chain_runnablelambda():
+    """ 使用 Chain 调用 RunnableLambda """
+
+    def transform(history: ChatPromptTemplate, message: AIMessageChunk):
+        print(message)
+        history.append(AIMessage(message.content))
+        history.append(HumanMessage("请帮我解释一下这个名字的含义"))
+        for msg in history.messages:
+            print(msg, type(msg))
+        return history.messages
+
+    input_prompt: ChatPromptTemplate = ChatPromptTemplate.from_messages([
+        SystemMessage("你是一个起名专家"),
+        HumanMessage("我的朋友姓李，刚刚生了一个女儿，请帮他给他女儿起一个中文名字。只输出名字，不要其他内容")
+    ])
+
+    transform_messages = RunnableLambda(lambda message: transform(copy.deepcopy(input_prompt), message))
+
+    chain = tongyi_chat_model | transform_messages | tongyi_chat_model
+
+    for chunk in chain.stream(input_prompt.messages):
+        print(chunk.content, end="", flush=True)
+
+
 if __name__ == '__main__':
     user_prompt = "你是谁，可以做什么？"
 
@@ -177,4 +220,6 @@ if __name__ == '__main__':
     # poet_prompt("写一首边塞诗")
     # use_chain()
     # use_chain_stream()
-    test_case_parser_aimessage()
+    # test_case_parser_aimessage()
+    # test_case_json_parser_aimessage()
+    test_chain_runnablelambda()
