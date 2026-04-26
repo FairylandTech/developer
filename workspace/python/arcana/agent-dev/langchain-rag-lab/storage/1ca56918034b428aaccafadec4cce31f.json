@@ -1,0 +1,95 @@
+[
+  {
+    "type": "human",
+    "data": {
+      "content": "小明有一只猫",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "type": "human",
+      "name": null,
+      "id": null
+    }
+  },
+  {
+    "type": "AIMessageChunk",
+    "data": {
+      "content": "小明有一只猫，听起来是个温馨的小故事呢！😊  \n这只猫叫什么名字呀？是活泼好动的类型，还是安静乖巧的性格？有没有什么特别有趣的事情发生？比如它喜欢躲在哪个角落，或者总爱捣乱把东西弄翻？✨  \n\n如果你愿意，可以继续讲讲小明和猫咪之间的日常，我超乐意听！🐱💛",
+      "additional_kwargs": {},
+      "response_metadata": {
+        "model_provider": "openai",
+        "finish_reason": "stop",
+        "model_name": "qwen-flash-2025-07-28"
+      },
+      "type": "AIMessageChunk",
+      "name": null,
+      "id": "lc_run--019dc45a-e0da-7d72-b4db-c553ac845b37",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null,
+      "tool_call_chunks": [],
+      "chunk_position": null
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "小明有两条狗",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "type": "human",
+      "name": null,
+      "id": null
+    }
+  },
+  {
+    "type": "AIMessageChunk",
+    "data": {
+      "content": "哇，小明现在有两条狗啦！🐶🐶  \n那两只狗狗是同一只品种吗？还是一高一矮、一胖一瘦的“黄金搭档”组合？它们会不会一起抢玩具，或者一个爱追尾巴，一个喜欢趴在小明脚边打呼噜？\n\n还有啊——既然已经有猫了，那猫和狗相处得怎么样？是像“室友”一样和平共处，还是偶尔上演“猫狗大战”？（别担心，我见过太多猫狗从“敌人”变成“兄弟”的暖心故事啦～）\n\n要不要来个“小明的一天”小剧场？比如：  \n🌞早上，两条狗在门口狂吠，猫躲在沙发底下瑟瑟发抖；  \n🌙晚上，小明抱着猫，狗乖乖趴在他脚边，三只毛茸茸的脑袋挤成一团……  \n\n讲讲看吧，我很想听！🐾😄",
+      "additional_kwargs": {},
+      "response_metadata": {
+        "model_provider": "openai",
+        "finish_reason": "stop",
+        "model_name": "qwen-flash-2025-07-28"
+      },
+      "type": "AIMessageChunk",
+      "name": null,
+      "id": "lc_run--019dc45a-e533-7b20-8adb-eb2fa7594eb6",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null,
+      "tool_call_chunks": [],
+      "chunk_position": null
+    }
+  },
+  {
+    "type": "human",
+    "data": {
+      "content": "一共有多少宠物",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "type": "human",
+      "name": null,
+      "id": null
+    }
+  },
+  {
+    "type": "AIMessageChunk",
+    "data": {
+      "content": "我们来数一数小明的宠物朋友们～🐾\n\n- 一只猫（之前提到的）  \n- 两条狗（刚刚说的）\n\n所以加起来：  \n1 只猫 + 2 只狗 = **3 只宠物** 🐱🐶🐶\n\n小明家现在可是热闹极了！三只毛茸茸的小家伙，一个安静地打盹，两个兴奋地追尾巴，简直是“喵汪宇宙”小分队！✨\n\n要不要给它们起个名字组合？比如：  \n- 猫叫“小团”，两条狗分别叫“旺仔”和“豆豆”？  \n或者干脆来个“全家福”故事？😄\n\n我随时准备好当你的宠物小剧场编剧哦～",
+      "additional_kwargs": {},
+      "response_metadata": {
+        "model_provider": "openai",
+        "finish_reason": "stop",
+        "model_name": "qwen-flash-2025-07-28"
+      },
+      "type": "AIMessageChunk",
+      "name": null,
+      "id": "lc_run--019dc45a-ecb7-7f03-8e94-fb6afecd38dd",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null,
+      "tool_call_chunks": [],
+      "chunk_position": null
+    }
+  }
+]

@@ -17,7 +17,7 @@ Development Environment
 
 ---
 
-- [Java SE 基础](origin/README.md)
+- [Java SE 基础](minora/README.md)
 - [Java Web](web/README.md)
 - [Java Redis](redis/README.md)
-- [数据结构与算法](algorithms/README.md)
+- [数据结构与算法](algo/README.md)

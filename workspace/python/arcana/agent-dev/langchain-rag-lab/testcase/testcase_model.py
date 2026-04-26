@@ -9,15 +9,18 @@
 from __future__ import annotations
 
 import copy
+import pickle
 import typing as t
+import uuid
 
 from langchain_core.language_models import LanguageModelInput
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage, AIMessageChunk, AIMessage
 from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder, PromptTemplate
-from langchain_core.runnables import RunnableLambda, RunnableGenerator
+from langchain_core.runnables import RunnableLambda, RunnableGenerator, RunnableConfig
 
 from common.enum.gender import GenderEnum
+from memory.history import TempChatMessageHistory, FileChatMessageHistory
 from prompt.antonym import antonym_prompt
 from prompt.generate_name import generate_name_prompt
 from prompt.poet import PoetChatPrompt
@@ -182,25 +185,46 @@ def test_case_json_parser_aimessage():
 def test_chain_runnablelambda():
     """ 使用 Chain 调用 RunnableLambda """
 
-    def transform(history: ChatPromptTemplate, message: AIMessageChunk):
-        print(message)
-        history.append(AIMessage(message.content))
-        history.append(HumanMessage("请帮我解释一下这个名字的含义"))
-        for msg in history.messages:
-            print(msg, type(msg))
-        return history.messages
+    def transform(message: AIMessage):
+        prompt: ChatPromptTemplate = ChatPromptTemplate.from_messages([
+            AIMessage(message.content),
+            HumanMessage("请帮我解释一下这个名字的含义")
+        ])
 
-    input_prompt: ChatPromptTemplate = ChatPromptTemplate.from_messages([
-        SystemMessage("你是一个起名专家"),
-        HumanMessage("我的朋友姓李，刚刚生了一个女儿，请帮他给他女儿起一个中文名字。只输出名字，不要其他内容")
-    ])
+        return prompt.messages
 
-    transform_messages = RunnableLambda(lambda message: transform(copy.deepcopy(input_prompt), message))
+    input_prompt: ChatPromptTemplate = ChatPromptTemplate.from_template(
+        "我的朋友姓{lastname}，刚刚生了一个{gender}，请帮他给他女儿起一个中文名字。只输出名字")
 
-    chain = tongyi_chat_model | transform_messages | tongyi_chat_model
+    transform_messages = RunnableLambda(lambda message: transform(message))
 
-    for chunk in chain.stream(input_prompt.messages):
-        print(chunk.content, end="", flush=True)
+    chain = input_prompt | tongyi_chat_model | transform_messages | tongyi_chat_model | StrOutputParser()
+
+    for chunk in chain.stream({"lastname": "李", "gender": "女儿"}):
+        print(chunk, end="", flush=True)
+
+
+def test_chain_add_history():
+    """ 使用 Chain 调用并添加短期的（临时）历史记录 """
+
+    def pretty_print(message: t.Iterator[AIMessageChunk]):
+        for chunk in message:
+            print(chunk.content, end="", flush=True)
+        print()
+        print("=" * 80)
+
+    # temp_chain = TempChatMessageHistory.runnable(tongyi_chat_model)
+    chain = FileChatMessageHistory.runnable(tongyi_chat_model)
+
+    config: RunnableConfig = {
+        "configurable": {
+            "session_id": uuid.uuid4().hex.replace("-", "")
+        }
+    }
+
+    pretty_print(chain.stream("小明有一只猫", config))
+    pretty_print(chain.stream("小明有两条狗", config))
+    pretty_print(chain.stream("一共有多少宠物", config))
 
 
 if __name__ == '__main__':
@@ -222,4 +246,5 @@ if __name__ == '__main__':
     # use_chain_stream()
     # test_case_parser_aimessage()
     # test_case_json_parser_aimessage()
-    test_chain_runnablelambda()
+    # test_chain_runnablelambda()
+    test_chain_add_history()
