@@ -24,19 +24,19 @@ from memory.history import TempChatMessageHistory, FileChatMessageHistory
 from prompt.antonym import antonym_prompt
 from prompt.generate_name import generate_name_prompt
 from prompt.poet import PoetChatPrompt
-from rag.tongyi import tongyi_llm, tongyi_chat_model
-from rag.hunyuan import hunyuan_chat_model
-from rag.zai import zai_chat_model, zai_embedding_model, zai_embedding
+from llm.tongyi import TongyiModelManager
+from llm.hunyuan import hunyuan_chat_model
+from llm.zai import zai_chat_model, zai_embedding_model, zai_embedding
 
 
 def invoke_llm(prompt: str):
     """ 阻塞调用 LLM """
-    print(tongyi_llm.invoke(prompt))
+    print(TongyiModelManager.create_llm().invoke(prompt))
 
 
 def stream_llm(prompt: str):
     """ 流式调用 LLM """
-    output_stream = tongyi_llm.stream(prompt)
+    output_stream = TongyiModelManager.create_llm().stream(prompt)
 
     for chunk in output_stream:
         print(chunk, end="", flush=True)
@@ -44,7 +44,7 @@ def stream_llm(prompt: str):
 
 def invoke_chat(input: LanguageModelInput):
     """ 阻塞调用 ChatLLM """
-    output_messages = tongyi_chat_model.invoke(input)
+    output_messages = TongyiModelManager.create_chat_model().invoke(input)
     output_messages.pretty_print()
 
 
@@ -166,7 +166,7 @@ def test_case_parser_aimessage():
 def test_case_json_parser_aimessage():
     """ 使用 Chain 多次调用模型，使用 JsonOutputParseer 解析结果 """
     # model = copy.deepcopy(tongyi_chat_model)
-    model = tongyi_chat_model
+    model = TongyiModelManager.create_chat_model()
     parser = JsonOutputParser()
 
     input_prompt: ChatPromptTemplate = ChatPromptTemplate.from_messages([
@@ -193,12 +193,14 @@ def test_chain_runnablelambda():
 
         return prompt.messages
 
+    model = TongyiModelManager.create_chat_model()
+
     input_prompt: ChatPromptTemplate = ChatPromptTemplate.from_template(
         "我的朋友姓{lastname}，刚刚生了一个{gender}，请帮他给他女儿起一个中文名字。只输出名字")
 
     transform_messages = RunnableLambda(lambda message: transform(message))
 
-    chain = input_prompt | tongyi_chat_model | transform_messages | tongyi_chat_model | StrOutputParser()
+    chain = input_prompt | model | transform_messages | model | StrOutputParser()
 
     for chunk in chain.stream({"lastname": "李", "gender": "女儿"}):
         print(chunk, end="", flush=True)
@@ -214,7 +216,7 @@ def test_chain_add_history():
         print("=" * 80)
 
     # temp_chain = TempChatMessageHistory.runnable(tongyi_chat_model)
-    chain = FileChatMessageHistory.runnable(tongyi_chat_model)
+    chain = FileChatMessageHistory.runnable(TongyiModelManager.create_chat_model())
 
     config: RunnableConfig = {
         "configurable": {

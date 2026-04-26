@@ -14,11 +14,11 @@ import orjson
 from langchain_core.documents import Document
 
 from common import ROOT_DIR
-from documents.csv import DocumentCSVLoader
-from documents.json import DocumentJSONLoader
-from documents.pdf import DocumentPDFLoader
-from documents.text import DocumentTextLoader
-from documents.splitter.text import TextSplitter
+from document.csv import DocumentCSVLoader
+from document.json import DocumentJSONLoader
+from document.pdf import DocumentPDFLoader
+from document.text import DocumentTextLoader
+from document.splitter.text import TextSplitter
 
 
 def csv_loader():
