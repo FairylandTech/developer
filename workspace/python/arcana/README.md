@@ -19,17 +19,17 @@ Development Environment
 
 1. 多线程&多进程&协程
    - [多线程和多进程概述](main.py)
-   - [多线程以及多线程的常用方法](multithreading/multi_threading.py)
-   - [多线程的线程安全问题](multithreading/multi_threading_safe.py)
-   - [多线程-线程池](multithreading/threading_pool.py)
-   - [多进程](multiprocess/multiprocess.py)
-   - [多进程-进程池](multiprocess/multiprocess_pool.py)
-   - [协程](coroutine/async_demo.py)
-   - [协程-Task任务对象](coroutine/task_demo.py)
-   - [协程-asyncio.run()](coroutine/asyncio_run.py)
+   - [多线程以及多线程的常用方法](py-multithreading/multi_threading.py)
+   - [多线程的线程安全问题](py-multithreading/multi_threading_safe.py)
+   - [多线程-线程池](py-multithreading/threading_pool.py)
+   - [多进程](py-multiprocess/multiprocess.py)
+   - [多进程-进程池](py-multiprocess/multiprocess_pool.py)
+   - [协程](py-coroutine/async_demo.py)
+   - [协程-Task任务对象](py-coroutine/task_demo.py)
+   - [协程-asyncio.run()](py-coroutine/asyncio_run.py)
 
 示例
 
-1. [多线程安全问题](multithreading/test/multi_threading_safe_test.py)
-2. [多线程下载文件](multithreading/test/download_images.py)
-3. [多进程处理日志文件](multiprocess/test/handle_logs.py)
+1. [多线程安全问题](py-multithreading/test/multi_threading_safe_test.py)
+2. [多线程下载文件](py-multithreading/test/download_images.py)
+3. [多进程处理日志文件](py-multiprocess/test/handle_logs.py)
