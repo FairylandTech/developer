@@ -1,0 +1,23 @@
+{
+  "md5_path": "./md5.txt",
+  "chroma": {
+    "path": "./storage/chroma"
+  },
+  "spliter": {
+    "chunk": 100,
+    "overlap": 10,
+    "sepatator:": [
+      "\n",
+      "\n\n",
+      ".",
+      "?",
+      "!",
+      "。",
+      "？",
+      "！",
+      " ",
+      ""
+    ],
+    "max_char": 100
+  }
+}
