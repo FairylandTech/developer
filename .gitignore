@@ -7,9 +7,6 @@
 temp/*
 !temp/*.md
 
-### IDEA ###
-.fastRequest
-
 ### Java ###
 *.class
 target/
@@ -32,19 +29,21 @@ __pycache__/
 input/
 output/
 .langgraph_api
-workspace/python/**/resources
 
-### Node.js ###
+### Nodejs ###
 node_modules/
 dist/
+
+### Plugin ###
+.fastRequest
+
+### Environment ###
+.env
 
 ### Logs ###
 logs/
 log/
 *.log
-
-### Env ###
-.env
 
 ### Documents ###
 .obsidian
