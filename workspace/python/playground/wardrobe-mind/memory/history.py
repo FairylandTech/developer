@@ -12,6 +12,7 @@ from __future__ import annotations
 import os
 import pickle
 import typing as t
+from pathlib import Path
 
 import orjson
 from langchain_core.chat_history import BaseChatMessageHistory
@@ -26,7 +27,7 @@ class FileChatMessageHistory(BaseChatMessageHistory):
     def __init__(self, session_id: str):
         self.__session_id = session_id
 
-        self.__file_path = ROOT_DIR / "storage" / f"{session_id}.dat"
+        self.__file_path = Path(os.path.join(ROOT_DIR, "storage", "history", f"{session_id}.dat"))
         self.__serialized_file_path = self.__file_path.with_suffix(".json")
 
         os.makedirs(os.path.dirname(self.__file_path), exist_ok=True)
@@ -64,8 +65,8 @@ class FileChatMessageHistory(BaseChatMessageHistory):
         conversation = RunnableWithMessageHistory(
             chain,
             lambda session_id: cls(session_id),
-            # input_messages_key="input",
-            # history_messages_key="history",
+            input_messages_key="input",
+            history_messages_key="history",
         )
 
         return conversation

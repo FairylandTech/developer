@@ -10,16 +10,18 @@
 from __future__ import annotations
 
 import typing as t
+import uuid
 
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.prompt_values import PromptValue
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough, RunnableLambda, RunnableParallel
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.runnables import RunnablePassthrough, RunnableLambda, RunnableParallel, RunnableConfig, AddableDict
 from langchain_core.vectorstores import VectorStoreRetriever
 from langchain_openai import ChatOpenAI
 
 from llm.tongyi import TongyiLLMManager
+from memory.history import FileChatMessageHistory
 from vector.chroma import ChromaVectorStorageManager
 
 __system_prompt = """
@@ -46,14 +48,39 @@ def __parse_prompt_text(text: PromptValue) -> PromptValue:
     return text
 
 
-def wardrobe_mind_agent(input: str):
-    model: ChatOpenAI = TongyiLLMManager.create_chat_model("qwen3-max")
+def __parse_china_output(value: t.Any) -> t.Any:
+    print(f"Parse China Output: {value}, type: {type(value)}")
+    return value
+
+
+def __parse_retriever_input_str(input: AddableDict) -> str:
+    return input.get("input") or ""
+
+
+def __parse_chat_prompt_input(input: AddableDict) -> dict[str, str | list[t.Any]]:
+    return {
+        "input": input.get("input", {}).get("input", ""),
+        "history": input.get("input", {}).get("history", []),
+        "knowledge": input.get("knowledge", ""),
+    }
+
+
+def wardrobe_mind_agent(input: t.Any):
+    session_id = uuid.uuid4().hex.replace("-", "")
+    print(f"session id: {session_id}")
+
+    model: ChatOpenAI = TongyiLLMManager.create_chat_model()
     vector: Chroma = ChromaVectorStorageManager.get_chroma("wardrobe-mind")
     retriever: VectorStoreRetriever = vector.as_retriever(search_kwargs={"k": 5})
+    input_retriever_format = RunnableLambda(lambda input: __parse_retriever_input_str(input))
+    runnable_config: RunnableConfig = {"configurable": {"session_id": "a32f7991855e4b239d4b475c4882629b"}}
+    input_prompt_format = RunnableLambda(lambda input: __parse_chat_prompt_input(input))
 
     input_prompt = ChatPromptTemplate.from_messages(
         [
             ("system", __system_prompt),
+            ("human", "以下是历史消息"),
+            MessagesPlaceholder("history"),
             ("human", "知识库检索信息片段内容：{knowledge}"),
             ("human", "{input}"),
         ]
@@ -61,16 +88,18 @@ def wardrobe_mind_agent(input: str):
 
     input_chain: RunnableParallel[str] = RunnableParallel(
         input=RunnablePassthrough(),
-        knowledge=retriever | RunnableLambda(lambda documents: __parase_documents(documents)),
+        knowledge=input_retriever_format | retriever | RunnableLambda(lambda documents: __parase_documents(documents)),
     )
 
     parse_prompt_text = RunnableLambda(lambda text: __parse_prompt_text(text))
 
-    chain = input_chain | input_prompt | parse_prompt_text | model
+    chain = input_chain | input_prompt_format | input_prompt | parse_prompt_text | model
 
-    for chunk in chain.stream(input):
+    runnable_history = FileChatMessageHistory.runnable(chain)
+
+    for chunk in runnable_history.stream(input, config=runnable_config):
         print(chunk.content, end="", flush=True)
 
 
 if __name__ == "__main__":
-    wardrobe_mind_agent("我身高170cm，体重65kg，穿什么码的衣服")
+    wardrobe_mind_agent({"input": "春天穿什么颜色的衣服好看？"})
