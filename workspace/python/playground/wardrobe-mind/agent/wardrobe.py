@@ -14,9 +14,10 @@ import uuid
 
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
+from langchain_core.messages import AIMessageChunk
 from langchain_core.prompt_values import PromptValue
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables import RunnablePassthrough, RunnableLambda, RunnableParallel, RunnableConfig, AddableDict
+from langchain_core.runnables import RunnablePassthrough, RunnableLambda, RunnableParallel, RunnableConfig, AddableDict, RunnableWithMessageHistory
 from langchain_core.vectorstores import VectorStoreRetriever
 from langchain_openai import ChatOpenAI
 
@@ -25,7 +26,7 @@ from memory.history import FileChatMessageHistory
 from vector.chroma import ChromaVectorStorageManager
 
 __system_prompt = """
-你是一个商品（衣物类）智能客服，根据知识库检索的信息片段，回答问题。
+你是一个商品（衣物类）智能客服，结合知识库检索的信息片段，回答问题。
 尺码推荐规则：
 1. 当用户询问尺码时，需要同时考虑身高和体重两个维度。
 2. 优先选择身高和体重都落在推荐范围内的尺码（身高范围正负5cm，体重正负5kg）。
@@ -65,16 +66,16 @@ def __parse_chat_prompt_input(input: AddableDict) -> dict[str, str | list[t.Any]
     }
 
 
-def wardrobe_mind_agent(input: t.Any):
+def wardrobe_mind_agent(input: t.Any) -> t.Generator[str, None, None]:
     session_id = uuid.uuid4().hex.replace("-", "")
     print(f"session id: {session_id}")
 
     model: ChatOpenAI = TongyiLLMManager.create_chat_model()
     vector: Chroma = ChromaVectorStorageManager.get_chroma("wardrobe-mind")
     retriever: VectorStoreRetriever = vector.as_retriever(search_kwargs={"k": 5})
-    input_retriever_format = RunnableLambda(lambda input: __parse_retriever_input_str(input))
-    runnable_config: RunnableConfig = {"configurable": {"session_id": "a32f7991855e4b239d4b475c4882629b"}}
-    input_prompt_format = RunnableLambda(lambda input: __parse_chat_prompt_input(input))
+    input_retriever_format: RunnableLambda[AddableDict, str] = RunnableLambda(lambda input: __parse_retriever_input_str(input))
+    runnable_config: RunnableConfig = {"configurable": {"session_id": session_id}}
+    input_prompt_format: RunnableLambda[AddableDict, dict[str, str | list[t.Any]]] = RunnableLambda(lambda input: __parse_chat_prompt_input(input))
 
     input_prompt = ChatPromptTemplate.from_messages(
         [
@@ -86,7 +87,7 @@ def wardrobe_mind_agent(input: t.Any):
         ]
     )
 
-    input_chain: RunnableParallel[str] = RunnableParallel(
+    input_chain: RunnableParallel[dict[str, str]] = RunnableParallel(
         input=RunnablePassthrough(),
         knowledge=input_retriever_format | retriever | RunnableLambda(lambda documents: __parase_documents(documents)),
     )
@@ -95,10 +96,11 @@ def wardrobe_mind_agent(input: t.Any):
 
     chain = input_chain | input_prompt_format | input_prompt | parse_prompt_text | model
 
-    runnable_history = FileChatMessageHistory.runnable(chain)
+    runnable_history: RunnableWithMessageHistory = FileChatMessageHistory.runnable(chain)
 
     for chunk in runnable_history.stream(input, config=runnable_config):
-        print(chunk.content, end="", flush=True)
+        chunk: AIMessageChunk
+        yield t.cast(str, chunk.content)
 
 
 if __name__ == "__main__":

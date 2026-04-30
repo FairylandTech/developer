@@ -16,9 +16,10 @@ import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from service.knowledge import KnowledgeService
+from agent.wardrobe import wardrobe_mind_agent
 
 
-def main():
+def server():
     st.title("知识库更新服务")
 
     upload_file: UploadedFile = t.cast(
@@ -51,5 +52,32 @@ def main():
             st.write(f"上传结果：{result}")
 
 
+def client():
+    def capture_output(generator: t.Generator[str, None, None], output_list: list[str]) -> t.Generator[str, None, None]:
+        for output in generator:
+            output_list.append(output)
+            yield output
+
+    st.title("知识库查询服务")
+    st.divider()
+
+    if "message" not in st.session_state:
+        st.session_state.message = [{"role": "assistant", "content": "您好！我是您的智能助手，请问有什么可以帮助您的吗？"}]
+
+    for message in st.session_state.get("message", []):
+        st.chat_message(message["role"]).write(message["content"])
+
+    prompt = st.chat_input("请输入查询内容")
+    if prompt:
+        st.chat_message("user").write(prompt)
+        st.session_state.message.append({"role": "user", "content": prompt.strip()})
+
+        messages: list[str] = []
+        with st.spinner("思考中..."):
+            output = wardrobe_mind_agent({"input": prompt.strip()})
+            st.chat_message("assistant").write_stream(capture_output(output, messages))
+            st.session_state.message.append({"role": "assistant", "content": "".join(messages)})
+
+
 if __name__ == "__main__":
-    main()
+    client()
