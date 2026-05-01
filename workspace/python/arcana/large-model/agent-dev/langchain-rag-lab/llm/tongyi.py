@@ -25,20 +25,21 @@ class TongyiModelManager:
     __CHAT_MODEL_MAP__: t.ClassVar[dict[str, ChatOpenAI]] = {}
 
     @classmethod
-    def create_chat_model(cls, name: str, model: str = None) -> ChatOpenAI:
-        if name in cls.__CHAT_MODEL_MAP__:
-            return cls.__CHAT_MODEL_MAP__[name]
+    def create_chat_model(cls, model: t.Optional[str] = None) -> ChatOpenAI:
+        if not model:
+            model = "qwen3.6-plus-2026-04-02"
+        if model and model in cls.__CHAT_MODEL_MAP__.keys():
+            return cls.__CHAT_MODEL_MAP__[model]
 
-        tongyi_chat_model = ChatOpenAI(
-            model=model if model else "qwen-flash-2025-07-28",
+        llm = ChatOpenAI(
+            model=model,
             api_key=SecretStr(cls.__DASHSCOPE_API_KEY__),
             base_url=cls.__DASHSCOPE_BASE_URL__,
-            temperature=0.8,
             top_p=0.5
         )
 
-        cls.__CHAT_MODEL_MAP__[name] = tongyi_chat_model
-        return tongyi_chat_model
+        cls.__CHAT_MODEL_MAP__[model] = llm
+        return llm
 
     @classmethod
     def create_llm(cls) -> Tongyi:
