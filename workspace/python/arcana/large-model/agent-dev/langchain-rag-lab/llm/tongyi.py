@@ -6,6 +6,7 @@
 @organization: https://github.com/FairylandFuture
 @datetime: 2026-04-24 13:12:37 UTC+08:00
 """
+
 from __future__ import annotations
 
 import typing as t
@@ -27,7 +28,7 @@ class TongyiModelManager:
     @classmethod
     def create_chat_model(cls, model: t.Optional[str] = None) -> ChatOpenAI:
         if not model:
-            model = "qwen3.6-plus-2026-04-02"
+            model = "qwen3.5-flash"
         if model and model in cls.__CHAT_MODEL_MAP__.keys():
             return cls.__CHAT_MODEL_MAP__[model]
 
@@ -35,7 +36,7 @@ class TongyiModelManager:
             model=model,
             api_key=SecretStr(cls.__DASHSCOPE_API_KEY__),
             base_url=cls.__DASHSCOPE_BASE_URL__,
-            top_p=0.5
+            top_p=0.5,
         )
 
         cls.__CHAT_MODEL_MAP__[model] = llm
@@ -43,13 +44,10 @@ class TongyiModelManager:
 
     @classmethod
     def create_llm(cls) -> Tongyi:
-        return Tongyi(
-            model="qwen-flash-2025-07-28",
-            api_key=cls.__DASHSCOPE_API_KEY__
-        )
+        return Tongyi(model="qwen-flash-2025-07-28", api_key=cls.__DASHSCOPE_API_KEY__)
 
     @classmethod
-    def create_embedding(cls) -> DashScopeEmbeddings:
+    def create_dashscope_embedding(cls) -> DashScopeEmbeddings:
         return DashScopeEmbeddings(
             model="text-embedding-v3",
             dashscope_api_key=cls.__DASHSCOPE_API_KEY__,
