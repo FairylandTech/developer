@@ -17,11 +17,11 @@ Development Environment
 
 ---
 
-- [Java SE 基础](minora/README.md)
+- [Java SE 基础](minora/syntax/README.md)
 - [Java Web](web/README.md)
 - [Java 高级](arcana)
-- [Java Redis](redis/README.md)
-- [数据结构与算法](algo/README.md)
+- [Java Redis](arcana/redis/README.md)
+- [数据结构与算法](algo/algorithm-learning-experience/README.md)
 
 ---
 
