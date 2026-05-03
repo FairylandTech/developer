@@ -17,6 +17,11 @@ Development Environment
 
 ---
 
+- [Python 基础](minora)
 - [Python 高级](arcana/README.md)
+- [Python 合集(脚本/爬虫)](failarmy)
 - [数据结构与算法](algo/README.md)
 - [Python Web FastAPI](frame/fastapi/README.md)
+- [Python AI Agent LangChain&LangGraph](ai)
+- Demo
+    - [基于RAG的只能客服（衣物类）](playground/wardrobe-mind/README.md)
