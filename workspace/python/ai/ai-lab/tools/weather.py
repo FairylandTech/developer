@@ -14,11 +14,11 @@ from pathlib import Path
 import requests
 from langchain.tools import tool
 
-from domain.model.tools.weather import WeatherLiveToolsInput
+from domain.schema.tool import WeatherLiveToolInput
 from utils.qweather import QWeatherUtils
 
 
-@tool(args_schema=WeatherLiveToolsInput, description="获取实时天气信息")
+@tool(args_schema=WeatherLiveToolInput, description="获取实时天气信息")
 def get_weather_live(location: str) -> str:
     """
     获取实时天气信息。

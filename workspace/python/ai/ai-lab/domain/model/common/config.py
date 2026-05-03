@@ -15,10 +15,10 @@ import typing as t
 from pydantic import Field
 
 from common.enum.database import DatabaseTypeEnum
-from domain.model import BaseModel
+from domain.model import ModelBase
 
 
-class DatabaseConfig(BaseModel):
+class DatabaseConfig(ModelBase):
     type: DatabaseTypeEnum = Field(default=DatabaseTypeEnum.MYSQL, description="Database type")
     host: str = Field(default="localhost", description="Database host")
     port: int = Field(default=3306, description="Database port")
@@ -38,13 +38,13 @@ class DatabaseConfig(BaseModel):
         return self.__repr__()
 
 
-class SplitterConfig(BaseModel):
+class SplitterConfig(ModelBase):
     chunk_size: int = Field(default=100, description="Chunk size for splitting")
     chunk_overlap: int = Field(default=20, description="Chunk overlap for splitting")
     max_length: int = Field(default=256, description="Maximum length for splitting")
 
 
-class Config(BaseModel):
+class Config(ModelBase):
     database: t.Optional[dict[DatabaseTypeEnum, DatabaseConfig]] = Field(default=None, description="Database configuration")
     splitter: t.Optional[SplitterConfig] = Field(default=None, description="Splitter configuration")
 

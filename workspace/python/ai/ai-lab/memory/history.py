@@ -19,7 +19,7 @@ from langchain_core.messages import BaseMessage, messages_to_dict, messages_from
 from langchain_core.runnables import RunnableSerializable
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
-from common import ROOT_DIR
+from common.const import ROOT_DIR
 
 
 class TempChatMessageHistory:

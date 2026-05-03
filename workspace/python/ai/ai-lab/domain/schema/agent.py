@@ -4,7 +4,7 @@
 @author: Beau Dean
 @contact: https://fairy.host
 @organization: https://github.com/FairylandFuture
-@datetime: 2026-04-16 22:34:19 UTC+08:00
+@datetime: 2026-05-03 19:00:34 UTC+08:00
 """
 from __future__ import annotations
 
@@ -12,15 +12,11 @@ import typing as t
 
 from langchain_core.messages import BaseMessage
 
-from domain.model import BaseModel
+from domain.model import ModelBase
+from domain.schema.message import Message
 
 
-class Message(BaseModel):
-    role: t.Literal["system", "user"]
-    content: str
-
-
-class InputMessages(BaseModel):
+class InputMessages(ModelBase):
     messages: t.List[Message | BaseMessage]
 
     def to_dict(self):

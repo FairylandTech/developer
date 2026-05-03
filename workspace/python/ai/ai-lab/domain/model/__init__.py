@@ -14,7 +14,7 @@ from pydantic import BaseModel as PydanticBaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 
 
-class BaseModel(PydanticBaseModel):
+class ModelBase(PydanticBaseModel):
     model_config: t.ClassVar[ConfigDict] = ConfigDict(
         alias_generator=to_camel,
         populate_by_name=True,
@@ -26,5 +26,5 @@ class BaseModel(PydanticBaseModel):
 
 
 __all__ = [
-    "BaseModel",
+    "ModelBase",
 ]

@@ -9,13 +9,11 @@
 
 from __future__ import annotations
 
-import typing as t
-
 from langchain_core.messages import HumanMessage, AIMessageChunk, ToolMessage, AnyMessage
 
 from agent.weather import WeatherAgent
 from agent.health import HealthAgent
-from domain.model.agent.message import InputMessages
+from domain.schema.agent import InputMessages
 import warnings
 
 warnings.filterwarnings("ignore")

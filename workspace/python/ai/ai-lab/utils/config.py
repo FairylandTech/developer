@@ -13,8 +13,8 @@ import os
 import typing as t
 import yaml
 
-from common import ROOT_DIR
-from domain.model.config import Config
+from common.const import ROOT_DIR
+from domain.model.common.config import Config
 
 
 class ConfigUtils:

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import typing as t
 
+from common.const import ROOT_DIR
 from common.enum.database import DatabaseTypeEnum
 from llm.hunyuan import HunYuanModelManager
 from utils.config import ConfigUtils
@@ -18,6 +19,7 @@ from utils.config import ConfigUtils
 
 def main():
     print("Hello, World!")
+    print(f"ROOT DIR: {ROOT_DIR}")
     config = ConfigUtils.get_config()
     print(config)
     print(config.database.get(DatabaseTypeEnum.POSTGRESQL).url)

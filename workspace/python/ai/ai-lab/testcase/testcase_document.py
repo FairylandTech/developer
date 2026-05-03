@@ -13,7 +13,7 @@ import typing as t
 import orjson
 from langchain_core.documents import Document
 
-from common import ROOT_DIR
+from common.const import ROOT_DIR
 from document.csv import DocumentCSVLoader
 from document.json import DocumentJSONLoader
 from document.pdf import DocumentPDFLoader

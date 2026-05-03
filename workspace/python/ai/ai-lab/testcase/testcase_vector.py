@@ -12,7 +12,7 @@ import typing as t
 
 from langchain_core.documents import Document
 
-from common import ROOT_DIR
+from common.const import ROOT_DIR
 from vector.memory import memory_vector_store
 from document.csv import CSVLoader
 from vector.chroma import ChromaVectorStoreManager
