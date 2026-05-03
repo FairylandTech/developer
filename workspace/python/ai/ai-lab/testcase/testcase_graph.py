@@ -41,7 +41,6 @@ class StateGraphMessage(BaseModel):
 
 
 def test_run_graph():
-
     def should_call_tool(state: StateGraphMessage):
         messages = state.messages
         last_message = messages[-1]
