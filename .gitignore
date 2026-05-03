@@ -1,15 +1,15 @@
 ### Common ###
-.git
-.idea
-.vscode
-.DS_Store
-*.iml
+.git/
+.idea/
+.vscode/
+.DS_Store/
 temp/*
 !temp/*.md
+*.iml
 
 ### Java ###
-*.class
 target/
+*.class
 application-dev.properties
 application-test.properties
 application-prod.properties
@@ -21,23 +21,27 @@ application-test.yml
 application-prod.yml
 
 ### Python ###
-__pycache__/
-*.pyc
 .venv/
-*.cookies
-*.token
+.langgraph_api/
+__pycache__/
 input/
 output/
-.langgraph_api
+storage/
+*.pyc
+*.cookies
+*.token
+config.json
+config.yaml
+config.yml
 
 ### Nodejs ###
 node_modules/
 dist/
 
 ### Plugin ###
-.fastRequest
+.fastRequest/
 
-### Environment ###
+### Secret ###
 .env
 
 ### Logs ###
