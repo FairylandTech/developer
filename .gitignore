@@ -1,4 +1,3 @@
-### Common ###
 .git/
 .idea/
 .vscode/
@@ -10,7 +9,12 @@ temp/*
 ### Java ###
 target/
 .bsp/
+.gradle/
+build/
+out/
 *.class
+.classpath
+HELP.md
 application-dev.properties
 application-test.properties
 application-prod.properties

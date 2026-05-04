@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="clean-maven" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="script/clean-mvn-repo.ps1" scriptParameters="--repo D:\DevelopTools\Repository\maven" workingDirectory="$ContentRoot$" executablePath="C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
+  <configuration default="false" name="clean-maven" type="PowerShellRunType" factoryName="PowerShell" scriptUrl="toolkit/script/clean-mvn-repo.ps1" scriptParameters="--repo D:\DevelopTools\Repository\maven" workingDirectory="$ContentRoot$" executablePath="C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
     <envs />
     <method v="2" />
   </configuration>
