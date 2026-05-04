@@ -17,9 +17,9 @@ Development Environment
 
 ---
 
-- [Servlet MVC](workspace-webapps)
-- [Spring Boot](spring-demo)
-- [Spring Boot + MyBatis](springboot-mybatis-case)
+- [Servlet MVC](../../frame/servlet/workspace-webapps)
+- [Spring Boot](../../frame/springboot/quickstart-basic)
+- [Spring Boot + MyBatis](../../frame/springboot/quickstart-advanced)
 
 项目(Demo)
 
