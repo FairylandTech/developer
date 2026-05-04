@@ -7,10 +7,14 @@
  ****************************************************/
 package host.fairy.interfaces.http.controller.example;
 
+import host.fairy.facade.service.example.UserService;
+import host.fairy.facade.contracts.example.input.UserCreateInput;
+import host.fairy.facade.contracts.example.output.UserOutput;
 import host.fairy.fairylandfuture.common.web.response.Response;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Beau Dean
@@ -18,10 +22,37 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/example/user")
+@RequiredArgsConstructor
 public class UserController {
     
-    @GetMapping("")
-    public Response<?> list() {
+    private final UserService userService;
+
+    @GetMapping("/{id}")
+    public Response<UserOutput> getById(@PathVariable Long id) {
+        return Response.success(userService.getById(id));
+    }
+
+    @PostMapping("")
+    public Response<Void> create(@RequestBody UserCreateInput command) {
+        userService.create(command);
         return Response.success();
+    }
+
+    @PutMapping("/{id}")
+    public Response<Void> update(@PathVariable Long id, @RequestBody UserCreateInput command) {
+        command.setId(id);
+        userService.update(command);
+        return Response.success();
+    }
+
+    @DeleteMapping("/{id}")
+    public Response<Void> delete(@PathVariable Long id) {
+        userService.delete(id);
+        return Response.success();
+    }
+
+    @GetMapping("")
+    public Response<List<UserOutput>> list() {
+        return Response.success(userService.list());
     }
 }

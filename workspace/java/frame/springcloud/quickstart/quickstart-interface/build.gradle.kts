@@ -3,8 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":quickstart-application"))
-    implementation(project(":quickstart-domain"))
+    implementation(project(":quickstart-facade"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")

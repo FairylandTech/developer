@@ -9,7 +9,6 @@ package host.fairy.infrastructure.model.example;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import host.fairy.fairylandfuture.domain.model.MOBase;
-import host.fairy.fairylandfuture.enums.EnabledEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,6 +30,7 @@ public class UserMO extends MOBase {
     private String password;
     private String phone;
     private String info;
-    private EnabledEnum status;
+    private String status;
     private Long balance;
+    private String enabled;
 }
