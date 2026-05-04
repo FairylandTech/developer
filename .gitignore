@@ -29,8 +29,8 @@ application-prod.yml
 .venv/
 .langgraph_api/
 __pycache__/
-input/
-output/
+**/python/**/input/
+**/python/**/output/
 storage/
 *.pyc
 *.cookies
