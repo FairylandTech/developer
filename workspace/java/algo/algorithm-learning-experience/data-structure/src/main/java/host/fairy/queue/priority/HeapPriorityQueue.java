@@ -8,6 +8,7 @@
 package host.fairy.queue.priority;
 
 import host.fairy.queue.Queue;
+import lombok.ToString;
 
 /**
  * Priority Queue implement basedon Heap (Complete binary tree math).
@@ -18,6 +19,7 @@ import host.fairy.queue.Queue;
  * @see Queue
  * @see Priority
  */
+@ToString
 public class HeapPriorityQueue<E extends Priority> implements Queue<E> {
     private final E[] array;
     private int index;

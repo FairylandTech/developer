@@ -11,8 +11,7 @@
 
     <modules>
         <module>startup</module>
-        <module>datastructure</module>
-
+        <module>data-structure</module>
         <module>leetcode</module>
     </modules>
 

@@ -9,6 +9,7 @@ temp/*
 
 ### Java ###
 target/
+.bsp/
 *.class
 application-dev.properties
 application-test.properties
