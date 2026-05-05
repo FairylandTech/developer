@@ -1,10 +1,10 @@
-package host.fairy.infrastructure.repository.example;
+package host.fairy.infrastructure.persistence.repository.example;
 
 import host.fairy.domain.model.example.User;
 import host.fairy.domain.repository.example.UserRepository;
-import host.fairy.infrastructure.convert.example.UserConverter;
-import host.fairy.infrastructure.mapper.example.UserMapper;
-import host.fairy.infrastructure.model.example.UserMO;
+import host.fairy.infrastructure.persistence.converter.example.UserConverter;
+import host.fairy.infrastructure.persistence.mapper.example.UserMapper;
+import host.fairy.infrastructure.persistence.model.example.UserMO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;

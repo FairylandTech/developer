@@ -5,7 +5,7 @@
  * @organization: https://github.com/FairylandFuture
  * @datetime: 2026-05-04 20:30:50 UTC+08:00
  ****************************************************/
-package host.fairy.infrastructure.model.example;
+package host.fairy.infrastructure.persistence.model.example;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import host.fairy.fairylandfuture.domain.model.MOBase;

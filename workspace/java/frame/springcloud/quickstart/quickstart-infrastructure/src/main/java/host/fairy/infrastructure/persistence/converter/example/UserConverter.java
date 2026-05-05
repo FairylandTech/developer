@@ -1,8 +1,8 @@
-package host.fairy.infrastructure.convert.example;
+package host.fairy.infrastructure.persistence.converter.example;
 
 import host.fairy.domain.model.example.User;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
-import host.fairy.infrastructure.model.example.UserMO;
+import host.fairy.infrastructure.persistence.model.example.UserMO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

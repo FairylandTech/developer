@@ -7,8 +7,6 @@
  ****************************************************/
 package host.fairy.application.service.example.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import host.fairy.application.contracts.example.UserDO;
 import host.fairy.application.convert.example.UserApplicationConverter;
 import host.fairy.application.service.example.UserApplicationService;
@@ -32,22 +30,17 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     private final UserService userService;
     private final UserRepository userRepository;
     private final UserApplicationConverter userApplicationConverter;
-    private final ObjectMapper objectMapper;
     
     @Override
     public UserDO createUser(UserDO user) {
-        try {
-            log.info("Step 2: Application UserDO -> {}", objectMapper.writeValueAsString(user));
-            User validatedUser = userService.createUser(userApplicationConverter.toModel(user));
-            userRepository.save(validatedUser);
-            User userQueryResult = userRepository.findByUsername(validatedUser.getUsername());
-            log.info("Step 3: Application userQueryResult -> {}", objectMapper.writeValueAsString(userQueryResult));
-            UserDO userDO = userApplicationConverter.toDO(userQueryResult);
-            log.info("Step 4: Application userDO -> {}", objectMapper.writeValueAsString(userDO));
-            return userDO;
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        log.info("Step 2: Application UserDO -> {}", user.toString());
+        User validatedUser = userService.createUser(userApplicationConverter.toModel(user));
+        userRepository.save(validatedUser);
+        User userQueryResult = userRepository.findByUsername(validatedUser.getUsername());
+        log.info("Step 3: Application userQueryResult -> {}", userQueryResult.toString());
+        UserDO userDO = userApplicationConverter.toDO(userQueryResult);
+        log.info("Step 4: Application userDO -> {}", userDO.toString());
+        return userDO;
     }
     
     @Override

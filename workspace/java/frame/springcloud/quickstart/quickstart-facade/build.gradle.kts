@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    `java-library`
 }
 
 group = "host.fairy"
@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     implementation(project(":quickstart-application"))
+    implementation(project(":quickstart-domain"))
+    implementation(project(":quickstart-infrastructure"))
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

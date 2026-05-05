@@ -21,7 +21,7 @@ import java.util.List;
  * @version 1.0
  */
 @RestController
-@RequestMapping("/example/user")
+@RequestMapping("/api/example/user")
 @RequiredArgsConstructor
 public class UserController {
     

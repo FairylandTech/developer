@@ -10,6 +10,7 @@ package host.fairy.domain.service.example;
 import host.fairy.domain.model.example.User;
 import host.fairy.domain.repository.example.UserRepository;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
+import host.fairy.fairylandfuture.exception.business.BusinessExceptionBase;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +29,7 @@ public class UserService {
     public User createUser(User user) {
         log.info("Step 3: Domain User -> {}", user.toString());
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            throw new IllegalArgumentException("Username already exists");
+            throw new BusinessExceptionBase("用户名已经存在");
         }
         
         user.setStatus(EnabledEnum.ENABLED);
@@ -40,7 +41,7 @@ public class UserService {
     
     public User updateUser(User user) {
         if (user.getId() == null || user.getId().equals(0L)) {
-            throw new IllegalArgumentException("Invalid user ID");
+            throw new RuntimeException("Invalid user ID");
         }
         
         return user;
