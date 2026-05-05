@@ -16,6 +16,7 @@ import host.fairy.domain.model.example.User;
 import host.fairy.domain.repository.example.UserRepository;
 import host.fairy.domain.service.example.UserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
  * @author Beau Dean
  * @version 1.0
  */
+@Slf4j
 @Service
 @AllArgsConstructor
 public class UserApplicationServiceImpl implements UserApplicationService {
@@ -35,13 +37,13 @@ public class UserApplicationServiceImpl implements UserApplicationService {
     @Override
     public UserDO createUser(UserDO user) {
         try {
-            System.out.println("Step 2: Application UserDO -> " + user.toString());
+            log.info("Step 2: Application UserDO -> {}", objectMapper.writeValueAsString(user));
             User validatedUser = userService.createUser(userApplicationConverter.toModel(user));
             userRepository.save(validatedUser);
             User userQueryResult = userRepository.findByUsername(validatedUser.getUsername());
-            System.out.println("Result 2: Domain User -> " + objectMapper.writeValueAsString(userQueryResult));
+            log.info("Step 3: Application userQueryResult -> {}", objectMapper.writeValueAsString(userQueryResult));
             UserDO userDO = userApplicationConverter.toDO(userQueryResult);
-            System.out.println("Result 2: Application userDO -> " + userDO.toString());
+            log.info("Step 4: Application userDO -> {}", objectMapper.writeValueAsString(userDO));
             return userDO;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

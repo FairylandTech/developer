@@ -11,6 +11,7 @@ import host.fairy.domain.model.example.User;
 import host.fairy.domain.repository.example.UserRepository;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 
@@ -18,13 +19,14 @@ import java.time.LocalDateTime;
  * @author Beau Dean
  * @version 1.0
  */
+@Slf4j
 @AllArgsConstructor
 public class UserService {
     
     private final UserRepository userRepository;
     
     public User createUser(User user) {
-        System.out.println("Step 3: Domain User -> " + user.toString());
+        log.info("Step 3: Domain User -> {}", user.toString());
         if (userRepository.findByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("Username already exists");
         }

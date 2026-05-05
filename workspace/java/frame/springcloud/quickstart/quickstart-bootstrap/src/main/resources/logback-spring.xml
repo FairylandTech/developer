@@ -238,27 +238,21 @@
         <!-- 模块日志绑定（additivity=true代表同时输出到全局日志，设为false则仅输出到模块独立文件） -->
         <logger name="host.fairy.interface" level="debug" additivity="true">
             <appender-ref ref="INTERFACE_FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <logger name="host.fairy.facade" level="debug" additivity="true">
             <appender-ref ref="FACADE_FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <logger name="host.fairy.application" level="debug" additivity="true">
             <appender-ref ref="APPLICATION_FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <logger name="host.fairy.domain" level="debug" additivity="true">
             <appender-ref ref="DOMAIN_FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <logger name="host.fairy.infrastructure" level="debug" additivity="true">
             <appender-ref ref="INFRASTRUCTURE_FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <logger name="host.fairy.bootstrap" level="debug" additivity="true">
             <appender-ref ref="BOOTSTRAP_FILE"/>
-            <appender-ref ref="CONSOLE"/>
         </logger>
         <!-- 框架日志级别配置 -->
         <logger name="org.springframework" level="warn"/>
@@ -307,26 +301,20 @@
     </root>
     <logger name="host.fairy.interface" level="debug" additivity="true">
         <appender-ref ref="INTERFACE_FILE"/>
-        <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="host.fairy.facade" level="debug" additivity="true">
         <appender-ref ref="FACADE_FILE"/>
-        <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="host.fairy.application" level="debug" additivity="true">
         <appender-ref ref="APPLICATION_FILE"/>
-        <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="host.fairy.domain" level="debug" additivity="true">
         <appender-ref ref="DOMAIN_FILE"/>
-        <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="host.fairy.infrastructure" level="debug" additivity="true">
         <appender-ref ref="INFRASTRUCTURE_FILE"/>
-        <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="host.fairy.bootstrap" level="debug" additivity="true">
         <appender-ref ref="BOOTSTRAP_FILE"/>
-        <appender-ref ref="CONSOLE"/>
     </logger>
 </configuration>

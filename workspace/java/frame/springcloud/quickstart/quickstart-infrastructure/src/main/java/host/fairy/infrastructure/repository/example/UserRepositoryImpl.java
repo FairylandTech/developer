@@ -6,6 +6,7 @@ import host.fairy.infrastructure.convert.example.UserConverter;
 import host.fairy.infrastructure.mapper.example.UserMapper;
 import host.fairy.infrastructure.model.example.UserMO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Objects;
  * @author Beau Dean
  * @version 1.0
  */
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
@@ -27,7 +29,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void save(User user) {
         UserMO userMO = userConverter.toMO(user);
-        System.out.println("Step 4: Repository UserMO ->" + userMO.toString());
+        log.info("Step 4: Repository UserMO -> {}", userMO.toString());
         if (userMO.getId() == null) {
             userMapper.insert(userMO);
             user.setId(userMO.getId());
@@ -52,7 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User findByUsername(String username) {
         UserMO userMO = userMapper.selectByUsername(username);
         if (!Objects.isNull(userMO)) {
-            System.out.println("Result 1: Repository UserMO -> " + userMO.toString());
+            log.info("Result 1: Repository UserMO -> {}", userMO.toString());
         }
         return userConverter.toModel(userMO);
     }

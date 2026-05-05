@@ -18,39 +18,13 @@ import java.util.List;
  */
 public interface UserFacade {
     
-    /**
-     * 根据 ID 获取用户
-     *
-     * @param id 用户 ID
-     * @return 用户 Output
-     */
     UserOutput getById(Long id);
     
-    /**
-     * 创建用户
-     *
-     * @param userInput 用户创建输入 Input
-     */
     UserOutput create(UserInput userInput);
     
-    /**
-     * 更新用户
-     *
-     * @param userInput 用户更新输入 Input
-     */
     void update(UserInput userInput);
     
-    /**
-     * 删除用户
-     *
-     * @param id 用户 ID
-     */
     void delete(Long id);
     
-    /**
-     * 获取所有用户
-     *
-     * @return 用户列表
-     */
     List<UserOutput> list();
 }
