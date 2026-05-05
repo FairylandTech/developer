@@ -1,3 +1,10 @@
+/*****************************************************
+ * @software: IntelliJ IDEA
+ * @author: Beau Dean
+ * @contact: https://fairy.host
+ * @organization: https://github.com/FairylandFuture
+ * @datetime: 2026-05-05 05:15:33 UTC+08:00
+ ****************************************************/
 package host.fairy.facade.service.example;
 
 import host.fairy.facade.contracts.example.input.UserCreateInput;
@@ -6,12 +13,10 @@ import host.fairy.facade.contracts.example.output.UserOutput;
 import java.util.List;
 
 /**
- * User Service 接口
- *
- * @author Junie
+ * @author Beau Dean
  * @version 1.0
  */
-public interface UserService {
+public interface UserFacade {
     
     /**
      * 根据 ID 获取用户
@@ -26,7 +31,7 @@ public interface UserService {
      *
      * @param userCreateInput 用户创建输入 Input
      */
-    void create(UserCreateInput userCreateInput);
+    UserOutput create(UserCreateInput userCreateInput);
     
     /**
      * 更新用户

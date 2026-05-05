@@ -9,11 +9,10 @@ package host.fairy.infrastructure.model.example;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import host.fairy.fairylandfuture.domain.model.MOBase;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+
+import java.math.BigDecimal;
 
 /**
  * @author Beau Dean
@@ -23,14 +22,19 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@TableName("tb_user")
+@TableName("t_user")
 public class UserMO extends MOBase {
     private String username;
+    
     private String password;
+    
     private String phone;
+    
     private String info;
+    
     private String status;
-    private Long balance;
-    private String enabled;
+    
+    private BigDecimal balance;
 }

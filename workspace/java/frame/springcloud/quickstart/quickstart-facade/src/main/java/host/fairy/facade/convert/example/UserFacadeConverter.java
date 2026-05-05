@@ -8,7 +8,12 @@
 package host.fairy.facade.convert.example;
 
 import host.fairy.application.contracts.example.UserDO;
+import host.fairy.facade.contracts.example.input.UserCreateInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
+import host.fairy.fairylandfuture.enums.DateTimeFormatEnum;
+import host.fairy.fairylandfuture.enums.EnabledEnum;
+import host.fairy.fairylandfuture.utils.converter.BigDecimalConverterUtils;
+import host.fairy.fairylandfuture.utils.converter.DateTimeConverterUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,23 +22,38 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserFacadeConverter {
-    public UserDO toDO(UserOutput user) {
+    public UserDO toDO(UserCreateInput user) {
         if (user == null) {
             return null;
         }
         
-        UserDO dto = new UserDO();
-        dto.setId(user.getId());
-        return dto;
+        return UserDO.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .phone(user.getPhone())
+                .info(user.getInfo())
+                .status(EnabledEnum.fromDescription(user.getStatus()))
+                .balance(BigDecimalConverterUtils.fromPlainString(user.getBalance()))
+                .createdAt(DateTimeConverterUtils.toLocalDateTime(user.getCreatedAt(), DateTimeFormatEnum.DATE_TIME))
+                .enabled(EnabledEnum.fromDescription(user.getStatus()))
+                .build();
     }
     
     public UserOutput toOutput(UserDO user) {
         if (user == null) {
             return null;
         }
-        
-        UserOutput dto = new UserOutput();
-        dto.setId(user.getId());
-        return dto;
+        return UserOutput.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .phone(user.getPhone())
+                .info(user.getInfo())
+                .status(user.getStatus().getDescription())
+                .balance(BigDecimalConverterUtils.toPlainString(user.getBalance()))
+                .createdAt(DateTimeConverterUtils.toString(user.getCreatedAt(), DateTimeFormatEnum.DATE_TIME))
+                .updatedAt(DateTimeConverterUtils.toString(user.getUpdatedAt(), DateTimeFormatEnum.DATE_TIME))
+                .enabled(user.getEnabled().getDescription())
+                .build();
     }
 }

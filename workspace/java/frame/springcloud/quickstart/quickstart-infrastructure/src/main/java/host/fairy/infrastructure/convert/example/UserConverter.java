@@ -22,7 +22,7 @@ public class UserConverter {
      * @param mo 数据对象
      * @return 领域实体
      */
-    public User toEntity(UserMO mo) {
+    public User toModel(UserMO mo) {
         if (mo == null) {
             return null;
         }
@@ -68,6 +68,6 @@ public class UserConverter {
         if (mos == null) {
             return null;
         }
-        return mos.stream().map(this::toEntity).toList();
+        return mos.stream().map(this::toModel).toList();
     }
 }

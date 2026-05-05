@@ -1,0 +1,46 @@
+/*****************************************************
+ * @software: IntelliJ IDEA
+ * @author: Beau Dean
+ * @contact: https://fairy.host
+ * @organization: https://github.com/FairylandFuture
+ * @datetime: 2026-05-05 04:14:06 UTC+08:00
+ ****************************************************/
+package host.fairy.domain.service.example;
+
+import host.fairy.domain.model.example.User;
+import host.fairy.domain.repository.example.UserRepository;
+import host.fairy.fairylandfuture.enums.EnabledEnum;
+import lombok.AllArgsConstructor;
+
+import java.time.LocalDateTime;
+
+/**
+ * @author Beau Dean
+ * @version 1.0
+ */
+@AllArgsConstructor
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    public User createUser(User user) {
+        System.out.println("Step 3: Domain User -> " + user.toString());
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+        
+        user.setStatus(EnabledEnum.ENABLED);
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
+        user.setEnabled(EnabledEnum.ENABLED);
+        return user;
+    }
+    
+    public User updateUser(User user) {
+        if (user.getId() == null || user.getId().equals(0L)) {
+            throw new IllegalArgumentException("Invalid user ID");
+        }
+        
+        return user;
+    }
+}

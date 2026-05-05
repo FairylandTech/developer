@@ -7,23 +7,18 @@
  ****************************************************/
 package host.fairy.application.contracts.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
+import host.fairy.domain.model.example.User;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 /**
  * @author Beau Dean
  * @version 1.0
  */
 @Data
+@SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
-public class UserDO implements Serializable {
-    private Long id;
-    
-    private String name;
-    
-    private String phone;
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class UserDO extends User {
 }

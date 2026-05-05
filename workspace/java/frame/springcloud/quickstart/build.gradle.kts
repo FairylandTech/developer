@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version "3.5.14" apply false
+    id("org.springframework.boot") version "3.1.10" apply false
     id("io.spring.dependency-management") version "1.1.7" apply false
     java
 }
@@ -48,6 +48,7 @@ subprojects {
 
         implementation(springBom)
         implementation("host.fairy:fairylandfuture:1.0.1")
+//        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
         compileOnly("org.projectlombok:lombok")
 

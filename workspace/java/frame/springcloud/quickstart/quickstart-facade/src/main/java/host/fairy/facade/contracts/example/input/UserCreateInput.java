@@ -1,3 +1,10 @@
+/*****************************************************
+ * @software: IntelliJ IDEA
+ * @author: Beau Dean
+ * @contact: https://fairy.host
+ * @organization: https://github.com/FairylandFuture
+ * @datetime: 2026-05-05 05:17:44 UTC+08:00
+ ****************************************************/
 package host.fairy.facade.contracts.example.input;
 
 import lombok.AllArgsConstructor;
@@ -8,9 +15,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * User 创建/更新 Command
- *
- * @author Junie
+ * @author Beau Dean
  * @version 1.0
  */
 @Data
@@ -24,6 +29,7 @@ public class UserCreateInput implements Serializable {
     private String phone;
     private String info;
     private String status;
-    private Long balance;
+    private String balance;
+    private String createdAt;
     private String enabled;
 }
