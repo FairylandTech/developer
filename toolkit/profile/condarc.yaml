@@ -1,0 +1,67 @@
+# Windows 配置文件路径：%USERPROFILE%\.condarc
+# Linux/Mac 配置文件路径：~/.condarc
+# ======================================
+# 🔧 基础运行行为配置
+# ======================================
+auto_update_conda: false           # 禁用Conda自动更新，避免打断开发、弹出无关提示
+auto_activate_base: false          # 禁用默认自动激活base环境，新开终端命令行更干净
+env_prompt: ({name})               # 命令行提示符仅显示激活的环境名，不显示完整路径，更简洁
+report_errors: true                # 运行出错时自动生成错误报告，方便排查问题
+show_channel_urls: true            # 装包时显示包的来源源地址，方便排查源失效/下载慢问题
+ssl_verify: true                   # 开启SSL证书校验，避免源劫持风险，国内源偶发证书报错可临时改为false
+
+# ======================================
+# ⚡ 网络&性能优化配置
+# ======================================
+channel_priority: flexible         # 灵活源优先级：优先从高优先级源找包，找不到自动降级到低优先级源，实现国内源优先+官方兜底
+remote_connect_timeout_secs: 5     # 源连接超时时间：5秒连不上当前源自动切下一个源，避免长时间卡顿
+remote_read_timeout_secs: 10       # 源数据读取超时时间：10秒读不到数据自动切下一个源
+local_repodata_ttl: 86400          # 源索引缓存有效期：单位秒=1天，1天内装包不会重复拉取源索引，大幅提升装包速度
+anaconda_anon_usage_enabled: false # 禁用Conda匿名使用数据上报，减少不必要网络请求、保护隐私
+disable_pip_version_check: true    # 禁用pip版本检查，避免conda装包时附带检查pip更新浪费时间
+
+# ======================================
+# 📦 软件源优先级配置（国内清华源优先 + 官方源兜底）
+# ======================================
+# 源优先级从上到下依次降低，社区源在前，官方默认源在后
+channels:
+  - conda-forge                    # 社区开源包源：包数量最多、更新最频繁，映射到清华镜像
+  - pytorch                        # PyTorch官方源：专门装PyTorch相关包，映射到清华镜像
+  - bioconda                       # 生物信息专用源：不做生信开发可以删除这行，减少索引拉取时间
+  - defaults                       # Anaconda官方默认源：兜底用，国内源找不到的包从这里拉
+
+# default_channels是defaults别名对应的实际源地址，国内源在前，官方源在后
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+  # 官方源兜底，不要删除
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+  - https://repo.anaconda.com/pkgs/msys2
+
+# 社区源别名和清华镜像的映射关系，channels里写别名即可，不用重复写完整路径
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+# ======================================
+# 🐍 配套Pip全局配置（和Conda源策略统一：国内优先+官方兜底）
+# ======================================
+pip:
+  index-url: https://pypi.tuna.tsinghua.edu.cn/simple # pip默认源：清华pypi源
+  extra-index-url: https://pypi.org/simple            # pip兜底源：官方pypi源，国内源找不到自动切
+  timeout: 5                                          # pip请求超时时间，5秒超时自动切兜底源
+  no-cache-dir: true                                  # 禁用pip本地缓存，避免冗余文件占磁盘，需要离线装包可改为false
+  trusted-host:
+    - pypi.tuna.tsinghua.edu.cn
+    - pypi.org
+
+# ======================================
+# 💾 存储路径配置（规避C盘爆满）
+# ======================================
+envs_dirs:
+  - D:\DevelopTools\Repository\anaconda-envs # 虚拟环境存储目录：改到D盘，避免占C盘空间，重装系统不丢失已创建的环境
+pkgs_dirs:
+  - D:\AppCache\Anaconda                     # 全局公共包缓存目录：所有环境共享，避免重复下载同版本包，改到D盘不占C盘
