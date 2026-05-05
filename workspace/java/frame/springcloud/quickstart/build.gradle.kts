@@ -48,7 +48,6 @@ subprojects {
 
         implementation(springBom)
         implementation("host.fairy:fairylandfuture:1.0.1")
-//        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
         compileOnly("org.projectlombok:lombok")
 

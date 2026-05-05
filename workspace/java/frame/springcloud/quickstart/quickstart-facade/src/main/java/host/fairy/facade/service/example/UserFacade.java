@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.facade.service.example;
 
-import host.fairy.facade.contracts.example.input.UserCreateInput;
+import host.fairy.facade.contracts.example.input.UserInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
 
 import java.util.List;
@@ -29,16 +29,16 @@ public interface UserFacade {
     /**
      * 创建用户
      *
-     * @param userCreateInput 用户创建输入 Input
+     * @param userInput 用户创建输入 Input
      */
-    UserOutput create(UserCreateInput userCreateInput);
+    UserOutput create(UserInput userInput);
     
     /**
      * 更新用户
      *
-     * @param userCreateInput 用户更新输入 Input
+     * @param userInput 用户更新输入 Input
      */
-    void update(UserCreateInput userCreateInput);
+    void update(UserInput userInput);
     
     /**
      * 删除用户

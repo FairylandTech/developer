@@ -8,7 +8,7 @@
 package host.fairy.facade.convert.example;
 
 import host.fairy.application.contracts.example.UserDO;
-import host.fairy.facade.contracts.example.input.UserCreateInput;
+import host.fairy.facade.contracts.example.input.UserInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
 import host.fairy.fairylandfuture.enums.DateTimeFormatEnum;
 import host.fairy.fairylandfuture.enums.EnabledEnum;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserFacadeConverter {
-    public UserDO toDO(UserCreateInput user) {
+    public UserDO toDO(UserInput user) {
         if (user == null) {
             return null;
         }

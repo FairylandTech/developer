@@ -7,7 +7,7 @@
  ****************************************************/
 package host.fairy.interfaces.http.controller.example;
 
-import host.fairy.facade.contracts.example.input.UserCreateInput;
+import host.fairy.facade.contracts.example.input.UserInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
 import host.fairy.facade.service.example.UserFacade;
 import host.fairy.fairylandfuture.common.web.response.Response;
@@ -33,12 +33,12 @@ public class UserController {
     }
     
     @PostMapping("")
-    public Response<UserOutput> create(@RequestBody UserCreateInput command) {
+    public Response<UserOutput> create(@RequestBody UserInput command) {
         return Response.success(userFacade.create(command));
     }
     
     @PutMapping("/{id}")
-    public Response<Void> update(@PathVariable Long id, @RequestBody UserCreateInput command) {
+    public Response<Void> update(@PathVariable Long id, @RequestBody UserInput command) {
         command.setId(id);
         userFacade.update(command);
         return Response.success();

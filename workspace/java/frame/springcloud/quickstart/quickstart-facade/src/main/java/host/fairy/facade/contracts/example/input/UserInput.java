@@ -22,7 +22,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCreateInput implements Serializable {
+public class UserInput implements Serializable {
     private Long id;
     private String username;
     private String password;

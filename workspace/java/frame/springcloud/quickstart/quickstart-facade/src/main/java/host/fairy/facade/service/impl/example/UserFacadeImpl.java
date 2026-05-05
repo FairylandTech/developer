@@ -9,11 +9,12 @@ package host.fairy.facade.service.impl.example;
 
 import host.fairy.application.contracts.example.UserDO;
 import host.fairy.application.service.example.UserApplicationService;
-import host.fairy.facade.contracts.example.input.UserCreateInput;
+import host.fairy.facade.contracts.example.input.UserInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
 import host.fairy.facade.convert.example.UserFacadeConverter;
 import host.fairy.facade.service.example.UserFacade;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author Beau Dean
  * @version 1.0
  */
+@Slf4j
 @Service
 @AllArgsConstructor
 public class UserFacadeImpl implements UserFacade {
@@ -35,18 +37,18 @@ public class UserFacadeImpl implements UserFacade {
     }
     
     @Override
-    public UserOutput create(UserCreateInput userCreateInput) {
-        System.out.println("Step 1: Facade UserCreateInput -> " + userCreateInput.toString());
-        UserDO userDO = userFacadeConverter.toDO(userCreateInput);
+    public UserOutput create(UserInput userInput) {
+        log.info("Step 1: Facade UserInput -> {}", userInput.toString());
+        UserDO userDO = userFacadeConverter.toDO(userInput);
         UserDO result = userApplicationService.createUser(userDO);
         UserOutput output = userFacadeConverter.toOutput(result);
-        System.out.println("Result 2: Facade UserOutput -> " + output.toString());
+        log.info("Result 2: Facade UserOutput -> {}", output.toString());
         return output;
     }
     
     @Override
-    public void update(UserCreateInput userCreateInput) {
-        UserDO userDO = userFacadeConverter.toDO(userCreateInput);
+    public void update(UserInput userInput) {
+        UserDO userDO = userFacadeConverter.toDO(userInput);
     }
     
     @Override

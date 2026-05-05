@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@software: IntelliJ IDEA
+@author: Beau Dean
+@contact: https://fairy.host
+@organization: https://github.com/FairylandFuture
+@datetime: 2026-05-05 20:46:20 UTC+08:00
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!-- 读取Spring配置里的应用名 -->
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="quickstart"/>
+    <!-- 日志根路径：默认项目根目录/logs/应用名，生产建议指定绝对路径 -->
+    <property name="LOG_PATH" value="${LOG_PATH:-logs}/${APP_NAME}"/>
+    <!-- 模块日志单独存放目录 -->
+    <property name="MODULE_LOG_PATH" value="${LOG_PATH}/modules"/>
+    <!-- 日志格式预留traceId字段，后续接入链路追踪无需修改 -->
+    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %X{traceId:-} %highlight(%-5level) %cyan(%logger{36}) - %msg%n"/>
+    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %X{traceId:-} %-5level %logger{36} - %msg%n"/>
+
+    <!-- ====================== 全局公共输出器配置 ====================== -->
+    <!-- 控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 全局INFO日志 -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}-info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/${APP_NAME}-info.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>10GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 全局WARN日志 -->
+    <appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}-warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/${APP_NAME}-warn.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>10GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 全局ERROR日志 -->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/${APP_NAME}-error.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>90</MaxHistory>
+            <TotalSizeCap>20GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- ====================== 各模块独立输出器配置 ====================== -->
+    <!-- 1. quickstart-interface 模块日志 -->
+    <appender name="INTERFACE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${MODULE_LOG_PATH}/interface.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${MODULE_LOG_PATH}/interface.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>5GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 2. quickstart-facade 模块日志 -->
+    <appender name="FACADE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${MODULE_LOG_PATH}/facade.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${MODULE_LOG_PATH}/facade.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>5GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 3. quickstart-application 模块日志 -->
+    <appender name="APPLICATION_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${MODULE_LOG_PATH}/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${MODULE_LOG_PATH}/application.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>5GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 4. quickstart-domain 模块日志 -->
+    <appender name="DOMAIN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${MODULE_LOG_PATH}/domain.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${MODULE_LOG_PATH}/domain.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>5GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 5. quickstart-infrastructure 模块日志 -->
+    <appender name="INFRASTRUCTURE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${MODULE_LOG_PATH}/infrastructure.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${MODULE_LOG_PATH}/infrastructure.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>5GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 6. quickstart-bootstrap 模块日志 -->
+    <appender name="BOOTSTRAP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${MODULE_LOG_PATH}/bootstrap.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${MODULE_LOG_PATH}/bootstrap.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+            <MaxFileSize>100MB</MaxFileSize>
+            <MaxHistory>30</MaxHistory>
+            <TotalSizeCap>5GB</TotalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- ====================== 生产环境异步输出配置 ====================== -->
+    <appender name="ASYNC_INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>1024</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+        <includeCallerData>false</includeCallerData>
+        <appender-ref ref="INFO_FILE"/>
+    </appender>
+    <appender name="ASYNC_WARN" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="WARN_FILE"/>
+    </appender>
+    <appender name="ASYNC_ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="ERROR_FILE"/>
+    </appender>
+    <!-- 模块日志异步包装 -->
+    <appender name="ASYNC_INTERFACE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="INTERFACE_FILE"/>
+    </appender>
+    <appender name="ASYNC_FACADE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FACADE_FILE"/>
+    </appender>
+    <appender name="ASYNC_APPLICATION" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="APPLICATION_FILE"/>
+    </appender>
+    <appender name="ASYNC_DOMAIN" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="DOMAIN_FILE"/>
+    </appender>
+    <appender name="ASYNC_INFRASTRUCTURE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="INFRASTRUCTURE_FILE"/>
+    </appender>
+    <appender name="ASYNC_BOOTSTRAP" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="BOOTSTRAP_FILE"/>
+    </appender>
+
+    <!-- ====================== 开发环境配置 ====================== -->
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="INFO_FILE"/>
+            <appender-ref ref="WARN_FILE"/>
+            <appender-ref ref="ERROR_FILE"/>
+        </root>
+        <!-- 模块日志绑定（additivity=true代表同时输出到全局日志，设为false则仅输出到模块独立文件） -->
+        <logger name="host.fairy.interface" level="debug" additivity="true">
+            <appender-ref ref="INTERFACE_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="host.fairy.facade" level="debug" additivity="true">
+            <appender-ref ref="FACADE_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="host.fairy.application" level="debug" additivity="true">
+            <appender-ref ref="APPLICATION_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="host.fairy.domain" level="debug" additivity="true">
+            <appender-ref ref="DOMAIN_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="host.fairy.infrastructure" level="debug" additivity="true">
+            <appender-ref ref="INFRASTRUCTURE_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="host.fairy.bootstrap" level="debug" additivity="true">
+            <appender-ref ref="BOOTSTRAP_FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <!-- 框架日志级别配置 -->
+        <logger name="org.springframework" level="warn"/>
+        <logger name="org.apache.ibatis" level="debug"/>
+        <logger name="com.alibaba.druid" level="warn"/>
+    </springProfile>
+
+    <!-- ====================== 生产环境配置 ====================== -->
+    <springProfile name="prod">
+        <root level="info">
+            <appender-ref ref="ASYNC_INFO"/>
+            <appender-ref ref="ASYNC_WARN"/>
+            <appender-ref ref="ASYNC_ERROR"/>
+        </root>
+        <!-- 模块日志异步绑定 -->
+        <logger name="host.fairy.interface" level="info" additivity="true">
+            <appender-ref ref="ASYNC_INTERFACE"/>
+        </logger>
+        <logger name="host.fairy.facade" level="info" additivity="true">
+            <appender-ref ref="ASYNC_FACADE"/>
+        </logger>
+        <logger name="host.fairy.application" level="info" additivity="true">
+            <appender-ref ref="ASYNC_APPLICATION"/>
+        </logger>
+        <logger name="host.fairy.domain" level="info" additivity="true">
+            <appender-ref ref="ASYNC_DOMAIN"/>
+        </logger>
+        <logger name="host.fairy.infrastructure" level="info" additivity="true">
+            <appender-ref ref="ASYNC_INFRASTRUCTURE"/>
+        </logger>
+        <logger name="host.fairy.bootstrap" level="info" additivity="true">
+            <appender-ref ref="ASYNC_BOOTSTRAP"/>
+        </logger>
+        <!-- 框架日志级别配置 -->
+        <logger name="org.springframework" level="warn"/>
+        <logger name="org.apache.ibatis" level="warn"/>
+        <logger name="com.alibaba.druid" level="error"/>
+    </springProfile>
+
+    <!-- ====================== 默认兜底配置（未指定profile时生效） ====================== -->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="WARN_FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+    <logger name="host.fairy.interface" level="debug" additivity="true">
+        <appender-ref ref="INTERFACE_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="host.fairy.facade" level="debug" additivity="true">
+        <appender-ref ref="FACADE_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="host.fairy.application" level="debug" additivity="true">
+        <appender-ref ref="APPLICATION_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="host.fairy.domain" level="debug" additivity="true">
+        <appender-ref ref="DOMAIN_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="host.fairy.infrastructure" level="debug" additivity="true">
+        <appender-ref ref="INFRASTRUCTURE_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="host.fairy.bootstrap" level="debug" additivity="true">
+        <appender-ref ref="BOOTSTRAP_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+</configuration>

@@ -10,3 +10,7 @@ dependencies {
 
     runtimeOnly("org.springframework.boot:spring-boot-devtools")
 }
+
+tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
+    workingDir = rootProject.projectDir
+}
