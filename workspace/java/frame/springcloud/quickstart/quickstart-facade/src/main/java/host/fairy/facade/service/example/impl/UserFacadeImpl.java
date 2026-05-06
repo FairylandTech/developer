@@ -7,20 +7,17 @@
  ****************************************************/
 package host.fairy.facade.service.example.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import host.fairy.application.contracts.example.UserDO;
 import host.fairy.application.service.example.UserApplicationService;
 import host.fairy.facade.contracts.example.input.UserInput;
+import host.fairy.facade.contracts.example.input.UserQueryPageInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
 import host.fairy.facade.convert.example.UserFacadeConverter;
 import host.fairy.facade.service.example.UserFacade;
-import host.fairy.fairylandfuture.exception.business.BusinessExceptionBase;
+import host.fairy.fairylandfuture.common.web.result.PageResult;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author Beau Dean
@@ -33,38 +30,15 @@ public class UserFacadeImpl implements UserFacade {
     
     private final UserFacadeConverter userFacadeConverter;
     private final UserApplicationService userApplicationService;
-    private final ObjectMapper objectMapper;
-    
-    @Override
-    public UserOutput getById(Long id) {
-        return userFacadeConverter.toOutput(new UserDO());
-    }
     
     @Override
     public UserOutput create(UserInput userInput) {
-        try {
-            log.info("Step 1: Facade UserInput -> {}", userInput.toString());
-            UserDO userDO = userFacadeConverter.toDO(userInput);
-            UserDO result = userApplicationService.createUser(userDO);
-            UserOutput output = userFacadeConverter.toOutput(result);
-            log.info("Result 2: Facade UserOutput -> {}", objectMapper.writeValueAsString(output));
-            return output;
-        } catch (JsonProcessingException e) {
-            throw new BusinessExceptionBase("JSON序列化失败");
-        }
+        return userFacadeConverter.toOutput(userApplicationService.createUser(userFacadeConverter.toDO(userInput)));
     }
     
     @Override
-    public void update(UserInput userInput) {
-        UserDO userDO = userFacadeConverter.toDO(userInput);
-    }
-    
-    @Override
-    public void delete(Long id) {
-    }
-    
-    @Override
-    public List<UserOutput> list() {
-        return List.of();
+    public PageResult<UserOutput> queryList(UserQueryPageInput userQueryPageInput) {
+        PageResult<UserDO> result = userApplicationService.queryUserList(userFacadeConverter.toDO(userQueryPageInput));
+        return PageResult.from(result.getPage(), result.getSize(), result.getTotal(), result.getPages(), userFacadeConverter.toOutputList(result.getData()));
     }
 }

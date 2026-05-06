@@ -8,16 +8,15 @@
 package host.fairy.application.service.example.impl;
 
 import host.fairy.application.contracts.example.UserDO;
-import host.fairy.application.convert.example.UserApplicationConverter;
+import host.fairy.application.converter.example.UserApplicationConverter;
 import host.fairy.application.service.example.UserApplicationService;
 import host.fairy.domain.model.example.User;
 import host.fairy.domain.repository.example.UserRepository;
-import host.fairy.domain.service.example.UserService;
+import host.fairy.domain.service.example.UserDomainService;
+import host.fairy.fairylandfuture.common.web.result.PageResult;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author Beau Dean
@@ -27,39 +26,20 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class UserApplicationServiceImpl implements UserApplicationService {
-    private final UserService userService;
+    private final UserDomainService userDomainService;
     private final UserRepository userRepository;
     private final UserApplicationConverter userApplicationConverter;
     
     @Override
-    public UserDO createUser(UserDO user) {
-        log.info("Step 2: Application UserDO -> {}", user.toString());
-        User validatedUser = userService.createUser(userApplicationConverter.toModel(user));
-        userRepository.save(validatedUser);
-        User userQueryResult = userRepository.findByUsername(validatedUser.getUsername());
-        log.info("Step 3: Application userQueryResult -> {}", userQueryResult.toString());
-        UserDO userDO = userApplicationConverter.toDO(userQueryResult);
-        log.info("Step 4: Application userDO -> {}", userDO.toString());
-        return userDO;
+    public UserDO createUser(UserDO userDO) {
+        User user = userDomainService.createUser(userApplicationConverter.toModel(userDO));
+        User insertUser = userRepository.insert(user);
+        return userApplicationConverter.toDO(insertUser);
     }
     
     @Override
-    public UserDO queryUserById(Long Id) {
-        return null;
-    }
-    
-    @Override
-    public List<UserDO> queryUserList(Integer page, Integer size, UserDO user) {
-        return List.of();
-    }
-    
-    @Override
-    public UserDO updateUser(UserDO user) {
-        return null;
-    }
-    
-    @Override
-    public void deleteUserById(Long Id) {
-    
+    public PageResult<UserDO> queryUserList(UserDO userDO) {
+        PageResult<User> result = userRepository.selectPage(userDO.getPage(), userDO.getSize(), userApplicationConverter.toModel(userDO));
+        return PageResult.from(result.getPage(), result.getSize(), result.getTotal(), result.getPages(), userApplicationConverter.toDOList(result.getData()));
     }
 }

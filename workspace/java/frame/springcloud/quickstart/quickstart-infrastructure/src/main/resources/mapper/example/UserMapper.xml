@@ -14,9 +14,7 @@
         <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
         <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
         <result column="enabled" jdbcType="VARCHAR" property="enabled"/>
-
     </resultMap>
-
 
     <select id="selectByUsername" resultMap="BaseResultMap">
         select
@@ -33,7 +31,7 @@
         from
             t_user
         where
-            enabled = 'Y'
-            and username = #{username}
+              enabled = 'Y'
+          and username = #{username}
     </select>
 </mapper>

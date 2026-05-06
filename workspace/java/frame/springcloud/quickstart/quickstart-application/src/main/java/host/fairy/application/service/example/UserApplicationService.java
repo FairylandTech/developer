@@ -8,6 +8,7 @@
 package host.fairy.application.service.example;
 
 import host.fairy.application.contracts.example.UserDO;
+import host.fairy.fairylandfuture.common.web.result.PageResult;
 
 import java.util.List;
 
@@ -18,11 +19,5 @@ import java.util.List;
 public interface UserApplicationService {
     UserDO createUser(UserDO user);
     
-    UserDO queryUserById(Long Id);
-    
-    List<UserDO> queryUserList(Integer page, Integer size, UserDO user);
-    
-    UserDO updateUser(UserDO user);
-    
-    void deleteUserById(Long Id);
+    PageResult<UserDO> queryUserList(UserDO userDO);
 }

@@ -22,13 +22,12 @@ import java.time.LocalDateTime;
  */
 @Slf4j
 @AllArgsConstructor
-public class UserService {
+public class UserDomainService {
     
     private final UserRepository userRepository;
     
     public User createUser(User user) {
-        log.info("Step 3: Domain User -> {}", user.toString());
-        if (userRepository.findByUsername(user.getUsername()) != null) {
+        if (userRepository.selectByUsername(user.getUsername()) != null) {
             throw new BusinessExceptionBase("用户名已经存在");
         }
         
@@ -41,9 +40,10 @@ public class UserService {
     
     public User updateUser(User user) {
         if (user.getId() == null || user.getId().equals(0L)) {
-            throw new RuntimeException("Invalid user ID");
+            throw new BusinessExceptionBase("用户ID不能为空");
         }
         
+        user.setUpdatedAt(LocalDateTime.now());
         return user;
     }
 }

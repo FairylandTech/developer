@@ -11,6 +11,8 @@ import host.fairy.domain.model.example.User;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Beau Dean
  * @version 1.0
@@ -18,7 +20,12 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class UserDO extends User {
+    private Integer page;
+    private Integer size;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 }

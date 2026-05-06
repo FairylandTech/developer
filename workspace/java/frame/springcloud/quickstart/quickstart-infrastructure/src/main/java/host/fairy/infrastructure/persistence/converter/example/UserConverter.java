@@ -8,44 +8,30 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * User 转换器
- *
  * @author Beau Dean
  * @version 1.0
  */
 @Component
 public class UserConverter {
     
-    /**
-     * 将 MO 转换为领域实体
-     *
-     * @param mo 数据对象
-     * @return 领域实体
-     */
-    public User toModel(UserMO mo) {
-        if (mo == null) {
+    public User toModel(UserMO userMO) {
+        if (userMO == null) {
             return null;
         }
         return User.builder()
-                .id(mo.getId())
-                .username(mo.getUsername())
-                .password(mo.getPassword())
-                .phone(mo.getPhone())
-                .info(mo.getInfo())
-                .status(EnabledEnum.fromName(mo.getStatus()))
-                .balance(mo.getBalance())
-                .createdAt(mo.getCreatedAt())
-                .updatedAt(mo.getUpdatedAt())
-                .enabled(EnabledEnum.fromName(mo.getEnabled()))
+                .id(userMO.getId())
+                .username(userMO.getUsername())
+                .password(userMO.getPassword())
+                .phone(userMO.getPhone())
+                .info(userMO.getInfo())
+                .status(EnabledEnum.fromName(userMO.getStatus()))
+                .balance(userMO.getBalance())
+                .createdAt(userMO.getCreatedAt())
+                .updatedAt(userMO.getUpdatedAt())
+                .enabled(EnabledEnum.fromName(userMO.getEnabled()))
                 .build();
     }
     
-    /**
-     * 将领域实体转换为 MO
-     *
-     * @param user 领域实体
-     * @return 数据对象
-     */
     public UserMO toMO(User user) {
         if (user == null) {
             return null;
@@ -64,10 +50,10 @@ public class UserConverter {
                 .build();
     }
     
-    public List<User> toEntityList(List<UserMO> mos) {
-        if (mos == null) {
+    public List<User> toModelList(List<UserMO> userMOList) {
+        if (userMOList == null) {
             return null;
         }
-        return mos.stream().map(this::toModel).toList();
+        return userMOList.stream().map(this::toModel).toList();
     }
 }

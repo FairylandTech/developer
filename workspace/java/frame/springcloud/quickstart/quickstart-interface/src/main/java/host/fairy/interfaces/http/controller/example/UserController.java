@@ -8,13 +8,13 @@
 package host.fairy.interfaces.http.controller.example;
 
 import host.fairy.facade.contracts.example.input.UserInput;
+import host.fairy.facade.contracts.example.input.UserQueryPageInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
 import host.fairy.facade.service.example.UserFacade;
 import host.fairy.fairylandfuture.common.web.response.Response;
+import host.fairy.fairylandfuture.common.web.result.PageResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author Beau Dean
@@ -27,31 +27,13 @@ public class UserController {
     
     private final UserFacade userFacade;
     
-    @GetMapping("/{id}")
-    public Response<UserOutput> getById(@PathVariable Long id) {
-        return Response.success(userFacade.getById(id));
+    @GetMapping("")
+    public Response<PageResult<UserOutput>> getUserPageList(UserQueryPageInput userQueryPageInput) {
+        return Response.success(userFacade.queryList(userQueryPageInput));
     }
     
     @PostMapping("")
-    public Response<UserOutput> create(@RequestBody UserInput command) {
-        return Response.success(userFacade.create(command));
-    }
-    
-    @PutMapping("/{id}")
-    public Response<Void> update(@PathVariable Long id, @RequestBody UserInput command) {
-        command.setId(id);
-        userFacade.update(command);
-        return Response.success();
-    }
-    
-    @DeleteMapping("/{id}")
-    public Response<Void> delete(@PathVariable Long id) {
-        userFacade.delete(id);
-        return Response.success();
-    }
-    
-    @GetMapping("")
-    public Response<List<UserOutput>> list() {
-        return Response.success(userFacade.list());
+    public Response<UserOutput> createUser(@RequestBody UserInput userInput) {
+        return Response.success(userFacade.create(userInput));
     }
 }

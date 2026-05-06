@@ -32,4 +32,7 @@ public class User extends ModelBase {
     private String info;
     private EnabledEnum status;
     private BigDecimal balance;
+    
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 }

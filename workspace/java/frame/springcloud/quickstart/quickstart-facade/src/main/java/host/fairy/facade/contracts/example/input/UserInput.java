@@ -8,7 +8,6 @@
 package host.fairy.facade.contracts.example.input;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +18,6 @@ import java.io.Serializable;
  * @version 1.0
  */
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInput implements Serializable {

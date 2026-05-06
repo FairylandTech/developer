@@ -8,7 +8,7 @@
 package host.fairy.infrastructure.config;
 
 import host.fairy.domain.repository.example.UserRepository;
-import host.fairy.domain.service.example.UserService;
+import host.fairy.domain.service.example.UserDomainService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 public class DomainBeanConfig {
     
     @Bean
-    public UserService userService(UserRepository userRepository) {
-        return new UserService(userRepository);
+    public UserDomainService userService(UserRepository userRepository) {
+        return new UserDomainService(userRepository);
     }
 }

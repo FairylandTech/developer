@@ -3,33 +3,29 @@
  * @author: Beau Dean
  * @contact: https://fairy.host
  * @organization: https://github.com/FairylandFuture
- * @datetime: 2026-05-05 05:18:07 UTC+08:00
+ * @datetime: 2026-05-06 14:04:01 UTC+08:00
  ****************************************************/
-package host.fairy.facade.contracts.example.output;
+package host.fairy.facade.contracts.example.input;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @author Beau Dean
  * @version 1.0
  */
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserOutput implements Serializable {
-    private Long id;
+public class UserQueryPageInput {
+    private Integer page = 1;
+    private Integer size = 10;
     private String username;
     private String phone;
-    private String info;
     private String status;
-    private String balance;
-    private String createdAt;
-    private String updatedAt;
-    private String enabled;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 }

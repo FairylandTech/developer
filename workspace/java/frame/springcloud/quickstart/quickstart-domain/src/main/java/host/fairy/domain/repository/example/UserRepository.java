@@ -1,23 +1,24 @@
 package host.fairy.domain.repository.example;
 
 import host.fairy.domain.model.example.User;
+import host.fairy.fairylandfuture.common.web.result.PageResult;
 
 import java.util.List;
 
 /**
- * User 仓库接口
- *
  * @author Beau Dean
  * @version 1.0
  */
 public interface UserRepository {
-    void save(User user);
+    User insert(User user);
     
-    User findById(Long id);
+    User selectById(Long id);
     
-    List<User> findAll();
+    List<User> selectAll(User user);
+
+    PageResult<User> selectPage(Integer page, Integer size, User user);
     
-    User findByUsername(String username);
+    User selectByUsername(String username);
     
-    void deleteById(Long id);
+    User delectById(Long id);
 }

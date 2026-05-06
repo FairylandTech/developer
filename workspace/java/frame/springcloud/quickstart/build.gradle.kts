@@ -1,6 +1,6 @@
 plugins {
-    id("org.springframework.boot") version "3.1.10" apply false
-    id("io.spring.dependency-management") version "1.1.7" apply false
+    id("org.springframework.boot") version "3.5.14"
+    id("io.spring.dependency-management") version "1.1.7"
     java
 }
 
@@ -47,12 +47,13 @@ subprojects {
         val springBom = platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
 
         implementation(springBom)
-        implementation("host.fairy:fairylandfuture:1.0.1")
+        implementation("host.fairy:fairylandfuture:1.0.2")
+        implementation("org.springframework.boot:spring-boot-starter")
 
         compileOnly("org.projectlombok:lombok")
 
         annotationProcessor(springBom)
-        annotationProcessor("org.projectlombok:lombok:")
+        annotationProcessor("org.projectlombok:lombok")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")

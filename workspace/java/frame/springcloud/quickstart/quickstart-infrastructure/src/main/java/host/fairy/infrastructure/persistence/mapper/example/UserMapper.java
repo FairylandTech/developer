@@ -12,8 +12,6 @@ import host.fairy.infrastructure.persistence.model.example.UserMO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * UserMapper 接口
- *
  * @author Beau Dean
  * @version 1.0
  */

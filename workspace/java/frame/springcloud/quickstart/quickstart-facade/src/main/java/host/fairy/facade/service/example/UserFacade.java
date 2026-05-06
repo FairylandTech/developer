@@ -8,23 +8,16 @@
 package host.fairy.facade.service.example;
 
 import host.fairy.facade.contracts.example.input.UserInput;
+import host.fairy.facade.contracts.example.input.UserQueryPageInput;
 import host.fairy.facade.contracts.example.output.UserOutput;
-
-import java.util.List;
+import host.fairy.fairylandfuture.common.web.result.PageResult;
 
 /**
  * @author Beau Dean
  * @version 1.0
  */
 public interface UserFacade {
-    
-    UserOutput getById(Long id);
-    
     UserOutput create(UserInput userInput);
     
-    void update(UserInput userInput);
-    
-    void delete(Long id);
-    
-    List<UserOutput> list();
+    PageResult<UserOutput> queryList(UserQueryPageInput userQueryPageInput);
 }
