@@ -43,16 +43,18 @@ subprojects {
             extendsFrom(configurations.annotationProcessor.get())
         }
     }
+    dependencyManagement {
+        imports {
+            mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:2025.0.2")
+        }
+    }
     dependencies {
-        val springBom = platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-
-        implementation(springBom)
         implementation("host.fairy:fairylandfuture:1.0.2")
         implementation("org.springframework.boot:spring-boot-starter")
 
         compileOnly("org.projectlombok:lombok")
 
-        annotationProcessor(springBom)
         annotationProcessor("org.projectlombok:lombok")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
