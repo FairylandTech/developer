@@ -23,4 +23,3 @@ create table if not exists t_user
         update current_timestamp comment '更新时间',
     enabled    enum ('Y', 'N') default 'Y' comment '是否启用'
 ) comment '用户表';
-feat: :sparkles: commit
