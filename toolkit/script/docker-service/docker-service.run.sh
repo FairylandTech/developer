@@ -10,6 +10,7 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 cd "${SCRIPT_DIR}" || exit 1
 
 # ========================== 配置项 ==========================
+SERVER_DOMAIN="gz.tencent.server.fairy.host"
 COMPOSE_FILE="${SCRIPT_DIR}/docker-compose.yaml"
 ENV_FILE="${SCRIPT_DIR}/.env"
 VOLUME_DIR="${SCRIPT_DIR}/volumes"
@@ -180,13 +181,13 @@ wait_healthy() {
     done
   done
   info "所有服务启动成功！"
-  printf "==================== 访问地址 ===================="
-  printf "工作目录：%s" "${SCRIPT_DIR}"
-  printf "Nacos控制台：http://localhost:%s/nacos" "$(grep 'NACOS_PORT' "${ENV_FILE}" | cut -d '=' -f2)"
-  printf "默认账号密码：nacos/nacos"
-  printf "MySQL连接：localhost:%s  root/%s" "$(grep 'MYSQL_PORT' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'MYSQL_ROOT_PASSWORD' "${ENV_FILE}" | cut -d '=' -f2)"
-  printf "PostgreSQL连接：localhost:%s  %s/%s" "$(grep 'POSTGRESQL_PORT' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'POSTGRES_USER' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'POSTGRES_PASSWORD' "${ENV_FILE}" | cut -d '=' -f2)"
-  printf "================================================="
+  printf "==================== 访问地址 ====================\n"
+  printf "工作目录：%s\n" "${SCRIPT_DIR}"
+  printf "Nacos控制台：http://${SERVER_DOMAIN}:%s  默认用户名：nacos  初始化需要设置密码\n" "$(grep 'NACOS_HTTP_PORT' "${ENV_FILE}" | cut -d '=' -f2)"
+  printf "MySQL连接：${SERVER_DOMAIN}:%s  root/%s\n" "$(grep 'MYSQL_PORT' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'MYSQL_ROOT_PASSWORD' "${ENV_FILE}" | cut -d '=' -f2)"
+  printf "PostgreSQL连接：${SERVER_DOMAIN}:%s  %s/%s\n" "$(grep 'POSTGRESQL_PORT' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'POSTGRES_USER' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'POSTGRES_PASSWORD' "${ENV_FILE}" | cut -d '=' -f2)"
+  printf "Redis连接：${SERVER_DOMAIN}:%s  %s\n" "$(grep 'REDIS_PORT' "${ENV_FILE}" | cut -d '=' -f2)" "$(grep 'REDIS_PASSWORD' "${ENV_FILE}" | cut -d '=' -f2)"
+  printf "=================================================\n"
 }
 
 # ========================== 命令入口 ==========================
