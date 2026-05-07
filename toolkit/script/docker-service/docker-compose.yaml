@@ -1,0 +1,135 @@
+networks:
+  inner-network:
+    name: inner-network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.29.0.0/16
+          ip_range: 172.29.254.0/24
+          gateway: 172.29.254.254
+    enable_ipv6: false
+    driver_opts:
+      com.docker.network.bridge.enable_icc: "true"
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
+      com.docker.network.bridge.name: "InnerNetwork"
+      com.docker.network.driver.mtu: 1500
+    labels:
+      - "internal.network.name=InnerNetwork"
+services:
+  docker-mysql-service:
+    image: mysql:${MYSQL_VERSION:-latest}
+    container_name: mysql-service
+    restart: always
+    privileged: true
+    networks:
+      inner-network:
+        ipv4_address: 172.29.255.1
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-root}"
+    volumes:
+      - ./volumes/mysql/conf:/etc/mysql/conf.d
+      - ./volumes/mysql/data:/var/lib/mysql
+      - ./volumes/mysql/logs:/var/log/mysql
+      - ./init/mysql/nacos.sql:/docker-entrypoint-initdb.d/nacos.sql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-root}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  docker-postgresql-service:
+    image: postgres:${POSTGRESQL_VERSION:-latest}
+    container_name: postgresql-service
+    restart: always
+    privileged: true
+    networks:
+      inner-network:
+        ipv4_address: 172.29.255.2
+    ports:
+      - "${POSTGRESQL_PORT:-5432}:5432"
+    environment:
+      TZ: "Asia/Shanghai"
+      POSTGRES_USER: "${POSTGRES_USER:-postgres}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-postgres}"
+      POSTGRES_DB: "${POSTGRES_DB:-postgres}"
+      PGDATA: "/var/lib/postgresql/data"
+    volumes:
+      - ./volumes/postgresql/conf:/etc/postgresql
+      - ./volumes/postgresql/data:/var/lib/postgresql/data
+    command:
+      - "postgres"
+      - "-c"
+      - "config_file=/etc/postgresql/postgresql.conf"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER:-postgres}", "-d", "${POSTGRES_DB:-postgres}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  docker-redis-service:
+    image: redis:${REDIS_VERSION:-latest}
+    container_name: redis-service
+    restart: always
+    privileged: true
+    networks:
+      inner-network:
+        ipv4_address: 172.29.255.3
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    environment:
+      TZ: "Asia/Shanghai"
+      REDIS_PASSWORD: "${REDIS_PASSWORD:-root}"
+    volumes:
+      - ./volumes/redis/conf:/etc/redis
+      - ./volumes/redis/data:/data
+      - ./volumes/redis/logs:/var/log/redis
+    command:
+      - "redis-server"
+      - "/etc/redis/redis.conf"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-root}", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  docker-nacos-service:
+    image: nacos/nacos-server:v${NACOS_VERSION:-latest}
+    depends_on:
+      docker-mysql-service:
+        condition: service_healthy
+    privileged: true
+    container_name: nacos-service
+    restart: always
+    networks:
+      inner-network:
+        ipv4_address: 172.29.255.8
+    ports:
+      - "${NACOS_HTTP_PORT:-8080}:8080"
+      - "${NACOS_PORT:-8848}:8848"
+      - "${NACOS_GRPC_PORT:-9848}:9848"
+      - "${NACOS_CLUSTER_GRPC_PORT:-9849}:9849"
+    environment:
+      TZ: "Asia/Shanghai"
+      MODE: "standalone"
+      PREFER_HOST_MODE: hostname
+      SPRING_DATASOURCE_PLATFORM: "mysql"
+      MYSQL_SERVICE_HOST: "docker-mysql-service"
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_DB_NAME: "${NACOS_DATASOURCE_DB_NAME:-nacos}"
+      MYSQL_SERVICE_USER: "${MYSQL_USER:-root}"
+      MYSQL_SERVICE_PASSWORD: "${MYSQL_ROOT_PASSWORD:-root}"
+      MYSQL_SERVICE_PARAMS: "${MYSQL_SERVICE_PARAMS}"
+      NACOS_AUTH_ENABLE: true
+      NACOS_AUTH_TOKEN: "${NACOS_AUTH_TOKEN}"
+      NACOS_AUTH_IDENTITY_KEY: "${NACOS_AUTH_IDENTITY_KEY}"
+      NACOS_AUTH_IDENTITY_VALUE: "${NACOS_AUTH_IDENTITY_VALUE}"
+    volumes:
+      - ./volumes/nacos/data:/home/nacos/data
+      - ./volumes/nacos/logs:/home/nacos/logs
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8848/nacos/v1/console/health" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
