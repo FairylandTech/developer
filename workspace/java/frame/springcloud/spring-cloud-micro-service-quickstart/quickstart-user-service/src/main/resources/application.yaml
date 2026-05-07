@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: quickstart-user-service
+  profiles:
+    active: local
+server:
+  port: 8092
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
