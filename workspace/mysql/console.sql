@@ -16,9 +16,11 @@ create table if not exists t_user
     password   varchar(255) not null comment '密码',
     phone      varchar(11)  not null comment '手机号',
     info       text comment '用户信息',
-    status     ENUM ('Y', 'N') default 'Y' comment '状态',
+    status     enum ('Y', 'N') default 'Y' comment '状态',
     balance    decimal(10, 2)  default 0.00 comment '余额',
     created_at timestamp       default current_timestamp comment '创建时间',
-    updated_at timestamp       default current_timestamp on update current_timestamp comment '更新时间',
-    enabled    ENUM ('Y', 'N') default 'Y' comment '是否启用'
+    updated_at timestamp       default current_timestamp on
+        update current_timestamp comment '更新时间',
+    enabled    enum ('Y', 'N') default 'Y' comment '是否启用'
 ) comment '用户表';
+feat: :sparkles: commit

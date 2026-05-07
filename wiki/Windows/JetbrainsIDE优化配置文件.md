@@ -9,28 +9,37 @@
 vmoption 优化
 
 ```tex
--Xms4096m
--Xmx4096m
--XX:MaxMetaspaceSize=1024m
+# 内存配置
+-Xms8192m
+-Xmx8192m
+-XX:MaxMetaspaceSize=2048m
 -XX:ReservedCodeCacheSize=512m
 -XX:MaxDirectMemorySize=2048m
--XX:TieredOldPercentage=100000
+
+# GC优化配置
 -XX:+UseG1GC
 -XX:MaxGCPauseMillis=200
--XX:+IgnoreUnrecognizedVMOptions
--XX:+TieredCompilation
 -XX:SoftRefLRUPolicyMSPerMB=50
 -XX:+UseStringDeduplication
+
+# 兼容性/异常配置
+-XX:+IgnoreUnrecognizedVMOptions
+-XX:+TieredCompilation
 -XX:-OmitStackTraceInFastThrow
 -XX:+UnlockDiagnosticVMOptions
+
+# IDEA功能优化
 -Dide.async.jps=true
 -Dide.workspace.model.disable.auto.reload=true
 -Dsun.io.useCanonCaches=false
--Dsun.java2d.opengl=true
+
+# 全链路UTF8编码避免乱码
 -Dsun.stdout.encoding=UTF-8
 -Dsun.stderr.encoding=UTF-8
 -Dfile.encoding=UTF-8
 -Dconsole.encoding=UTF-8
+
+# 通用兼容性配置
 -Dskiko.rendering.useScreenMenuBar=false
 -Djdk.http.auth.tunneling.disabledSchemes=""
 -Djdk.attach.allowAttachSelf=true
