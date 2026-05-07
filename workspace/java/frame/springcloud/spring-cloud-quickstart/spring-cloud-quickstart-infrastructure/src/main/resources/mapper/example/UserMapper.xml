@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="host.fairy.infrastructure.persistence.mapper.example.UserMapper">
+    <!--@Table t_user-->
+
+    <resultMap id="BaseResultMap" type="host.fairy.infrastructure.persistence.model.example.UserMO" autoMapping="true">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="info" property="info"/>
+        <result column="status" property="status"/>
+        <result column="balance" property="balance"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="enabled" jdbcType="VARCHAR" property="enabled"/>
+    </resultMap>
+
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        select
+            id,
+            username,
+            password,
+            phone,
+            info,
+            status,
+            balance,
+            created_at,
+            updated_at,
+            enabled
+        from
+            t_user
+        where
+              enabled = 'Y'
+          and username = #{username}
+    </select>
+</mapper>
