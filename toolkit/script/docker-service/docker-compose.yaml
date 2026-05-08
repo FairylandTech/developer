@@ -95,7 +95,7 @@ services:
       timeout: 5s
       retries: 10
   docker-nacos-service:
-    image: nacos/nacos-server:v${NACOS_VERSION:-latest}
+    image: nacos/nacos-server:${NACOS_VERSION:-latest}
     depends_on:
       docker-mysql-service:
         condition: service_healthy
