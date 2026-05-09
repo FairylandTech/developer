@@ -8,9 +8,13 @@
 package host.fairy.user.controller;
 
 import host.fairy.fairylandfuture.common.web.response.Response;
+import host.fairy.user.fiegn.ExampleFidgnClient;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 
 /**
  * @author Beau Dean
@@ -18,10 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/user")
+@RequiredArgsConstructor
 public class UserController {
+    private final ExampleFidgnClient exampleFidgnClient;
     
     @GetMapping("")
-    public Response<String> getUser() {
-        return Response.success("quickstart user service start");
+    public Response<Object> getUser() {
+        Response<String> response = exampleFidgnClient.example();
+        HashMap<String, Object> hashMap = new HashMap<>() {
+            {
+                put("example", response.getData());
+                put("user", "quickstart user service start");
+            }
+        };
+        return Response.success(hashMap);
     }
 }

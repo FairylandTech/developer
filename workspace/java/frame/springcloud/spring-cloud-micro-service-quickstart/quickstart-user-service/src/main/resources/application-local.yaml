@@ -4,3 +4,12 @@ spring:
     url: jdbc:mysql://gz.tencent.server.fairy.host:51001/dev?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: 7JquBHx3Vm5MrKh7
+  cloud:
+    nacos:
+      discovery:
+        server-addr: gz.tencent.server.fairy.host:58848
+        username: nacos
+        password: nacos
+    openfeign:
+      okhttp:
+        enabled: true
