@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>host.fairy</groupId>
-        <artifactId>origin</artifactId>
+        <artifactId>syntax</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>playground-01-operation</artifactId>
