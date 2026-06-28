@@ -76,8 +76,15 @@ class Main:
         for region in data:
             result.extend(cls.recursive_parse_region(region))
 
+        print("insert into ubanda_area.area (code, name, parent_code, level) values")
         for index, row in enumerate(result):
-            print("insert into ubanda_area.area (code, name, parent_code, level) values ('{code}', '{name}', '{parent_code}', {leval});".format(**row.model_dump()))
+            # print("insert into ubanda_area.area (code, name, parent_code, level) values ('{code}', '{name}', '{parent_code}', {leval});".format(**row.model_dump()))
+            print(
+                "('{code}', '{name}', '{parent_code}', {leval}){comma}".format(
+                    **row.model_dump(),
+                    comma="," if index < len(result) - 1 else ";",
+                )
+            )
 
 
 if __name__ == "__main__":
