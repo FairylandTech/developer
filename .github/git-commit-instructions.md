@@ -15,16 +15,16 @@
 
 在标题最开头添加 Emoji（新）
 
-- 规范要求：提交信息标题（单行 summary）必须以单个 emoji 开头，后接空格，再按格式书写 type(scope): short imperative summary。
+- 规范要求：提交信息标题（单行 summary）必须以单个 emoji 开头，后接空格，再按格式书写 type (scope): short imperative summary。
 - 目的：通过可视化符号快速在日志/PR 列表中识别变更类型，提升可读性与快速筛查效率。
 - 要求：
-    - emoji 放在标题开头的第一个字符位置，后跟一个空格，例如：✨ feat(auth): add JWT refresh token endpoint
+    - emoji 放在标题开头的第一个字符位置，后跟一个空格，例如：✨ feat (auth): add JWT refresh token endpoint
     - emoji 应与 type 语义一致（见下表建议映射），但仓库可在项目级覆盖文件中替换为其他 emoji。
     - 标题长度与其他规则不变（建议 ≤ 50 字符摘要长度，不以句号结尾）。
 
 提交信息格式 / Commit message format (推荐使用 Conventional Commits + emoji)
 格式（单行标题 + 可选正文 + 可选 footer）：
-<emoji> type(scope): short imperative summary (max 50 chars)
+<emoji> type (scope): short imperative summary (max 50 chars)
 
 [optional body — describe motivation and why, wrap at 72 chars]
 
@@ -49,16 +49,16 @@ Emoji 与 type 建议映射（可调整）
 示例 / Examples
 
 - English (public project)
-    - ✨ feat(auth): add JWT refresh token endpoint
-    - 🐛 fix(api): validate pagination params to prevent crash
+    - ✨ feat (auth): add JWT refresh token endpoint
+    - 🐛 fix (api): validate pagination params to prevent crash
     - 📝 docs: update contributing guide with commit rules
 - 双语示例（标题英文，正文中文）
-    - ✨ feat(ui): add bulk-select for items
+    - ✨ feat (ui): add bulk-select for items
     -
     - 实现了批量选择功能，包含全选/反选；提高了列表操作效率。
     - Closes #321
 - 中文示例（内部仓库）
-    - 🐛 fix(storage): 修复对象存储上传失败的 race condition
+    - 🐛 fix (storage): 修复对象存储上传失败的 race condition
     -
     - 修复了并发上传时出现的索引覆盖问题，增加了单元测试覆盖。
     - BREAKING CHANGE: 存储模块配置项 key_name 改为 storage_key
@@ -102,11 +102,9 @@ Emoji 与 type 建议映射（可调整）
     - 覆盖不得放宽安全/合规相关要求（例如 secrets、PII 的处理）。
 - 临时例外须通过 PR 描述和审批记录。
 
-常见问题 / FAQ
-Q: 提交信息应该是英文还是中文？
-A: 参见上文“语言选择”；总体原则为一致性和协作者可读性。公开项目优先英文；内部项目可用中文；也可以采用“标题英文 / 正文中文”的折衷方案。无论语言如何，标题开头必须包含 emoji。
-Q: 我忘记写符合规范的提交，如何修正？
-A: 使用 git commit --amend 修改最近一次提交；对多个提交可使用 git rebase -i 交互式重写历史（注意团队协作风险）。修正时确保保留或补上正确的 emoji。
+常见问题 / FAQ Q: 提交信息应该是英文还是中文？ A: 参见上文“语言选择”；总体原则为一致性和协作者可读性。公开项目优先英文；内部项目可用中文；也可以采用“标题英文 /
+正文中文”的折衷方案。无论语言如何，标题开头必须包含 emoji。 Q: 我忘记写符合规范的提交，如何修正？ A: 使用 git commit --amend 修改最近一次提交；对多个提交可使用 git rebase -i
+交互式重写历史（注意团队协作风险）。修正时确保保留或补上正确的 emoji。
 
 示例 PR 检查清单（可放入 PR 模板）
 
@@ -130,7 +128,7 @@ A: 使用 git commit --amend 修改最近一次提交；对多个提交可使用
 - 遵守仓库 LICENSE；提交信息也应避免包含敏感或受限信息。
 
 附录：快速模板（copy/paste）
-<emoji> type(scope): short imperative summary
+<emoji> type (scope): short imperative summary
 
 Optional: longer description of the change, motivation and notes.
 

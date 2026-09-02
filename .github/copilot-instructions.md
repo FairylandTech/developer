@@ -80,7 +80,7 @@ max_line_length = 170
     - 使用严格模式、适当的类型注解（TypeScript）。
     - 遵守现有 ESLint/Prettier 配置（若仓库没有，建议将 max line width 设置为 170）。
 - Commit message
-    - 使用简洁的动词现在时：如 "Add user authentication", "Fix race condition in cache"。
+    - 使用简洁的动词现在时：如 "Add userModel authentication", "Fix race condition in cache"。
     - 若仓库使用 Conventional Commits，请遵循该规范。
 
 安全与隐私（具体规则）
