@@ -17,6 +17,7 @@ function parseTitle(title) {
   if (!match) return null;
 
   const [, vendor, country, region, number = '01', route] = match;
+  let exitCountry = country;
   let suffix = '';
 
   if (!/^Native$/i.test(route)) {
@@ -31,6 +32,7 @@ function parseTitle(title) {
     } else if (transfer) {
       const [, destinationCountry, destinationRegion, provider] = transfer;
       if (provider && !provider.trim()) return null;
+      exitCountry = destinationCountry;
       suffix = ' -> ' + destinationCountry + ' ' + destinationRegion.trim();
       if (provider) suffix += ' (' + provider.trim() + ')';
     } else {
@@ -38,12 +40,22 @@ function parseTitle(title) {
     }
   }
 
-  return { vendor, country: country.toUpperCase(), region, number: number.padStart(2, '0'), suffix };
+  return { vendor, country: country.toUpperCase(), region, number: number.padStart(2, '0'), suffix, exitCountry };
 }
 
 function operator(proxies) {
+  // 使用保留域名生成离线展示节点，便于同时导出到 Mihomo 和小火箭。
+  const offlineNode = {
+    name: 'AAA 建材老王·搬砖专线直达洛杉矶',
+    type: 'ss',
+    server: 'offline.invalid',
+    port: 443,
+    cipher: 'aes-128-gcm',
+    password: 'offline-placeholder',
+    udp: true,
+  };
   const seen = new Map();
-  const renamed = proxies.map(proxy => {
+  const renamed = proxies.filter(proxy => proxy.name !== offlineNode.name).map(proxy => {
     const titles = [proxy._subDisplayName, proxy._subName].filter(Boolean);
     let route;
     let source;
@@ -62,12 +74,13 @@ function operator(proxies) {
     if (!protocolCode) throw new Error('请补充协议编码：' + proxy.type);
 
     const prefix = [vendorCode + protocolCode, route.country, route.region, route.number].join(' ');
-    const name = prefix + route.suffix;
+    const name = ProxyUtils.getFlag(route.exitCountry) + ' ' + prefix + route.suffix;
     const origin = source + ' [' + proxy.type + ']';
     if (seen.has(name)) throw new Error('节点重名 ' + name + '：' + seen.get(name) + ' 和 ' + origin);
     seen.set(name, origin);
     return { ...proxy, name };
   });
 
-  return renamed.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  renamed.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  return [offlineNode, ...renamed];
 }
