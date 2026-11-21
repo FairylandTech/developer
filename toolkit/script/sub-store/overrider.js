@@ -11,8 +11,8 @@ function operator(proxies) {
     anytls: 'P02',
   };
 
-  // 地区后可带 NAT，线路支持 ISP (...)、Native 和 Transfer ...
-  const pattern = /^(?:3X-UI|S-UI)\s+(\S+)\s+(\S+)\s+(\S+)\s+(?:NAT\s+)?(?:ISP\s*[（(]\s*([^/()（）]+?)(?:\s*\/[^()（）]+)?\s*[)）]|(Native|Transfer\s+.+))$/i;
+  // 地区后可带线路编号（如 02）和 NAT，线路支持 ISP (...)、Native 和 Transfer ...
+  const pattern = /^(?:3X-UI|S-UI)\s+(\S+)\s+(\S+)\s+(\S+)(?:\s+(\d+))?\s+(?:NAT\s+)?(?:ISP\s*[（(]\s*([^/()（）]+?)(?:\s*\/[^()（）]+)?\s*[)）]|(Native|Transfer\s+.+))$/i;
   const seen = new Map();
 
   for (const p of proxies) {
@@ -25,7 +25,7 @@ function operator(proxies) {
       throw new Error('订阅标题格式不匹配：' + (titles.join(' / ') || '缺少来源名称'));
     }
 
-    const [, vendor, country, region, isp, route] = match;
+    const [, vendor, country, region, lineNumber = '01', isp, route] = match;
     const vendorCode = vendors[vendor.toLowerCase()];
     const protocolCode = protocols[String(p.type).toLowerCase()];
 
@@ -37,6 +37,7 @@ function operator(proxies) {
       vendorCode + protocolCode,
       countryCode,
       region,
+      lineNumber,
       (isp || route).trim()
     ].join(' ');
 
