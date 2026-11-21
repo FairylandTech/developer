@@ -74,13 +74,14 @@ function operator(proxies) {
     if (!protocolCode) throw new Error('请补充协议编码：' + proxy.type);
 
     const prefix = [vendorCode + protocolCode, route.country, route.region, route.number].join(' ');
-    const name = ProxyUtils.getFlag(route.exitCountry) + ' ' + prefix + route.suffix;
+    const sortName = prefix + route.suffix;
+    const name = ProxyUtils.getFlag(route.exitCountry) + ' ' + sortName;
     const origin = source + ' [' + proxy.type + ']';
     if (seen.has(name)) throw new Error('节点重名 ' + name + '：' + seen.get(name) + ' 和 ' + origin);
     seen.set(name, origin);
-    return { ...proxy, name };
+    return { sortName, node: { ...proxy, name } };
   });
 
-  renamed.sort((a, b) => a.name.localeCompare(b.name, 'en'));
-  return [offlineNode, ...renamed];
+  renamed.sort((a, b) => a.sortName.localeCompare(b.sortName, 'en', { numeric: true }));
+  return [offlineNode, ...renamed.map(entry => entry.node)];
 }
