@@ -1,0 +1,88 @@
+name: postgresql
+
+services:
+  postgres:
+    image: postgres:${PG_VERSION:-17}
+    container_name: ${PG_CONTAINER_NAME:-postgresql-service}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请配置`POSTGRES_PASSWORD`}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      DEV_DB_PASSWORD: ${DEV_DB_PASSWORD:?请配置`DEV_DB_PASSWORD`}
+      PGDATA: /var/lib/postgresql/data/pgdata
+      TZ: ${TZ:-Asia/Shanghai}
+      PGTZ: ${TZ:-Asia/Shanghai}
+      # 初始化时启用数据页校验和 + UTF8 + C.UTF-8 排序
+      POSTGRES_INITDB_ARGS: "--data-checksums --encoding=UTF8 --locale=C.UTF-8"
+    # 使用自定义配置文件启动；时区跟随 .env 中的 TZ
+    command:
+      - postgres
+      - -c
+      - config_file=/etc/postgresql/postgresql.conf
+      - -c
+      - hba_file=/etc/postgresql/pg_hba.conf
+      - -c
+      - timezone=${TZ:-Asia/Shanghai}
+      - -c
+      - log_timezone=${TZ:-Asia/Shanghai}
+    ports:
+      # 默认只绑定本机回环；Docker 端口映射会绕过 ufw/iptables，谨慎改为 0.0.0.0
+      - "${PG_BIND_ADDR:-127.0.0.1}:${PG_PORT:-5432}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - pg_logs:/var/log/postgresql
+      - pg_backup:/backup
+      - ./conf/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./conf/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ./init:/docker-entrypoint-initdb.d:ro
+    # 并行查询 / 排序依赖共享内存，Docker 默认 64M 不够
+    shm_size: ${PG_SHM_SIZE:-256m}
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    stop_grace_period: 60s
+    healthcheck:
+      # $$ 让变量在容器内展开，而不是在 compose 解析时
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: "${PG_CPUS:-2}"
+          memory: ${PG_MEM_LIMIT:-1g}
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "5"
+    networks:
+      - pgnet
+
+volumes:
+  pg_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PG_DATA_DIR:?请配置`PG_DATA_DIR`}
+  pg_logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PG_LOG_DIR:?请配置`PG_LOG_DIR`}
+  pg_backup:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PG_BACKUP_DIR:?请配置`PG_BACKUP_DIR`}
+
+networks:
+  pgnet:
+    driver: bridge
