@@ -10,6 +10,14 @@ const protocolCodes = new Map([
   ['anytls', 'P02'],
 ]);
 
+const countryFlags = new Map([
+  ['TW', '🇨🇳'],
+  ['JP', '🇯🇵'],
+  ['US', '🇺🇸'],
+  ['USA', '🇺🇸'],
+  ['SG', '🇸🇬'],
+]);
+
 function parseTitle(title) {
   // 面板 服务提供商 国家 地区 [服务器编号] [NAT] 线路描述
   const header = /^\S+ (\S+) (\S+) (\S+)(?: (\d+))? (?:NAT )?(.+)$/i;
@@ -45,8 +53,9 @@ function parseTitle(title) {
 
 function operator(proxies) {
   // 使用保留域名生成离线展示节点，便于同时导出到 Mihomo 和小火箭。
+  const offlineTitle = 'AAA 建材老王·搬砖专线直达洛杉矶';
   const offlineNode = {
-    name: 'AAA 建材老王·搬砖专线直达洛杉矶',
+    name: '✈️ ' + offlineTitle,
     type: 'ss',
     server: 'offline.invalid',
     port: 443,
@@ -55,7 +64,7 @@ function operator(proxies) {
     udp: true,
   };
   const seen = new Map();
-  const renamed = proxies.filter(proxy => proxy.name !== offlineNode.name).map(proxy => {
+  const renamed = proxies.filter(proxy => proxy.name !== offlineTitle && proxy.name !== offlineNode.name).map(proxy => {
     const titles = [proxy._subDisplayName, proxy._subName].filter(Boolean);
     let route;
     let source;
@@ -75,7 +84,8 @@ function operator(proxies) {
 
     const prefix = [vendorCode + protocolCode, route.country, route.region, route.number].join(' ');
     const sortName = prefix + route.suffix;
-    const name = ProxyUtils.getFlag(route.exitCountry) + ' ' + sortName;
+    const flag = countryFlags.get(route.exitCountry.toUpperCase());
+    const name = flag ? flag + ' ' + sortName : sortName;
     const origin = source + ' [' + proxy.type + ']';
     if (seen.has(name)) throw new Error('节点重名 ' + name + '：' + seen.get(name) + ' 和 ' + origin);
     seen.set(name, origin);
