@@ -50,5 +50,5 @@ function operator(proxies) {
     p.name = name;
   }
 
-  return proxies;
+  return proxies.sort((a, b) => a.name.localeCompare(b.name, 'en'));
 }
