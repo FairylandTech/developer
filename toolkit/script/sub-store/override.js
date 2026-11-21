@@ -53,7 +53,7 @@ function parseTitle(title) {
 
 function operator(proxies) {
   // 使用保留域名生成离线展示节点，便于同时导出到 Mihomo 和小火箭。
-  const offlineTitle = 'AAA 建材老王·搬砖专线直达洛杉矶';
+  const offlineTitle = 'AAA·搬砖专线直达洛杉矶';
   const offlineNode = {
     name: '✈️ ' + offlineTitle,
     type: 'ss',
