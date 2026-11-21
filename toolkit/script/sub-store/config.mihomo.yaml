@@ -1,0 +1,501 @@
+mixed-port: 7890
+allow-lan: true
+bind-address: '*'
+ipv6: false
+mode: rule
+unified-delay: true
+tcp-concurrent: true
+log-level: info
+keep-alive-idle: 600
+keep-alive-interval: 15
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+        - 443
+        - 8443
+    QUIC:
+      ports:
+        - 443
+        - 8443
+  skip-domain:
+    - 'Mijia Cloud'
+    - '+.push.apple.com'
+
+tun:
+  enable: true
+  stack: mixed  # 如果内核版本大于v1.19.31，此处可以改为自研协议栈 mips，理论上性能更好。
+  dns-mode: hijack  # Mihomo v1.19.33+ 将 TUN 地址设为系统 DNS。
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  auto-route: true
+  strict-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+hosts:
+  # Mullvad 公布的 DoH 地址，保留域名用于 TLS 证书校验
+  dns.mullvad.net: 194.242.2.2
+
+dns:
+  enable: true # 启用 Clash 内置 DNS，接管本机 DNS 查询
+  listen: 0.0.0.0:53 # 本地 DNS 监听地址，TUN / 系统代理都靠它拦截查询
+  ipv6: false # 不解析 AAAA 记录，防止 IPv6 绕过代理泄漏真实 IP
+  prefer-h3: false # DoH 使用基于 TCP 的 HTTPS
+  use-hosts: true # 先查配置里的 hosts 映射，再去问上游
+  enhanced-mode: fake-ip # 假 IP 模式：先返回 198.18.x.x 假 IP，真正连的时候再按域名分流，本地不做真实解析，防污染
+  fake-ip-range: 198.18.0.1/16 # 假 IP 段，保留地址，不会和真实 IP 冲突
+  # 不走 fake-ip 的例外域名：内网、时间同步、STUN 穿透、微软连通性检测，这些拿假 IP 会坏
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "*.localdomain"
+    - "localhost"
+    - "+.pool.ntp.org"
+    - "time.*.com"
+    - "ntp.*.com"
+    - "stun.*.*"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+
+  # 引导 DNS：只用来解析上面 DoH 主机名本身（如 cloudflare-dns.com）
+  # 必须是纯 IP，不能填 system / 域名，否则会死循环
+  # 这一步只查 DoH 主机名，不查你访问的网站
+  default-nameserver:
+    - 223.5.5.5
+
+  # 主解析器：境外 DoH，强制走代理（#Proxy）
+  # 查询本身也走美国出口，本地运营商看不到你查了什么域名
+  nameserver:
+    - 'https://dns.google/dns-query#Proxy'
+    - 'https://cloudflare-dns.com/dns-query#Proxy'
+
+  # 回退解析器：主解析器返回 CN IP / 被污染时，再用境外 DoH 重查一次
+  fallback:
+    - 'https://dns.google/dns-query#Proxy'
+    - 'https://cloudflare-dns.com/dns-query#Proxy'
+    - 'tls://1.1.1.1:853#Proxy' # DoT 备用，Cloudflare 1.1.1.1
+  # 什么时候触发回退：主解析结果是 CN IP，或域名在 GFW 列表里
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4 # 保留地址段，明显是污染结果
+      - 0.0.0.0/8
+    geosite:
+      - gfw
+
+  # 按域名分流解析：国内走国内 DoH（直连，快、CDN 对），境外走境外 DoH（走代理）
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "geosite:gfw,geolocation-!cn":
+      - 'https://cloudflare-dns.com/dns-query#Proxy'
+      - 'https://dns.google/dns-query#Proxy'
+
+  # 解析代理节点域名专用：不能走代理（鸡生蛋问题），只能直连
+  # 直连的加密 DoH。Mullvad 通过 hosts 指定地址，不依赖引导 DNS 解析
+  proxy-server-nameserver:
+    - https://dns.mullvad.net/dns-query
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+
+  # 直连域名专用：只给 DIRECT 规则的域名用，国内 DoH 就够了
+  # 不能填 system，system 就是本地运营商 DNS
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+
+# Sub-Store 合并个人入口节点后，在 Proxy 中选择与小火箭相同的入口。
+# 入口节点需支持 UDP 并启用 udp: true。
+proxy-groups:
+  - name: Proxy
+    type: select
+    include-all: true
+    empty-fallback: REJECT
+
+  - name: Claude
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: AI
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: YouTube
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: Google
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: GitHub
+    type: select
+    proxies:
+      - Proxy
+      - DIRECT
+    include-all: true
+
+  - name: OneDrive
+    type: select
+    proxies:
+      - Proxy
+      - DIRECT
+    include-all: true
+
+  - name: Microsoft
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: Microsoft CN
+    type: select
+    proxies:
+      - Proxy
+      - DIRECT
+    include-all: true
+
+  - name: Apple
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: Apple CN
+    type: select
+    proxies:
+      - Proxy
+      - DIRECT
+    include-all: true
+
+  - name: Telegram
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: TikTok
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: NETFLIX
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: Wallet
+    type: select
+    proxies:
+      - Proxy
+    include-all: true
+
+  - name: Steam
+    type: select
+    proxies:
+      - Proxy
+      - DIRECT
+    include-all: true
+
+  - name: Steam CN
+    type: select
+    proxies:
+      - DIRECT
+      - Proxy
+    include-all: true
+
+  - name: Miss
+    type: select
+    proxies:
+      - Proxy
+      - DIRECT
+    include-all: true
+
+# 规则匹配
+rules:
+  # TUN 优先接管 53 端口，进入分流的 53/853 连接一律拒绝。
+  - 'DST-PORT,53/853,REJECT'
+
+  - 'RULE-SET,private_ip,DIRECT,no-resolve'
+  - 'RULE-SET,private_domain,DIRECT'
+
+  # 公网 STUN/TURN 与网页共用 Proxy。节点不支持 UDP 时，下一条拒绝同一流量。
+  - 'DOMAIN-REGEX,(?i)(^|[.])(stun|stuns|turn|turns)([.-]|$),Proxy'
+  - 'DOMAIN-REGEX,(?i)(^|[.])(stun|stuns|turn|turns)([.-]|$),REJECT'
+  - 'DST-PORT,3478-3481/5349-5350/19302-19309,Proxy'
+  - 'DST-PORT,3478-3481/5349-5350/19302-19309,REJECT'
+
+  # 小火箭 default.db 的自定义规则与出口检测域名，具体子域优先。
+  - 'DOMAIN-SUFFIX,yzt.lol,DIRECT'
+  - 'DOMAIN-SUFFIX,gitlab.semi.sarl,Proxy'
+  - 'IP-CIDR,43.160.205.228/32,Proxy,no-resolve'
+  - 'DOMAIN-SUFFIX,fairyland.dev,DIRECT'
+  - 'DOMAIN-SUFFIX,semi.sarl,DIRECT'
+  - 'DOMAIN-SUFFIX,dnsleaktest.com,Proxy'
+  - 'DOMAIN-SUFFIX,dnsleak.com,Proxy'
+  - 'DOMAIN-SUFFIX,expressvpn.com,Proxy'
+  - 'DOMAIN-SUFFIX,nordvpn.com,Proxy'
+  - 'DOMAIN-SUFFIX,surfshark.com,Proxy'
+  - 'DOMAIN-SUFFIX,ipleak.net,Proxy'
+  - 'DOMAIN-SUFFIX,perfect-privacy.com,Proxy'
+  - 'DOMAIN-SUFFIX,browserleaks.com,Proxy'
+  - 'DOMAIN-SUFFIX,browserleaks.net,Proxy'
+  - 'DOMAIN-SUFFIX,browserleaks.org,Proxy'
+  - 'DOMAIN-SUFFIX,vpnunlimited.com,Proxy'
+  - 'DOMAIN-SUFFIX,whoer.net,Proxy'
+  - 'DOMAIN-SUFFIX,whrq.net,Proxy'
+
+  # 与 WebRTC 对照检查 HTTPS 出口
+  - 'DOMAIN,api.ipify.org,Proxy'
+
+  # Beau Dean 自定义分流
+  - 'DOMAIN-KEYWORD,tagxx,DIRECT'
+  - 'DOMAIN-KEYWORD,tagss,DIRECT'
+  - 'DOMAIN-KEYWORD,gientech,DIRECT'
+  - 'DOMAIN,gz.tencent.server.fairy.host,DIRECT'
+  - 'IP-CIDR,159.75.47.181/32,DIRECT'
+  - 'DOMAIN-KEYWORD,apps.apple.com,Proxy'
+  - 'DOMAIN-KEYWORD,chinalco,DIRECT'
+  - 'DOMAIN,cdn.zenithgrid.co,DIRECT'
+  - 'DOMAIN-KEYWORD,bilibili,DIRECT'
+  - 'DOMAIN-KEYWORD,apple,Proxy'
+  - 'DOMAIN-KEYWORD,icloud,Proxy'
+  - 'DOMAIN-KEYWORD,microsoft,Proxy'
+  - 'IP-CIDR,8.222.82.247/32,DIRECT'
+  - 'DOMAIN-KEYWORD,kylincloud,DIRECT'
+
+  # Anthropic / Claude 核心域名
+  - 'DOMAIN-SUFFIX,anthropic.com,Claude'
+  - 'DOMAIN-SUFFIX,claude.ai,Claude'
+  - 'DOMAIN-SUFFIX,claude.com,Claude'
+  - 'DOMAIN-SUFFIX,clau.de,Claude'
+  - 'DOMAIN-SUFFIX,claudemcpclient.com,Claude'
+  - 'DOMAIN-SUFFIX,claudemcpcontent.com,Claude'
+  - 'DOMAIN-SUFFIX,claudeusercontent.com,Claude'
+
+  # CDN、静态资源、认证与内容
+  - 'DOMAIN,servd-anthropic-website.b-cdn.net,Claude'
+  - 'DOMAIN,anthropic.com.cdn.cloudflare.net,Claude'
+  - 'DOMAIN,anthropic.auth0.com,Claude'
+  - 'DOMAIN,anthropic-com.ghost.io,Claude'
+
+  # 遥测、客服与第三方组件
+  - 'DOMAIN-SUFFIX,sentry.io,Claude'
+  - 'DOMAIN-SUFFIX,statsigapi.net,Claude'
+  - 'DOMAIN,browser-intake-us5-datadoghq.com,Claude'
+  - 'DOMAIN-KEYWORD,datadog,Claude'
+  - 'DOMAIN-KEYWORD,sift,Claude'
+  - 'DOMAIN-SUFFIX,intercom.io,Claude'
+  - 'DOMAIN-SUFFIX,intercomcdn.com,Claude'
+  - 'DOMAIN,cdn.usefathom.com,Claude'
+
+  # Anthropic IP 段及 ASN
+  - 'IP-CIDR,160.79.104.0/21,Claude,no-resolve'
+  - 'IP-CIDR6,2607:6bc0::/32,Claude,no-resolve'
+  - 'IP-ASN,399358,Claude,no-resolve'
+
+  # Shadowrocket 拒绝规则
+  - 'RULE-SET,shadowrocket_reject_domains,REJECT'
+
+  - 'RULE-SET,ai_domain,AI'
+  - 'RULE-SET,youtube_domain,YouTube'
+  - 'RULE-SET,google_domain,Google'
+  - 'RULE-SET,github_domain,GitHub'
+  - 'RULE-SET,onedrive_domain,OneDrive'
+  - 'RULE-SET,microsoftcn_domain,Microsoft CN'
+  - 'RULE-SET,microsoft_domain,Microsoft'
+  - 'RULE-SET,applecn_domain,Apple CN'
+  - 'RULE-SET,apple_domain,Apple'
+  - 'RULE-SET,telegram_domain,Telegram'
+  - 'RULE-SET,tiktok_domain,TikTok'
+  - 'RULE-SET,netflix_domain,NETFLIX'
+  - 'RULE-SET,paypal_domain,Wallet'
+  - 'RULE-SET,binance_domain,Wallet'
+  - 'RULE-SET,okx_domain,Wallet'
+  - 'RULE-SET,usd_domain,Wallet'
+  - 'RULE-SET,steamcn_domain,Steam CN'
+  - 'RULE-SET,steam_domain,Steam'
+  # Shadowrocket 通用代理与直连域名
+  - 'RULE-SET,shadowrocket_proxy_domains,Proxy'
+  - 'RULE-SET,shadowrocket_proxy_patterns,Proxy'
+  - 'RULE-SET,shadowrocket_direct_domains,DIRECT'
+  - 'RULE-SET,shadowrocket_direct_patterns,DIRECT'
+
+  - 'RULE-SET,cn!_domain,Proxy'
+  - 'RULE-SET,google_ip,Google'
+  - 'RULE-SET,apple_ip,Apple'
+  - 'RULE-SET,telegram_ip,Telegram'
+  - 'RULE-SET,netflix_ip,NETFLIX'
+  # Shadowrocket 代理 IP 段
+  - 'RULE-SET,shadowrocket_proxy_ips,Proxy'
+
+  - 'RULE-SET,cn_ip,DIRECT'
+  - 'MATCH,Miss'
+
+# 规则集 type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
+rule-anchor:
+  ip: &ip
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+  domain: &domain
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+  domain_text: &domain_text
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+
+rule-providers:
+  fakeipfilter_cn:
+    <<: *domain_text
+    url: https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/fakeipfilter-cn.list
+  fakeipfilter_!cn:
+    <<: *domain_text
+    url: https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/fakeipfilter-!cn.list
+  private_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/private.mrs
+  ai_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs
+  youtube_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/youtube.mrs
+  google_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/google.mrs
+  github_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs
+  onedrive_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/onedrive.mrs
+  microsoftcn_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/microsoft@cn.mrs
+  microsoft_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/microsoft.mrs
+  applecn_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple@cn.mrs
+  apple_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/apple.mrs
+  telegram_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/telegram.mrs
+  tiktok_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/tiktok.mrs
+  netflix_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/netflix.mrs
+  paypal_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/paypal.mrs
+  binance_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/binance.mrs
+  okx_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/okx.mrs
+  usd_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-cryptocurrency.mrs
+  steamcn_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam@cn.mrs
+  steam_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam.mrs
+  cn!_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-!cn.mrs
+  cn_domain:
+    <<: *domain
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs
+  google_ip:
+    <<: *ip
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/google.mrs
+  apple_ip:
+    <<: *ip
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/apple.mrs
+  telegram_ip:
+    <<: *ip
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs
+  netflix_ip:
+    <<: *ip
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/netflix.mrs
+  cn_ip:
+    <<: *ip
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs
+  private_ip:
+    <<: *ip
+    url: https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs
+
+  shadowrocket_reject_domains:
+    type: http
+    behavior: domain
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/FairylandTech/proxy-roles/main/rules/reject-domains.txt
+  shadowrocket_proxy_domains:
+    type: http
+    behavior: domain
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/FairylandTech/proxy-roles/main/rules/proxy-domains.txt
+  shadowrocket_proxy_patterns:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/FairylandTech/proxy-roles/main/rules/proxy-patterns.txt
+  shadowrocket_direct_domains:
+    type: http
+    behavior: domain
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/FairylandTech/proxy-roles/main/rules/direct-domains.txt
+  shadowrocket_direct_patterns:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/FairylandTech/proxy-roles/main/rules/direct-patterns.txt
+  shadowrocket_proxy_ips:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://raw.githubusercontent.com/FairylandTech/proxy-roles/main/rules/proxy-ips.txt
