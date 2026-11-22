@@ -10,12 +10,14 @@
 #    - journald 日志容量限制
 #    - 磁盘 I/O 调度器
 #    - 时间同步、自动安全更新
+#    - 安装 Ookla Speedtest CLI（执行完即可直接运行 speedtest 测速）
 #  可选（需显式开启）：
 #    --swap SIZE        创建 swap 文件（如 2G），已有 swap 则跳过
 #    --timezone TZ      设置时区（默认 America/Los_Angeles）
 #    --ssh-harden       SSH 加固（禁止密码登录，仅在已配置公钥时生效）
 #    --firewall         启用 UFW 防火墙（自动放行当前 SSH 端口）
 #    --no-update        跳过 apt 更新与软件安装
+#    --no-speedtest     跳过安装 Speedtest CLI
 #    --dry-run          仅打印将执行的操作，不做修改
 #
 #  用法：sudo bash server-optimize.sh [选项]
@@ -29,9 +31,10 @@ TIMEZONE="America/Los_Angeles"   # 默认洛杉矶时区，可用 --timezone 覆
 SSH_HARDEN=0
 FIREWALL=0
 DO_UPDATE=1
+DO_SPEEDTEST=1
 DRY_RUN=0
 
-usage() { sed -n '2,23p' "$0" | sed 's/^# \{0,1\}//'; exit 0; }
+usage() { sed -n '2,25p' "$0" | sed 's/^# \{0,1\}//'; exit 0; }
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -40,6 +43,7 @@ while [[ $# -gt 0 ]]; do
     --ssh-harden) SSH_HARDEN=1; shift ;;
     --firewall)   FIREWALL=1; shift ;;
     --no-update)  DO_UPDATE=0; shift ;;
+    --no-speedtest) DO_SPEEDTEST=0; shift ;;
     --dry-run)    DRY_RUN=1; shift ;;
     -h|--help)    usage ;;
     *) echo "未知参数: $1"; usage ;;
@@ -408,6 +412,73 @@ if (( FIREWALL )); then
 fi
 
 # ============================================================================
+# 11. Speedtest 测速工具（Ookla 官方 CLI）
+# ============================================================================
+# Ookla 的 apt 源（packagecloud）没有 Ubuntu 24.04+/Debian 12+ 的包，
+# 这里直接安装官方静态二进制，与发行版版本无关，也不受 --no-update 影响。
+SPEEDTEST_VER="1.2.0"
+SPEEDTEST_HOME="/usr/local/lib/ookla-speedtest"
+SPEEDTEST_BIN="/usr/local/bin/speedtest"
+
+fetch() {  # fetch <url> <输出文件>
+  if command -v curl &>/dev/null; then
+    curl -fsSL --retry 3 --connect-timeout 15 -o "$2" "$1"
+  elif command -v wget &>/dev/null; then
+    wget -q --tries=3 --timeout=15 -O "$2" "$1"
+  else
+    warn "未找到 curl / wget，无法下载"; return 1
+  fi
+}
+
+install_speedtest() {
+  local deb_arch arch url tmp
+  deb_arch=$(dpkg --print-architecture)
+  case "$deb_arch" in
+    amd64) arch=x86_64 ;;
+    arm64) arch=aarch64 ;;
+    armhf) arch=armhf ;;
+    armel) arch=armel ;;
+    i386)  arch=i386 ;;
+    *) warn "Speedtest 不支持当前架构：$deb_arch"; return 1 ;;
+  esac
+  url="https://install.speedtest.net/app/cli/ookla-speedtest-${SPEEDTEST_VER}-linux-${arch}.tgz"
+
+  if "$SPEEDTEST_HOME/speedtest" --version 2>/dev/null | grep -q "Ookla ${SPEEDTEST_VER}"; then
+    ok "Speedtest ${SPEEDTEST_VER} 已安装，跳过下载"
+  elif (( DRY_RUN )); then
+    echo "  [dry-run] 下载 $url 并安装到 $SPEEDTEST_HOME/"
+  else
+    tmp=$(mktemp -d) || return 1
+    if ! fetch "$url" "$tmp/speedtest.tgz" \
+       || ! tar -xzf "$tmp/speedtest.tgz" -C "$tmp" speedtest speedtest.5 \
+       || ! "$tmp/speedtest" --version &>/dev/null; then
+      warn "Speedtest 下载或解压失败：$url"
+      rm -rf "$tmp"; return 1
+    fi
+    install -Dm755 "$tmp/speedtest"   "$SPEEDTEST_HOME/speedtest"
+    install -Dm644 "$tmp/speedtest.5" /usr/local/share/man/man5/speedtest.5
+    rm -rf "$tmp"
+  fi
+
+  # 包装命令：自动接受 Ookla 许可协议 / GDPR 提示，安装后直接运行 speedtest 即可
+  write_file "$SPEEDTEST_BIN" <<EOF
+#!/bin/sh
+# 由 server-optimize.sh 生成。用法：speedtest | speedtest -L | speedtest -s <服务器ID> | speedtest -f json
+exec ${SPEEDTEST_HOME}/speedtest --accept-license --accept-gdpr "\$@"
+EOF
+  run chmod 755 "$SPEEDTEST_BIN"
+}
+
+if (( DO_SPEEDTEST )); then
+  step "11. Speedtest 测速工具"
+  if install_speedtest; then
+    ok "Speedtest 已安装：直接运行 speedtest 即可测速（speedtest -L 列出附近服务器）"
+  else
+    warn "Speedtest 安装失败，不影响其他优化项；可稍后重新运行本脚本"
+  fi
+fi
+
+# ============================================================================
 # 完成
 # ============================================================================
 step "完成"
@@ -418,6 +489,9 @@ if (( ! DRY_RUN )); then
   echo "  file-max    : $(sysctl -n fs.file-max)"
   echo "  swappiness  : $(sysctl -n vm.swappiness)"
   echo "  Swap        : $(swapon --show --noheadings | awk '{print $1" "$3}' | paste -sd, - || true)"
+  if [[ -x "$SPEEDTEST_BIN" ]]; then
+    echo "  Speedtest   : $("$SPEEDTEST_BIN" --version 2>/dev/null | head -n1 || true)（运行 speedtest 测速）"
+  fi
   [[ -d "$BACKUP_DIR" ]] && echo "  原文件备份  : $BACKUP_DIR"
 fi
 echo
@@ -428,3 +502,4 @@ echo "  /etc/sysctl.d/99-sysopt.conf  /etc/security/limits.d/99-sysopt.conf"
 echo "  /etc/systemd/{system,user,journald}.conf.d/99-sysopt.conf"
 echo "  /etc/udev/rules.d/60-sysopt-ioscheduler.rules  /etc/modules-load.d/99-sysopt-bbr.conf"
 echo "  /etc/ssh/sshd_config.d/99-sysopt.conf（如启用）"
+echo "卸载 Speedtest：rm -rf ${SPEEDTEST_BIN} ${SPEEDTEST_HOME} /usr/local/share/man/man5/speedtest.5"
