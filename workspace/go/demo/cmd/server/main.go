@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import "demo/internal/modules/demo/gobase"
 
 func main() {
-	fmt.Println("Hello GO!")
+	// gobase.Pointer(2)
+	// gobase.Switch(100)
+	gobase.SwitchValudMatch(2)
 }
