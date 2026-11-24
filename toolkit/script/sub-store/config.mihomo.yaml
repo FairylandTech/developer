@@ -289,6 +289,22 @@ rules:
   - 'DOMAIN-KEYWORD,kylincloud,DIRECT'
 
   # Anthropic / Claude 核心域名
+  - DOMAIN-SUFFIX,claude.ai,Claude
+  - DOMAIN-SUFFIX,anthropic.com,Claude
+  - DOMAIN-SUFFIX,claude.com,Claude
+  - DOMAIN-SUFFIX,claudeusercontent.com,Claude
+  - DOMAIN-SUFFIX,claude.app,Claude
+  - DOMAIN-SUFFIX,claudemcpcontent.com,Claude
+  - DOMAIN-SUFFIX,clau.de,Claude
+  - DOMAIN,api-iam.intercom.io,Claude
+  - DOMAIN,nexus-websocket-a.intercom.io,Claude
+  - DOMAIN,us5.datadoghq.com,Claude
+  - DOMAIN,r.stripe.com,Claude
+  - DOMAIN,us.sentry.io,Claude
+  - DOMAIN,fcmtoken.googleapis.com,Claude
+  - DOMAIN-SUFFIX,siftscience.com,Claude
+  - IP-CIDR,34.8.0.0/16,Claude,no-resolve
+  # ip.net.coffee
   - 'DOMAIN-SUFFIX,anthropic.com,Claude'
   - 'DOMAIN-SUFFIX,claude.ai,Claude'
   - 'DOMAIN-SUFFIX,claude.com,Claude'
