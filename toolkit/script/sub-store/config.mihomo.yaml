@@ -252,25 +252,14 @@ rules:
   - "DST-PORT,3478-3481/5349-5350/19302-19309,Proxy"
   - "DST-PORT,3478-3481/5349-5350/19302-19309,REJECT"
   # 自定义
-  - "DOMAIN-SUFFIX,yzt.lol,DIRECT"
-  - "DOMAIN-SUFFIX,gitlab.semi.sarl,Proxy"
-  - "IP-CIDR,43.160.205.228/32,Proxy,no-resolve"
-  - "DOMAIN-SUFFIX,fairyland.dev,DIRECT"
-  - "DOMAIN-SUFFIX,semi.sarl,DIRECT"
-  - "DOMAIN-KEYWORD,tagxx,DIRECT"
-  - "DOMAIN-KEYWORD,tagss,DIRECT"
-  - "DOMAIN-KEYWORD,gientech,DIRECT"
-  - "DOMAIN,gz.tencent.server.fairy.host,DIRECT"
-  - "IP-CIDR,159.75.47.181/32,DIRECT"
-  - "DOMAIN-KEYWORD,apps.apple.com,Proxy"
-  - "DOMAIN-KEYWORD,chinalco,DIRECT"
-  - "DOMAIN,cdn.zenithgrid.co,DIRECT"
-  - "DOMAIN-KEYWORD,bilibili,DIRECT"
-  - "DOMAIN-KEYWORD,apple,Proxy"
-  - "DOMAIN-KEYWORD,icloud,Proxy"
-  - "DOMAIN-KEYWORD,microsoft,Proxy"
-  - "IP-CIDR,8.222.82.247/32,DIRECT"
-  - "DOMAIN-KEYWORD,kylincloud,DIRECT"
+  - "DOMAIN-SUFFIX,fairyland.dev,DIRECT"  # 自有域名
+  - "DOMAIN-SUFFIX,semi.sarl,DIRECT"  # 自有域名
+  - "DOMAIN-KEYWORD,kylincloud,DIRECT"  # kylin
+  - "DOMAIN-KEYWORD,tagxx,DIRECT"  # tag
+  - "DOMAIN-KEYWORD,tagss,DIRECT"  # tag
+  - "DOMAIN-KEYWORD,gientech,DIRECT"  # 中电金信
+  - "DOMAIN-KEYWORD,chinalco,DIRECT"  # 中铝
+  - "DOMAIN,cdn.zenithgrid.co,DIRECT"  # 奶昔
   # VPN 服务商的 DNS 泄漏测试域名，走 Proxy 以验证出口。
   - "DOMAIN-SUFFIX,dnsleaktest.com,Proxy"
   - "DOMAIN-SUFFIX,dnsleak.com,Proxy"
